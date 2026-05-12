@@ -25,7 +25,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 3. 오너명을 입력받는다.
 4. 날짜는 실행일 기준으로 자동 설정한다.
 5. 템플릿을 복사하고 변수를 치환한다.
-6. 저장소 루트에 `my-project.zip`을 만든다.
+6. 프로젝트 파일을 zip 최상위에 넣어 저장소 루트에 `my-project.zip`을 만든다.
 
 기존 zip을 덮어써야 하면 `--force`를 붙인다.
 

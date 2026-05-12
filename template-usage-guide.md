@@ -26,7 +26,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 
 ## 4. 압축 해제 후 초기 문서 추가
 
-생성된 `my-project.zip`을 대상 위치에 풀고, 사용자가 이미 가진 기획서, 메모, 요구사항 초안, 화면 스케치, 회의록, 참고 링크를 `inputs/initial-development-docs/` 또는 `inputs/references/`에 넣는다.
+생성된 `my-project.zip`을 대상 프로젝트 폴더 안에 풀고, 사용자가 이미 가진 기획서, 메모, 요구사항 초안, 화면 스케치, 회의록, 참고 링크를 `inputs/initial-development-docs/` 또는 `inputs/references/`에 넣는다. zip 안에는 추가 프로젝트명 폴더가 없으므로, 압축 해제 위치가 곧 프로젝트 루트가 된다.
 
 ## 5. Agent 지침 확인
 

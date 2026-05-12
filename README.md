@@ -22,7 +22,7 @@ node scripts/create-project.mjs
 node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
-실행 결과로 저장소 루트에 `my-project.zip`이 생성된다. 날짜는 입력하지 않으며 실행일 기준 `YYYY-MM-DD` 값으로 자동 치환된다.
+실행 결과로 저장소 루트에 `my-project.zip`이 생성된다. 압축 파일 안에는 추가 `my-project/` 폴더를 만들지 않고 프로젝트 파일이 바로 들어간다. 날짜는 입력하지 않으며 실행일 기준 `YYYY-MM-DD` 값으로 자동 치환된다.
 
 ## 템플릿 목록
 
@@ -50,7 +50,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 1. 템플릿을 선택한다.
 2. 임시 폴더에 템플릿을 복사한다.
 3. `{{PROJECT_ID}}`, `{{PROJECT_NAME}}`, `{{OWNER_NAME}}`, `{{YYYY-MM-DD}}` 등을 치환한다.
-4. 루트에 `project-name.zip`을 만든다.
+4. 프로젝트 파일을 zip 최상위에 넣어 루트에 `project-name.zip`을 만든다.
 5. 임시 폴더를 정리한다.
 
 ## 초기 개발 문서

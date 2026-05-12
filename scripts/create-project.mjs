@@ -260,14 +260,14 @@ function writeUInt32(value) {
   return buffer;
 }
 
-function createZip(sourceDir, zipPath, rootFolderName) {
+function createZip(sourceDir, zipPath) {
   const localParts = [];
   const centralParts = [];
   const entries = [];
   let offset = 0;
 
   function addEntry(relativePath, isDirectory, data, mtime) {
-    const normalizedName = `${rootFolderName}/${relativePath}`.replace(/\\/g, "/").replace(/\/+/g, "/");
+    const normalizedName = relativePath.replace(/\\/g, "/").replace(/\/+/g, "/");
     const entryName = isDirectory && !normalizedName.endsWith("/") ? `${normalizedName}/` : normalizedName;
     const nameBuffer = Buffer.from(entryName, "utf8");
     const compressionMethod = isDirectory ? 0 : 8;
@@ -309,8 +309,6 @@ function createZip(sourceDir, zipPath, rootFolderName) {
 
     offset += localHeader.length + compressedData.length;
   }
-
-  addEntry("", true, null, new Date());
 
   function walk(current, relative = "") {
     const entriesInDir = fs.readdirSync(current, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name));
@@ -420,7 +418,7 @@ async function main() {
     ]);
 
     const result = replaceVariables(projectRoot, variables);
-    createZip(projectRoot, zipPath, projectName);
+    createZip(projectRoot, zipPath);
 
     console.log(`Template: ${options.template}`);
     console.log(`Project: ${projectName}`);
