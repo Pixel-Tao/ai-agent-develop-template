@@ -17,3 +17,7 @@
 ## 프로젝트 발견 인터뷰
 
 common/base-docs/project-discovery-interview.md는 모든 템플릿에서 사용할 수 있는 공통 인터뷰 양식이다. common/base-skills/project-discovery-interview는 이 인터뷰를 실행하는 Agent Skill이며, common/snippets/project-definition-brief-template.md는 인터뷰 결과를 정리하는 최종 산출물 양식이다.
+
+## 초기 개발 문서 입력 공간
+
+common/base-inputs/는 사용자가 프로젝트 시작 전에 가진 기획서, 요구사항 초안, 메모, 스케치, 회의록, 레퍼런스를 넣기 위한 기본 구조다. Agent는 이 문서를 먼저 색인화하고, Project Discovery Interview에서 사용자 확인 질문으로 연결해야 한다.

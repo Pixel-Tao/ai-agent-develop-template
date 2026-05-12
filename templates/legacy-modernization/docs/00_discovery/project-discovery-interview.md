@@ -141,3 +141,17 @@
 ## 산출물
 
 인터뷰 결과는 project-definition-brief 형태로 요약한다. 이후 PRD, architecture, backlog, acceptance criteria는 이 브리프를 기준으로 작성한다.
+
+## 사전 개발 문서 검토
+
+인터뷰 전에 inputs/ 폴더를 먼저 확인한다. 사용자가 초기 기획서, 요구사항 초안, 메모, 화면 스케치, 회의록, 레퍼런스 링크를 넣어둔 경우 source-documents-index.md에 등록하고, 문서 기반 질문을 만든 뒤 사용자 인터뷰를 진행한다.
+
+| 확인 항목 | 기록 위치 | 상태 |
+|---|---|---|
+| 초기 개발 문서 존재 여부 | inputs/source-documents-index.md | 미확인 |
+| 문서에서 확인된 목표 | project-definition-brief | 미확인 |
+| 문서에서 드러난 기능 후보 | backlog 또는 PRD | 미확인 |
+| 문서에서 발견한 모호점 | assumptions 또는 open questions | 미확인 |
+| 사용자에게 확인할 질문 | Project Discovery Interview | 미확인 |
+
+원본 문서는 근거 자료일 뿐 최종 요구사항이 아니다. Agent는 문서의 내용과 사용자 인터뷰 답변이 충돌하면 충돌 내용을 기록하고 사용자 확인을 요청한다.

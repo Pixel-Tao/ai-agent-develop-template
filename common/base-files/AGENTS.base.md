@@ -51,3 +51,7 @@ AI Agent는 프로젝트의 구조와 현재 상태를 먼저 파악한 뒤, 요
 ## 프로젝트 발견 인터뷰 규칙
 
 사용자의 요청이 대략적이거나 목표, 대상 사용자, 성공 기준, 기술 범위가 불명확하면 구현 전에 project-discovery-interview.md를 사용한다. Agent는 목표, 콘텐츠, 데이터, 기술 제약, 품질 기준, 제외 범위를 질문하고 project-definition-brief를 만든 뒤 다음 작업으로 넘어간다.
+
+## 초기 개발 문서 확인 규칙
+
+작업 시작 전에 inputs/README.md와 inputs/source-documents-index.md를 확인한다. 사용자가 초기 기획서, 요구사항 초안, 메모, 스케치, 회의록, 레퍼런스를 넣어둔 경우 이를 먼저 요약하고, Project Discovery Interview에서 확인 질문으로 연결한다. 원본 문서 내용은 확정 요구사항이 아니라 사용자 확인이 필요한 근거로 취급한다.

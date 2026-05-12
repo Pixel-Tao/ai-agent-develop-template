@@ -39,3 +39,7 @@ validation-checklist.md를 사용해 필수 파일, 문서 구조, Skill 구조,
 ## 범용 변수 치환
 
 macOS, Linux, Windows 공통으로는 Node.js 스크립트를 사용한다. 예: `node scripts/replace-template-variables.mjs --root . --variables-file scripts/template-variables.example.yaml`. 기본은 Dry Run이며, 확인 후 `--apply`를 붙이면 실제 치환이 적용된다. Windows PowerShell만 사용하는 경우에는 `scripts/replace-template-variables.ps1`을 사용할 수 있다.
+
+## 10. 초기 개발 문서 추가
+
+템플릿을 적용한 뒤 사용자가 이미 가진 자료가 있으면 inputs/initial-development-docs/ 또는 inputs/references/에 넣는다. Agent는 inputs/source-documents-index.md에 문서를 등록하고, 문서에서 나온 목표/기능/제약/모호점을 Project Discovery Interview 질문으로 전환한다.

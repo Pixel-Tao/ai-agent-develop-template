@@ -25,8 +25,11 @@ required_files:
   - README.md
   - AGENTS.md
   - manifest.yaml
+  - inputs/source-documents-index.md
 
 optional_files:
+  - inputs/initial-development-docs
+  - inputs/references
   - outputs
   - docs/09_agent_state/handoff-notes.md
 
@@ -36,6 +39,7 @@ entrypoints:
   agent:
     - AGENTS.md
     - manifest.yaml
+    - inputs/source-documents-index.md
 
 quality_gate:
   minimum:
@@ -43,6 +47,7 @@ quality_gate:
     - AGENTS.md exists
     - manifest.yaml exists
     - docs/09_agent_state/current-status.md exists
+    - inputs/source-documents-index.md exists
 
 initialization:
   prompt: initialization-prompt.md

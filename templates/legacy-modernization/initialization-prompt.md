@@ -47,3 +47,9 @@ validation-checklist.md의 기본 파일, 문서 구조, Skill 구조, Agent 작
 초기화 작업을 시작하기 전에 docs/00_discovery/project-discovery-interview.md를 사용해 사용자의 목표, 대상 사용자, 핵심 콘텐츠, 기술 방향, 성공 기준, 제외 범위를 인터뷰한다. 사용자가 모호하게 답한 항목은 확정하지 말고 assumptions 또는 open questions로 분리한다.
 
 인터뷰가 끝나면 project-definition-brief를 작성하고, 그 내용을 기준으로 PRD, architecture, backlog, acceptance criteria를 생성 또는 갱신한다. 최소한 프로젝트 목표, 핵심 사용자, 성공 기준, 필수 범위, 기술 제약이 정리되기 전에는 구현 작업을 완료로 판단하지 않는다.
+
+## 초기 개발 문서 입력 공간
+
+사용자가 이미 가진 기획서, 요구사항 초안, 메모, 화면 스케치, 회의록, 레퍼런스 링크가 있으면 inputs/initial-development-docs/ 또는 inputs/references/에 넣는다. Agent는 인터뷰 전에 inputs/source-documents-index.md를 작성하거나 갱신하고, 초기 문서에서 확인된 사실/추정/충돌/질문을 분리한다.
+
+초기 문서를 참고해 Project Discovery Interview를 진행하되, 문서 내용을 그대로 확정하지 말고 사용자에게 목표, 우선순위, 제외 범위, 성공 기준을 다시 확인한다.

@@ -23,3 +23,7 @@
 ## 프로젝트 정의
 
 프로젝트를 처음 시작할 때는 docs/00_context/project-discovery-interview.md를 사용해 목표, 사용자, 콘텐츠, 기술 방향, 성공 기준을 먼저 구체화한다. 인터뷰 결과는 project-definition-brief로 요약하고 이후 요구사항, 설계, 작업 목록의 기준으로 사용한다.
+
+## 초기 개발 문서
+
+프로젝트 시작 전에 사용자가 가진 기획서, 요구사항 초안, 메모, 스케치, 회의록, 레퍼런스는 inputs/에 넣는다. Agent는 source-documents-index.md를 갱신한 뒤 Project Discovery Interview에서 해당 문서를 근거로 질문한다.

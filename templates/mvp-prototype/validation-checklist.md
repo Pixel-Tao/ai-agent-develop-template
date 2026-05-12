@@ -43,3 +43,13 @@
 - [ ] 필수 범위, 다음 버전 범위, 제외 범위가 분리되어 있음
 - [ ] 성공 기준과 검증 방법이 기록되어 있음
 - [ ] 결정, 가정, 미정이 분리되어 있음
+
+## 초기 개발 문서 입력 검증
+
+- [ ] inputs/README.md 존재
+- [ ] inputs/source-documents-index.md 존재
+- [ ] inputs/initial-development-docs/ 존재
+- [ ] inputs/references/ 존재
+- [ ] 초기 문서가 있으면 source-documents-index.md에 등록되어 있음
+- [ ] 초기 문서에서 도출한 질문이 Project Discovery Interview에 반영되어 있음
+- [ ] 원본 문서 내용과 사용자 확인 결과의 충돌 여부가 기록되어 있음

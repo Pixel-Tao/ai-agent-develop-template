@@ -51,3 +51,7 @@ AI Agent는 Legacy Modernization 템플릿 기준으로 프로젝트 구조, 현
 ## 프로젝트 발견 인터뷰 규칙
 
 사용자의 요청이 대략적이거나 목표, 사용자, 성공 기준, 기술 범위가 불명확하면 먼저 project-discovery-interview.md와 project-discovery-interview Skill을 사용한다. Agent는 모호한 답변을 임의로 확정하지 않고, 결정/가정/미정을 분리해 기록한 뒤 project-definition-brief를 기준으로 다음 문서를 작성한다.
+
+## 초기 개발 문서 확인 규칙
+
+작업 시작 전에 inputs/README.md와 inputs/source-documents-index.md를 확인한다. 사용자가 초기 기획서, 요구사항 초안, 메모, 스케치, 회의록, 레퍼런스를 넣어둔 경우 이를 먼저 요약하고, Project Discovery Interview에서 확인 질문으로 연결한다. 원본 문서 내용은 확정 요구사항이 아니라 사용자 확인이 필요한 근거로 취급한다.

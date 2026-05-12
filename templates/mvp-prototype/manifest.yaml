@@ -17,6 +17,7 @@ entrypoints:
     - manifest.yaml
     - docs/09_agent_state/current-status.md
     - docs/project-discovery-interview.md
+    - inputs/source-documents-index.md
 
 folders:
   docs: docs
@@ -25,6 +26,7 @@ folders:
   tests: tests
   data: data
   outputs: outputs
+  inputs: inputs
 
 rules:
   default_doc_format: markdown

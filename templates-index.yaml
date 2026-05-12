@@ -17,6 +17,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: existing-project-onboarding
@@ -37,6 +38,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: large-team-collaboration
@@ -57,6 +59,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: legacy-modernization
@@ -77,6 +80,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: mvp-prototype
@@ -97,6 +101,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: monorepo-multiservice
@@ -117,6 +122,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: security-regulated
@@ -137,6 +143,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: maintenance-operations
@@ -157,6 +164,7 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
   - id: ai-data-project
@@ -177,5 +185,6 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - inputs
       - docs
       - skills
