@@ -17,7 +17,31 @@ const textExtensions = new Set([
   ".txt",
 ]);
 const placeholderPattern = /\{\{([A-Za-z0-9_-]+)\}\}/g;
-const projectNamePattern = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
+const invalidProjectNameCharsPattern = /[<>:"/\\|?*\x00-\x1f]/;
+const reservedWindowsNames = new Set([
+  "CON",
+  "PRN",
+  "AUX",
+  "NUL",
+  "COM1",
+  "COM2",
+  "COM3",
+  "COM4",
+  "COM5",
+  "COM6",
+  "COM7",
+  "COM8",
+  "COM9",
+  "LPT1",
+  "LPT2",
+  "LPT3",
+  "LPT4",
+  "LPT5",
+  "LPT6",
+  "LPT7",
+  "LPT8",
+  "LPT9",
+]);
 
 function printHelp() {
   console.log(`Create a project archive from an Agent Project Template.
@@ -28,7 +52,7 @@ Usage:
 
 Options:
   --template, -t <id>       Template ID under templates/.
-  --project-name, -p <name> Project name. Must be lower-kebab-case, for example my-project.
+  --project-name, -p <name> Project name. Any filename-safe name is allowed.
   --owner-name, -o <name>   Owner name used for {{OWNER_NAME}}.
   --force                   Overwrite an existing root zip with the same project name.
   --list                    List available templates.
@@ -112,8 +136,25 @@ function listTemplates(root) {
 }
 
 function validateProjectName(projectName) {
-  if (!projectNamePattern.test(projectName)) {
-    throw new Error("Project name must be lower-kebab-case, for example my-project.");
+  if (!projectName) {
+    throw new Error("Project name is required.");
+  }
+
+  if (projectName === "." || projectName === "..") {
+    throw new Error("Project name cannot be '.' or '..'.");
+  }
+
+  if (invalidProjectNameCharsPattern.test(projectName)) {
+    throw new Error('Project name cannot contain path-unsafe characters: < > : " / \\ | ? * or control characters.');
+  }
+
+  if (/[. ]$/.test(projectName)) {
+    throw new Error("Project name cannot end with a space or dot.");
+  }
+
+  const firstPathSegment = projectName.split(".")[0].toUpperCase();
+  if (reservedWindowsNames.has(firstPathSegment)) {
+    throw new Error("Project name cannot be a reserved Windows device name such as CON, PRN, AUX, NUL, COM1, or LPT1.");
   }
 }
 
@@ -206,7 +247,7 @@ async function promptMissingOptions(options, templates) {
     }
 
     if (!options.projectName) {
-      options.projectName = (await rl.question("Project name (lower-kebab-case): ")).trim();
+      options.projectName = (await rl.question("Project name: ")).trim();
     }
 
     if (!options.ownerName) {

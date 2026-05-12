@@ -21,7 +21,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 동작:
 
 1. 템플릿을 선택한다.
-2. 프로젝트명을 lower-kebab-case로 검증한다.
+2. 프로젝트명이 파일명/경로에 안전한지 검증한다.
 3. 오너명을 입력받는다.
 4. 날짜는 실행일 기준으로 자동 설정한다.
 5. 템플릿을 복사하고 변수를 치환한다.

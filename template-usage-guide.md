@@ -22,7 +22,7 @@ node scripts/create-project.mjs
 node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
-프로젝트명은 `my-project`처럼 lower-kebab-case여야 한다. 날짜는 입력하지 않는다. 스크립트가 실행일 기준으로 자동 치환한다.
+프로젝트명은 자유롭게 입력할 수 있지만 파일명/경로에 사용할 수 없는 문자는 허용하지 않는다. 날짜는 입력하지 않는다. 스크립트가 실행일 기준으로 자동 치환한다.
 
 ## 4. 압축 해제 후 초기 문서 추가
 
