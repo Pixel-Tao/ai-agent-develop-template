@@ -47,3 +47,7 @@ AI Agent는 MVP Prototype 템플릿 기준으로 프로젝트 구조, 현재 상
 - 검증 결과
 - 남은 위험과 assumptions
 - 다음 권장 작업
+
+## 프로젝트 발견 인터뷰 규칙
+
+사용자의 요청이 대략적이거나 목표, 사용자, 성공 기준, 기술 범위가 불명확하면 먼저 project-discovery-interview.md와 project-discovery-interview Skill을 사용한다. Agent는 모호한 답변을 임의로 확정하지 않고, 결정/가정/미정을 분리해 기록한 뒤 project-definition-brief를 기준으로 다음 문서를 작성한다.

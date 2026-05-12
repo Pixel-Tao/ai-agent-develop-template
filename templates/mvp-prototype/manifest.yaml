@@ -16,6 +16,7 @@ entrypoints:
     - AGENTS.md
     - manifest.yaml
     - docs/09_agent_state/current-status.md
+    - docs/project-discovery-interview.md
 
 folders:
   docs: docs

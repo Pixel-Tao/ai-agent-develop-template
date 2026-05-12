@@ -19,3 +19,7 @@
 ## 운영 규칙
 
 중요한 결정은 decision log에 기록한다. 모호한 내용은 assumptions에 남기고, 확인된 뒤 관련 문서를 갱신한다.
+
+## 프로젝트 정의
+
+프로젝트를 처음 시작할 때는 docs/00_context/project-discovery-interview.md를 사용해 목표, 사용자, 콘텐츠, 기술 방향, 성공 기준을 먼저 구체화한다. 인터뷰 결과는 project-definition-brief로 요약하고 이후 요구사항, 설계, 작업 목록의 기준으로 사용한다.

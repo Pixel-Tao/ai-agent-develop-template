@@ -1,4 +1,8 @@
 skills:
+  - id: project-discovery-interview
+    name: Project Discovery Interview
+    path: project-discovery-interview/SKILL.md
+    status: active
   - id: requirements-analysis
     name: Requirements Analysis
     path: requirements-analysis/SKILL.md

@@ -1,4 +1,8 @@
 skills:
+  - id: project-discovery-interview
+    name: Project Discovery Interview
+    path: project-discovery-interview/SKILL.md
+    status: active
   - id: security-review
     name: Security Review
     path: security-review/SKILL.md

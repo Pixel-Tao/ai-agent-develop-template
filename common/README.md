@@ -13,3 +13,7 @@
 - base-skills/: 공통 Skill 세트
 - checklists/: 검증과 릴리즈에 사용할 체크리스트
 - snippets/: 작업, 결정, 인수인계, 위험, 보고서 템플릿
+
+## 프로젝트 발견 인터뷰
+
+common/base-docs/project-discovery-interview.md는 모든 템플릿에서 사용할 수 있는 공통 인터뷰 양식이다. common/base-skills/project-discovery-interview는 이 인터뷰를 실행하는 Agent Skill이며, common/snippets/project-definition-brief-template.md는 인터뷰 결과를 정리하는 최종 산출물 양식이다.

@@ -27,3 +27,7 @@ skills/skills-index.yaml을 확인하고 작업 성격에 맞는 Skill을 선택
 ## 7. 검증 체크리스트
 
 validation-checklist.md를 사용해 필수 파일, 문서 구조, Skill 구조, Agent 작업성을 확인한다. 템플릿별 특수 문서가 빠졌다면 완료로 판단하지 않는다.
+
+## 8. 프로젝트 발견 인터뷰
+
+템플릿을 복사한 직후 바로 구현하지 말고, 먼저 project-discovery-interview.md를 사용해 사용자의 아이디어를 구체화한다. 인터뷰 결과는 project-definition-brief로 요약하고, 이후 PRD, architecture, backlog, acceptance criteria 작성의 기준으로 사용한다.
