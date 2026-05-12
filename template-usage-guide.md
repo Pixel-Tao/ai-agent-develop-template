@@ -35,3 +35,7 @@ validation-checklist.md를 사용해 필수 파일, 문서 구조, Skill 구조,
 ## 9. 변수 일괄 치환
 
 `scripts/template-variables.example.yaml`을 복사해 프로젝트 값으로 수정한 뒤 `scripts/replace-template-variables.ps1`을 실행한다. 예: `powershell -ExecutionPolicy Bypass -File scripts/replace-template-variables.ps1 -RootPath . -VariablesFile scripts/template-variables.example.yaml`. 기본은 Dry Run이며, 확인 후 `-Apply`를 붙이면 실제 치환이 적용된다.
+
+## 범용 변수 치환
+
+macOS, Linux, Windows 공통으로는 Node.js 스크립트를 사용한다. 예: `node scripts/replace-template-variables.mjs --root . --variables-file scripts/template-variables.example.yaml`. 기본은 Dry Run이며, 확인 후 `--apply`를 붙이면 실제 치환이 적용된다. Windows PowerShell만 사용하는 경우에는 `scripts/replace-template-variables.ps1`을 사용할 수 있다.
