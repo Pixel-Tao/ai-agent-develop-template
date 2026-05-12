@@ -43,3 +43,7 @@
 - 템플릿별 필수 문서가 존재한다.
 - 위험 변경의 승인 조건이 문서화되어 있다.
 - 검증 체크리스트가 완료되어 있다.
+
+## Init 시작
+
+프로젝트를 처음 시작할 때 Agent에게 `init` 또는 `/init`을 요청한다. Agent는 INIT.md를 읽고 inputs/ 문서 확인, Project Discovery Interview, harness 초기화를 수행한다. 초기 설정이 끝나면 INIT.md는 docs/09_agent_state/archive/init/로 이동되어 다시 자동 실행되지 않는다.

@@ -64,3 +64,12 @@
 - [ ] harness-engineering Skill 존재
 - [ ] 실행 명령, 검증 기준, 증거 위치가 문서화되어 있음
 - [ ] 실행하지 못한 검증의 사유와 대체 계획이 기록되어 있음
+
+## Init 검증
+
+- [ ] INIT.md 존재
+- [ ] CLAUDE.md 존재
+- [ ] docs/09_agent_state/archive/init/ 존재
+- [ ] project-definition-brief.md 존재
+- [ ] AGENTS.md에 init 실행 규칙이 있음
+- [ ] 초기 설정 완료 후 INIT.md 아카이브 규칙이 문서화되어 있음

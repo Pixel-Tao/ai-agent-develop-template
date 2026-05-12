@@ -25,12 +25,14 @@ required_files:
   - README.md
   - AGENTS.md
   - manifest.yaml
+  - INIT.md
   - inputs/source-documents-index.md
   - harness/harness.yaml
   - harness/commands.md
   - harness/verification-matrix.md
 
 optional_files:
+  - CLAUDE.md
   - harness/reports
   - harness/fixtures
   - inputs/initial-development-docs
@@ -57,7 +59,10 @@ quality_gate:
     - harness/harness.yaml exists
     - harness/commands.md exists
     - harness/verification-matrix.md exists
+    - docs/09_agent_state/archive/init/README.md exists
 
 initialization:
+  init_prompt: INIT.md
+  archive_after_completion: docs/09_agent_state/archive/init
   prompt: initialization-prompt.md
   checklist: validation-checklist.md

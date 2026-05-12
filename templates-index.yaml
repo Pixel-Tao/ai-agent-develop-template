@@ -17,6 +17,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -39,6 +41,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -61,6 +65,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -83,6 +89,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -105,6 +113,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -127,6 +137,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -149,6 +161,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -171,6 +185,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs
@@ -193,6 +209,8 @@ templates:
       - README.md
       - AGENTS.md
       - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
       - inputs
       - harness
       - docs

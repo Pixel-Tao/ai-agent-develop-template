@@ -11,6 +11,12 @@ template:
   version: "1.0.0"
 
 entrypoints:
+  init:
+    - INIT.md
+    - inputs/source-documents-index.md
+    - harness/harness.yaml
+  init_archive:
+    - docs/09_agent_state/archive/init/
   read_first:
     - README.md
     - AGENTS.md

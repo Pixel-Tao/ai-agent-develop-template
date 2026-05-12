@@ -16,3 +16,7 @@
 ## Harness Notes
 
 하네스 엔지니어링은 모든 템플릿에 공통 적용된다. 단, commands.md의 명령은 실제 프로젝트에 맞게 확인해야 하며, 미확정 명령은 TBD로 남겨야 한다.
+
+## Init Notes
+
+INIT.md는 생성된 프로젝트에서 한 번만 사용하는 활성 초기화 프롬프트다. 초기 설정 완료 후에는 docs/09_agent_state/archive/init/로 이동해야 하며, archived INIT은 자동 재실행 대상이 아니다.

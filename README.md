@@ -60,3 +60,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 ## 하네스 엔지니어링
 
 각 템플릿에는 harness/ 폴더와 harness-engineering Skill이 포함된다. Agent는 구현 전에 실행 명령, 검증 기준, 증거 로그, 산출물 위치를 확인하고 작업 결과를 harness/evidence-log.md에 남긴다. 이 구조는 테스트, 리뷰, 릴리즈, 운영 대응을 반복 가능하게 만들기 위한 안전장치다.
+
+## Init 시작 방식
+
+생성된 프로젝트에서는 별도 스크립트 없이 Agent에게 `init`, `/init`, `초기화` 중 하나를 요청한다. Agent는 루트의 INIT.md를 읽고 inputs/ 확인, 문서 기반 또는 대화형 인터뷰, harness 초기화를 진행한다. 초기 설정이 완료되면 INIT.md는 docs/09_agent_state/archive/init/로 이동되어 다시 자동 실행되지 않는다.

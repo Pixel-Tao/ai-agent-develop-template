@@ -59,3 +59,7 @@ AI Agent는 Legacy Modernization 템플릿 기준으로 프로젝트 구조, 현
 ## 하네스 엔지니어링 규칙
 
 작업을 시작하기 전에 harness/README.md, harness/harness.yaml, harness/commands.md, harness/verification-matrix.md를 확인한다. Agent는 실행한 명령과 검증 결과를 harness/evidence-log.md에 기록하고, 테스트/리포트/스크린샷 같은 산출물은 harness/reports/에 둔다. 실행하지 않은 검증은 완료로 보고하지 않으며, 불가능한 검증은 이유와 대체 확인 방법을 기록한다.
+
+## Init 실행 규칙
+
+사용자가 init, /init, 초기화, 프로젝트 시작을 요청하면 루트의 INIT.md를 확인한다. INIT.md가 있으면 해당 문서를 읽고 초기 설정을 실행한다. INIT.md가 없고 docs/09_agent_state/archive/init/에 archived INIT이 있으면 초기 설정이 이미 완료된 것으로 보고 current-status.md를 먼저 확인하며, archived INIT을 자동으로 다시 실행하지 않는다.

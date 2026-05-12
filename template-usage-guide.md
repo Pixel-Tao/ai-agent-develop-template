@@ -54,3 +54,7 @@ Agent는 작업 전에 다음 파일을 읽는다.
 ## 8. 하네스 엔지니어링 사용
 
 프로젝트 zip을 풀고 난 뒤 harness/README.md와 harness/harness.yaml을 확인한다. 실제 프로젝트 명령을 harness/commands.md에 정리하고, 작업 유형별 최소 검증을 harness/verification-matrix.md에 맞춘다. 작업 중 실행한 명령과 결과는 harness/evidence-log.md에 기록한다.
+
+## 9. Init 실행
+
+생성된 프로젝트 폴더에서 Agent에게 `init` 또는 `/init`을 요청한다. 루트에 INIT.md가 있으면 Agent가 해당 문서를 실행한다. 초기 설정이 완료되면 INIT.md는 docs/09_agent_state/archive/init/로 이동되며, 이후에는 current-status.md를 기준으로 작업을 이어간다.
