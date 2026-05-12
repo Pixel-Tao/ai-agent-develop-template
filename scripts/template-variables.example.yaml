@@ -1,0 +1,10 @@
+# Template variable values for scripts/replace-template-variables.ps1.
+# Copy this file, edit values, then run the script with -VariablesFile.
+
+PROJECT_ID: my-project
+PROJECT_NAME: My Project
+PROJECT_TYPE: web-app
+PROJECT_STATUS: planning
+OWNER_NAME: TAO
+YYYY-MM-DD: 2026-05-12
+TARGET_FILE_OR_FEATURE: target-feature-or-file

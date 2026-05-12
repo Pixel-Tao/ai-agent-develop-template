@@ -31,3 +31,7 @@ validation-checklist.md를 사용해 필수 파일, 문서 구조, Skill 구조,
 ## 8. 프로젝트 발견 인터뷰
 
 템플릿을 복사한 직후 바로 구현하지 말고, 먼저 project-discovery-interview.md를 사용해 사용자의 아이디어를 구체화한다. 인터뷰 결과는 project-definition-brief로 요약하고, 이후 PRD, architecture, backlog, acceptance criteria 작성의 기준으로 사용한다.
+
+## 9. 변수 일괄 치환
+
+`scripts/template-variables.example.yaml`을 복사해 프로젝트 값으로 수정한 뒤 `scripts/replace-template-variables.ps1`을 실행한다. 예: `powershell -ExecutionPolicy Bypass -File scripts/replace-template-variables.ps1 -RootPath . -VariablesFile scripts/template-variables.example.yaml`. 기본은 Dry Run이며, 확인 후 `-Apply`를 붙이면 실제 치환이 적용된다.
