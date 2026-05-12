@@ -63,4 +63,4 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 
 ## Init 시작 방식
 
-생성된 프로젝트에서는 별도 스크립트 없이 Agent에게 `init`, `/init`, `초기화` 중 하나를 요청한다. Agent는 루트의 INIT.md를 읽고 inputs/ 확인, 문서 기반 또는 대화형 인터뷰, harness 초기화를 진행한다. 초기 설정이 완료되면 INIT.md는 docs/09_agent_state/archive/init/로 이동되어 다시 자동 실행되지 않는다.
+생성된 프로젝트에서는 별도 스크립트 없이 Agent에게 `init`, `/init`, `초기화` 중 하나를 요청한다. Agent는 루트의 INIT.md를 읽고 inputs/ 확인, 문서 기반 또는 대화형 인터뷰, harness 초기화를 진행한다. 인터뷰 질문은 템플릿 성격에 맞게 다르며, 신규 개발, 기존 프로젝트 온보딩, 대규모 협업, 레거시 개선, MVP, 모노레포, 보안/규제, 운영, AI/데이터 상황별로 우선 확인할 내용이 분리되어 있다. 초기 설정이 완료되면 INIT.md는 docs/09_agent_state/archive/init/로 이동되어 다시 자동 실행되지 않는다.
