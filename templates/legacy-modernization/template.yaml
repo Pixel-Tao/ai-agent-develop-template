@@ -3,7 +3,7 @@ name: "Legacy Modernization"
 version: "1.0.0"
 status: "active"
 updated_at: "2026-05-12"
-owner: "TAO"
+owner: "your-name"
 
 description: "레거시 프로젝트 개선, 리팩터링, 마이그레이션을 위한 구조"
 

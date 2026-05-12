@@ -3,7 +3,7 @@ name: Quick Test Design
 version: "1.0.0"
 status: active
 description: Quick Test Design 작업을 수행하기 위한 템플릿 전용 Skill
-owner: TAO
+owner: your-name
 updated_at: "2026-05-12"
 input:
   - task description

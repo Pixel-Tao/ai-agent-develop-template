@@ -51,7 +51,7 @@ powershell -ExecutionPolicy Bypass -File scripts/replace-template-variables.ps1 
 PROJECT_ID: my-project
 PROJECT_NAME: My Project
 PROJECT_STATUS: planning
-OWNER_NAME: TAO
+OWNER_NAME: your-name
 YYYY-MM-DD: 2026-05-12
 ```
 

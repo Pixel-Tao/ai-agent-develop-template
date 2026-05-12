@@ -3,7 +3,7 @@ name: "Security Regulated"
 version: "1.0.0"
 status: "active"
 updated_at: "2026-05-12"
-owner: "TAO"
+owner: "your-name"
 
 description: "보안, 감사, 규제 요구사항이 중요한 프로젝트 구조"
 

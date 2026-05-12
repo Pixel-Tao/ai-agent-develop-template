@@ -3,7 +3,7 @@ name: "Greenfield Basic"
 version: "1.0.0"
 status: "active"
 updated_at: "2026-05-12"
-owner: "TAO"
+owner: "your-name"
 
 description: "신규 개발 프로젝트를 위한 기본 AI Agent 친화 구조"
 

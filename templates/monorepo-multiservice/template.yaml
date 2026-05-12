@@ -3,7 +3,7 @@ name: "Monorepo Multiservice"
 version: "1.0.0"
 status: "active"
 updated_at: "2026-05-12"
-owner: "TAO"
+owner: "your-name"
 
 description: "모노레포와 멀티서비스 의존성 관리를 위한 구조"
 
