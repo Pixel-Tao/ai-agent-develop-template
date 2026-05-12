@@ -26,8 +26,13 @@ required_files:
   - AGENTS.md
   - manifest.yaml
   - inputs/source-documents-index.md
+  - harness/harness.yaml
+  - harness/commands.md
+  - harness/verification-matrix.md
 
 optional_files:
+  - harness/reports
+  - harness/fixtures
   - inputs/initial-development-docs
   - inputs/references
   - outputs
@@ -40,6 +45,7 @@ entrypoints:
     - AGENTS.md
     - manifest.yaml
     - inputs/source-documents-index.md
+    - harness/harness.yaml
 
 quality_gate:
   minimum:
@@ -48,6 +54,9 @@ quality_gate:
     - manifest.yaml exists
     - docs/09_agent_state/current-status.md exists
     - inputs/source-documents-index.md exists
+    - harness/harness.yaml exists
+    - harness/commands.md exists
+    - harness/verification-matrix.md exists
 
 initialization:
   prompt: initialization-prompt.md

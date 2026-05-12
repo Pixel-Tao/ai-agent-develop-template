@@ -18,6 +18,7 @@ entrypoints:
     - docs/09_agent_state/current-status.md
     - docs/00_repository/project-discovery-interview.md
     - inputs/source-documents-index.md
+    - harness/harness.yaml
 
 folders:
   docs: docs
@@ -27,6 +28,7 @@ folders:
   data: data
   outputs: outputs
   inputs: inputs
+  harness: harness
 
 rules:
   default_doc_format: markdown

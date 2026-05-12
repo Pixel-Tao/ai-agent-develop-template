@@ -1,0 +1,43 @@
+id: harness-engineering
+name: Harness Engineering
+version: "1.0.0"
+status: active
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
+
+template:
+  id: existing-project-onboarding
+  name: "Existing Project Onboarding"
+
+purpose: "기존 명령을 발견하고 변경 전 baseline을 재현 가능하게 기록한다."
+
+inputs:
+  - task request
+  - project context
+  - source documents
+  - existing commands
+
+outputs:
+  - command inventory
+  - verification matrix
+  - evidence log
+  - harness reports
+
+required_files:
+  - harness/README.md
+  - harness/harness.yaml
+  - harness/commands.md
+  - harness/verification-matrix.md
+  - harness/evidence-log.md
+
+quality_gates:
+  - 기존 명령 inventory
+  - baseline test 또는 smoke 결과
+  - fragile areas 반영
+  - 변경 영향 범위 기록
+
+artifact_locations:
+  fixtures: harness/fixtures
+  scripts: harness/scripts
+  reports: harness/reports
+  evidence_log: harness/evidence-log.md

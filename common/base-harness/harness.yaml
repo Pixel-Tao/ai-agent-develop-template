@@ -1,0 +1,42 @@
+id: harness-engineering
+name: Harness Engineering
+version: "1.0.0"
+status: active
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
+
+template:
+  id: "{{TEMPLATE_ID}}"
+  name: "{{TEMPLATE_NAME}}"
+
+purpose: "프로젝트별 실행/검증/증거 루프를 표준화한다."
+
+inputs:
+  - task request
+  - project context
+  - source documents
+  - existing commands
+
+outputs:
+  - command inventory
+  - verification matrix
+  - evidence log
+  - harness reports
+
+required_files:
+  - harness/README.md
+  - harness/harness.yaml
+  - harness/commands.md
+  - harness/verification-matrix.md
+  - harness/evidence-log.md
+
+quality_gates:
+  - command inventory exists
+  - verification matrix exists
+  - evidence log exists
+
+artifact_locations:
+  fixtures: harness/fixtures
+  scripts: harness/scripts
+  reports: harness/reports
+  evidence_log: harness/evidence-log.md

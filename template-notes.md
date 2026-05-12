@@ -12,3 +12,7 @@
 ## Usage Notes
 
 일반적인 새 프로젝트 생성에는 `scripts/create-project.mjs`를 사용한다. 이미 복사된 프로젝트에서 변수만 다시 치환해야 할 때만 `scripts/replace-template-variables.mjs` 또는 `scripts/replace-template-variables.ps1`을 사용한다.
+
+## Harness Notes
+
+하네스 엔지니어링은 모든 템플릿에 공통 적용된다. 단, commands.md의 명령은 실제 프로젝트에 맞게 확인해야 하며, 미확정 명령은 TBD로 남겨야 한다.

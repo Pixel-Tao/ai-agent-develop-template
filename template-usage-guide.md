@@ -50,3 +50,7 @@ Agent는 작업 전에 다음 파일을 읽는다.
 ## 기존 변수 치환 스크립트
 
 이미 복사된 프로젝트에서 변수만 다시 치환해야 할 때는 `scripts/replace-template-variables.mjs`를 사용할 수 있다. 일반적인 새 프로젝트 생성에는 `scripts/create-project.mjs`를 권장한다.
+
+## 8. 하네스 엔지니어링 사용
+
+프로젝트 zip을 풀고 난 뒤 harness/README.md와 harness/harness.yaml을 확인한다. 실제 프로젝트 명령을 harness/commands.md에 정리하고, 작업 유형별 최소 검증을 harness/verification-matrix.md에 맞춘다. 작업 중 실행한 명령과 결과는 harness/evidence-log.md에 기록한다.

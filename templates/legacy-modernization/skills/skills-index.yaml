@@ -27,3 +27,7 @@ skills:
     name: Test Design
     path: test-design/SKILL.md
     status: active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active

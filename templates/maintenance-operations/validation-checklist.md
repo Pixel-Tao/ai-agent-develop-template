@@ -53,3 +53,14 @@
 - [ ] 초기 문서가 있으면 source-documents-index.md에 등록되어 있음
 - [ ] 초기 문서에서 도출한 질문이 Project Discovery Interview에 반영되어 있음
 - [ ] 원본 문서 내용과 사용자 확인 결과의 충돌 여부가 기록되어 있음
+
+## 하네스 엔지니어링 검증
+
+- [ ] harness/README.md 존재
+- [ ] harness/harness.yaml 존재
+- [ ] harness/commands.md 존재
+- [ ] harness/verification-matrix.md 존재
+- [ ] harness/evidence-log.md 존재
+- [ ] harness-engineering Skill 존재
+- [ ] 실행 명령, 검증 기준, 증거 위치가 문서화되어 있음
+- [ ] 실행하지 못한 검증의 사유와 대체 계획이 기록되어 있음

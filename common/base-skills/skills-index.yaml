@@ -35,3 +35,7 @@ skills:
     name: Documentation
     path: documentation/SKILL.md
     status: active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active

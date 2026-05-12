@@ -55,3 +55,7 @@ AI Agent는 MVP Prototype 템플릿 기준으로 프로젝트 구조, 현재 상
 ## 초기 개발 문서 확인 규칙
 
 작업 시작 전에 inputs/README.md와 inputs/source-documents-index.md를 확인한다. 사용자가 초기 기획서, 요구사항 초안, 메모, 스케치, 회의록, 레퍼런스를 넣어둔 경우 이를 먼저 요약하고, Project Discovery Interview에서 확인 질문으로 연결한다. 원본 문서 내용은 확정 요구사항이 아니라 사용자 확인이 필요한 근거로 취급한다.
+
+## 하네스 엔지니어링 규칙
+
+작업을 시작하기 전에 harness/README.md, harness/harness.yaml, harness/commands.md, harness/verification-matrix.md를 확인한다. Agent는 실행한 명령과 검증 결과를 harness/evidence-log.md에 기록하고, 테스트/리포트/스크린샷 같은 산출물은 harness/reports/에 둔다. 실행하지 않은 검증은 완료로 보고하지 않으며, 불가능한 검증은 이유와 대체 확인 방법을 기록한다.

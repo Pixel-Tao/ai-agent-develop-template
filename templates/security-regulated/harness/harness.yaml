@@ -1,0 +1,43 @@
+id: harness-engineering
+name: Harness Engineering
+version: "1.0.0"
+status: active
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
+
+template:
+  id: security-regulated
+  name: "Security Regulated"
+
+purpose: "보안/감사 증거를 남기는 통제형 실행 harness를 만든다."
+
+inputs:
+  - task request
+  - project context
+  - source documents
+  - existing commands
+
+outputs:
+  - command inventory
+  - verification matrix
+  - evidence log
+  - harness reports
+
+required_files:
+  - harness/README.md
+  - harness/harness.yaml
+  - harness/commands.md
+  - harness/verification-matrix.md
+  - harness/evidence-log.md
+
+quality_gates:
+  - data classification 확인
+  - security review evidence
+  - audit evidence log
+  - approval record 연결
+
+artifact_locations:
+  fixtures: harness/fixtures
+  scripts: harness/scripts
+  reports: harness/reports
+  evidence_log: harness/evidence-log.md

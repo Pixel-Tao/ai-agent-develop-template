@@ -18,6 +18,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: existing-project-onboarding
@@ -39,6 +40,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: large-team-collaboration
@@ -60,6 +62,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: legacy-modernization
@@ -81,6 +84,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: mvp-prototype
@@ -102,6 +106,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: monorepo-multiservice
@@ -123,6 +128,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: security-regulated
@@ -144,6 +150,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: maintenance-operations
@@ -165,6 +172,7 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills
   - id: ai-data-project
@@ -186,5 +194,6 @@ templates:
       - AGENTS.md
       - manifest.yaml
       - inputs
+      - harness
       - docs
       - skills

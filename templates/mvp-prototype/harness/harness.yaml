@@ -1,0 +1,43 @@
+id: harness-engineering
+name: Harness Engineering
+version: "1.0.0"
+status: active
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
+
+template:
+  id: mvp-prototype
+  name: "MVP Prototype"
+
+purpose: "빠른 실험을 위해 최소 실행/검증/피드백 루프만 유지한다."
+
+inputs:
+  - task request
+  - project context
+  - source documents
+  - existing commands
+
+outputs:
+  - command inventory
+  - verification matrix
+  - evidence log
+  - harness reports
+
+required_files:
+  - harness/README.md
+  - harness/harness.yaml
+  - harness/commands.md
+  - harness/verification-matrix.md
+  - harness/evidence-log.md
+
+quality_gates:
+  - demo run command
+  - quick smoke test
+  - feedback capture
+  - experiment result 기록
+
+artifact_locations:
+  fixtures: harness/fixtures
+  scripts: harness/scripts
+  reports: harness/reports
+  evidence_log: harness/evidence-log.md

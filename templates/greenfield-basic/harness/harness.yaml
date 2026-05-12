@@ -1,0 +1,43 @@
+id: harness-engineering
+name: Harness Engineering
+version: "1.0.0"
+status: active
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
+
+template:
+  id: greenfield-basic
+  name: "Greenfield Basic"
+
+purpose: "초기 구조, 핵심 개발 명령, 최소 검증 루프를 빠르게 고정한다."
+
+inputs:
+  - task request
+  - project context
+  - source documents
+  - existing commands
+
+outputs:
+  - command inventory
+  - verification matrix
+  - evidence log
+  - harness reports
+
+required_files:
+  - harness/README.md
+  - harness/harness.yaml
+  - harness/commands.md
+  - harness/verification-matrix.md
+  - harness/evidence-log.md
+
+quality_gates:
+  - README/manifest/AGENTS 정합성
+  - 핵심 기능 단위 테스트
+  - 기본 lint 또는 build
+  - run-log와 evidence-log 기록
+
+artifact_locations:
+  fixtures: harness/fixtures
+  scripts: harness/scripts
+  reports: harness/reports
+  evidence_log: harness/evidence-log.md

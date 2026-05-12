@@ -56,3 +56,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 ## 초기 개발 문서
 
 각 템플릿에는 `inputs/` 공간이 있다. 사용자는 기획서, 메모, 요구사항 초안, 화면 스케치, 참고 링크를 `inputs/initial-development-docs/` 또는 `inputs/references/`에 넣을 수 있다. Agent는 이 자료를 확정 요구사항으로 보지 않고, 사실/추정/충돌/질문으로 나눈 뒤 Project Discovery Interview를 통해 목표, 기능, 기술 방향, 콘텐츠, 제약을 구체화한다.
+
+## 하네스 엔지니어링
+
+각 템플릿에는 harness/ 폴더와 harness-engineering Skill이 포함된다. Agent는 구현 전에 실행 명령, 검증 기준, 증거 로그, 산출물 위치를 확인하고 작업 결과를 harness/evidence-log.md에 남긴다. 이 구조는 테스트, 리뷰, 릴리즈, 운영 대응을 반복 가능하게 만들기 위한 안전장치다.

@@ -23,3 +23,7 @@ skills:
     name: Release Planning
     path: release-planning/SKILL.md
     status: active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active

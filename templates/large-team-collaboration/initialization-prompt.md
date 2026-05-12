@@ -53,3 +53,7 @@ validation-checklist.md의 기본 파일, 문서 구조, Skill 구조, Agent 작
 사용자가 이미 가진 기획서, 요구사항 초안, 메모, 화면 스케치, 회의록, 레퍼런스 링크가 있으면 inputs/initial-development-docs/ 또는 inputs/references/에 넣는다. Agent는 인터뷰 전에 inputs/source-documents-index.md를 작성하거나 갱신하고, 초기 문서에서 확인된 사실/추정/충돌/질문을 분리한다.
 
 초기 문서를 참고해 Project Discovery Interview를 진행하되, 문서 내용을 그대로 확정하지 말고 사용자에게 목표, 우선순위, 제외 범위, 성공 기준을 다시 확인한다.
+
+## 하네스 엔지니어링 초기화
+
+프로젝트 초기화 시 harness/ 구조를 확인하고 실제 프로젝트에서 사용할 설치, 실행, 테스트, 빌드, 검증 명령을 harness/commands.md에 정리한다. 작업 유형별 최소 검증은 harness/verification-matrix.md에 기록하고, 초기 실행 결과나 미확정 명령은 harness/evidence-log.md와 docs/09_agent_state/assumptions.md에 남긴다.

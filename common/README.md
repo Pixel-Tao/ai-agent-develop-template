@@ -21,3 +21,7 @@ common/base-docs/project-discovery-interview.md는 모든 템플릿에서 사용
 ## 초기 개발 문서 입력 공간
 
 common/base-inputs/는 사용자가 프로젝트 시작 전에 가진 기획서, 요구사항 초안, 메모, 스케치, 회의록, 레퍼런스를 넣기 위한 기본 구조다. Agent는 이 문서를 먼저 색인화하고, Project Discovery Interview에서 사용자 확인 질문으로 연결해야 한다.
+
+## 하네스 엔지니어링 공통 리소스
+
+common/base-harness/는 템플릿별 harness/ 폴더의 기본형이다. 실행 명령, 검증 매트릭스, 증거 로그, runbook, reports/fixtures/scripts 위치를 제공한다. common/base-skills/harness-engineering/은 Agent가 하네스를 설계하고 운영할 때 사용하는 공통 Skill이다.

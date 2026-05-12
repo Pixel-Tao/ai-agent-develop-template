@@ -12,6 +12,7 @@ entrypoints:
     - AGENTS.md
     - manifest.yaml
     - docs/09_agent_state/current-status.md
+    - harness/harness.yaml
     - docs/00_context/project-discovery-interview.md
     - inputs/source-documents-index.md
 
@@ -22,6 +23,7 @@ folders:
   tests: tests
   data: data
   outputs: outputs
+  harness: harness
   inputs: inputs
 
 rules:
