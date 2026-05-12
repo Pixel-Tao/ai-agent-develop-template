@@ -1,0 +1,41 @@
+agents:
+  - id: security-agent
+    name: Security Agent
+    path: agents/security-agent.md
+    responsibilities:
+      - Security Agent responsibilities
+    must_read:
+      - security/threat-model.md
+      - compliance/evidence-log.md
+  - id: compliance-agent
+    name: Compliance Agent
+    path: agents/compliance-agent.md
+    responsibilities:
+      - Compliance Agent responsibilities
+    must_read:
+      - security/threat-model.md
+      - compliance/evidence-log.md
+  - id: backend-agent
+    name: Backend Agent
+    path: agents/backend-agent.md
+    responsibilities:
+      - Backend Agent responsibilities
+    must_read:
+      - security/threat-model.md
+      - compliance/evidence-log.md
+  - id: qa-agent
+    name: QA Agent
+    path: agents/qa-agent.md
+    responsibilities:
+      - QA Agent responsibilities
+    must_read:
+      - security/threat-model.md
+      - compliance/evidence-log.md
+  - id: release-agent
+    name: Release Agent
+    path: agents/release-agent.md
+    responsibilities:
+      - Release Agent responsibilities
+    must_read:
+      - security/threat-model.md
+      - compliance/evidence-log.md

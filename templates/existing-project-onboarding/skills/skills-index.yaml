@@ -1,0 +1,25 @@
+skills:
+  - id: codebase-analysis
+    name: Codebase Analysis
+    path: codebase-analysis/SKILL.md
+    status: active
+  - id: dependency-analysis
+    name: Dependency Analysis
+    path: dependency-analysis/SKILL.md
+    status: active
+  - id: risk-analysis
+    name: Risk Analysis
+    path: risk-analysis/SKILL.md
+    status: active
+  - id: code-review
+    name: Code Review
+    path: code-review/SKILL.md
+    status: active
+  - id: bug-analysis
+    name: Bug Analysis
+    path: bug-analysis/SKILL.md
+    status: active
+  - id: documentation
+    name: Documentation
+    path: documentation/SKILL.md
+    status: active

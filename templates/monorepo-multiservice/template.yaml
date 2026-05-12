@@ -1,0 +1,49 @@
+id: "monorepo-multiservice"
+name: "Monorepo Multiservice"
+version: "1.0.0"
+status: "active"
+updated_at: "2026-05-12"
+owner: "TAO"
+
+description: "모노레포와 멀티서비스 의존성 관리를 위한 구조"
+
+best_for:
+  - "모노레포"
+  - "멀티서비스"
+  - "공통 패키지 관리"
+
+not_for:
+  - "단일 앱 소규모 프로젝트"
+  - "서비스 경계가 아직 없는 프로토타입"
+
+complexity: "high"
+governance_level: "medium"
+agent_structure: "router-based"
+recommended_team_size: "4명 이상"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+
+optional_files:
+  - outputs
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

@@ -1,0 +1,25 @@
+skills:
+  - id: incident-analysis
+    name: Incident Analysis
+    path: incident-analysis/SKILL.md
+    status: active
+  - id: root-cause-analysis
+    name: Root Cause Analysis
+    path: root-cause-analysis/SKILL.md
+    status: active
+  - id: patch-planning
+    name: Patch Planning
+    path: patch-planning/SKILL.md
+    status: active
+  - id: release-management
+    name: Release Management
+    path: release-management/SKILL.md
+    status: active
+  - id: rollback-planning
+    name: Rollback Planning
+    path: rollback-planning/SKILL.md
+    status: active
+  - id: documentation
+    name: Documentation
+    path: documentation/SKILL.md
+    status: active

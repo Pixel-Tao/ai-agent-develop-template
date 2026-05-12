@@ -1,0 +1,6 @@
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.template text eol=lf
+*.gitkeep text eol=lf
+gitignore.template text eol=lf

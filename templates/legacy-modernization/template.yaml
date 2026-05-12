@@ -1,0 +1,49 @@
+id: "legacy-modernization"
+name: "Legacy Modernization"
+version: "1.0.0"
+status: "active"
+updated_at: "2026-05-12"
+owner: "TAO"
+
+description: "레거시 프로젝트 개선, 리팩터링, 마이그레이션을 위한 구조"
+
+best_for:
+  - "오래된 코드베이스"
+  - "테스트 부족 영역 개선"
+  - "기술 스택 전환"
+
+not_for:
+  - "처음부터 새로 만드는 프로젝트"
+  - "동작 보존이 중요하지 않은 실험"
+
+complexity: "high"
+governance_level: "medium"
+agent_structure: "single"
+recommended_team_size: "2~8명"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+
+optional_files:
+  - outputs
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

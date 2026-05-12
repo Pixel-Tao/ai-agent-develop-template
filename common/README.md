@@ -1,0 +1,15 @@
+# Common Resources
+
+공통 리소스는 모든 템플릿에서 반복 사용되는 기본 파일, 기본 문서, Skill, 체크리스트, 스니펫을 모아 둔 영역이다. 템플릿별 구조가 달라도 공통 리소스를 기준으로 문서 형식과 Agent 작업 규칙의 일관성을 유지한다.
+
+## 사용 방법
+
+이 문서는 프로젝트 초기화 시 초안을 작성하고 작업 진행에 따라 갱신한다. AI Agent는 작업 전에 이 문서의 현재 상태를 확인하고, 불확실한 내용은 단정하지 않고 assumptions 또는 unknowns에 기록한다.
+
+## 구성
+
+- base-files/: README, AGENTS, manifest, gitignore 기본형
+- base-docs/: 프로젝트 개요, 용어집, assumptions, decision log, run log, todo
+- base-skills/: 공통 Skill 세트
+- checklists/: 검증과 릴리즈에 사용할 체크리스트
+- snippets/: 작업, 결정, 인수인계, 위험, 보고서 템플릿

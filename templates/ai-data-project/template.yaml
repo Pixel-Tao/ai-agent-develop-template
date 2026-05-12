@@ -1,0 +1,49 @@
+id: "ai-data-project"
+name: "AI Data Project"
+version: "1.0.0"
+status: "active"
+updated_at: "2026-05-12"
+owner: "TAO"
+
+description: "AI, 데이터, LLM, 모델 평가 프로젝트를 위한 구조"
+
+best_for:
+  - "LLM/RAG 프로젝트"
+  - "모델 평가"
+  - "데이터 파이프라인과 실험 관리"
+
+not_for:
+  - "일반 CRUD 앱"
+  - "데이터와 평가가 핵심이 아닌 프로젝트"
+
+complexity: "medium"
+governance_level: "medium"
+agent_structure: "router-based"
+recommended_team_size: "2~8명"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+
+optional_files:
+  - outputs
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

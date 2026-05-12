@@ -1,0 +1,24 @@
+id: api-design
+name: Api Design
+version: "1.0.0"
+status: active
+description: Api Design 작업을 수행하기 위한 공통 Skill
+owner: TAO
+updated_at: "2026-05-12"
+input:
+  - task description
+  - related documents
+  - constraints
+output:
+  - result summary
+  - verification notes
+triggers:
+  - api-design
+read_first:
+  - SKILL.md
+constraints:
+  - 기존 프로젝트 규칙을 우선한다.
+  - 불확실한 내용은 assumptions에 기록한다.
+quality_gate:
+  - 입력과 출력이 명확하다.
+  - 남은 위험이 기록되어 있다.

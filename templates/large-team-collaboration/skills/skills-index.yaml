@@ -1,0 +1,41 @@
+skills:
+  - id: requirements-analysis
+    name: Requirements Analysis
+    path: requirements-analysis/SKILL.md
+    status: active
+  - id: architecture-review
+    name: Architecture Review
+    path: architecture-review/SKILL.md
+    status: active
+  - id: frontend-implementation
+    name: Frontend Implementation
+    path: frontend-implementation/SKILL.md
+    status: active
+  - id: backend-implementation
+    name: Backend Implementation
+    path: backend-implementation/SKILL.md
+    status: active
+  - id: database-design
+    name: Database Design
+    path: database-design/SKILL.md
+    status: active
+  - id: code-review
+    name: Code Review
+    path: code-review/SKILL.md
+    status: active
+  - id: qa-test-design
+    name: Qa Test Design
+    path: qa-test-design/SKILL.md
+    status: active
+  - id: security-review
+    name: Security Review
+    path: security-review/SKILL.md
+    status: active
+  - id: devops-release
+    name: Devops Release
+    path: devops-release/SKILL.md
+    status: active
+  - id: documentation
+    name: Documentation
+    path: documentation/SKILL.md
+    status: active

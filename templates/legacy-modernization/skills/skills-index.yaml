@@ -1,0 +1,25 @@
+skills:
+  - id: legacy-analysis
+    name: Legacy Analysis
+    path: legacy-analysis/SKILL.md
+    status: active
+  - id: behavior-preservation
+    name: Behavior Preservation
+    path: behavior-preservation/SKILL.md
+    status: active
+  - id: refactoring
+    name: Refactoring
+    path: refactoring/SKILL.md
+    status: active
+  - id: migration-planning
+    name: Migration Planning
+    path: migration-planning/SKILL.md
+    status: active
+  - id: risk-analysis
+    name: Risk Analysis
+    path: risk-analysis/SKILL.md
+    status: active
+  - id: test-design
+    name: Test Design
+    path: test-design/SKILL.md
+    status: active

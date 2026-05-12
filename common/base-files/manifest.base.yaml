@@ -1,0 +1,28 @@
+project:
+  id: "{{PROJECT_ID}}"
+  name: "{{PROJECT_NAME}}"
+  type: "{{PROJECT_TYPE}}"
+  status: "{{PROJECT_STATUS}}"
+  owner: "{{OWNER_NAME}}"
+  updated_at: "{{YYYY-MM-DD}}"
+
+entrypoints:
+  read_first:
+    - README.md
+    - AGENTS.md
+    - manifest.yaml
+    - docs/09_agent_state/current-status.md
+
+folders:
+  docs: docs
+  skills: skills
+  source: src
+  tests: tests
+  data: data
+  outputs: outputs
+
+rules:
+  default_doc_format: markdown
+  metadata_format: yaml
+  file_naming: lower-kebab-case
+  date_format: YYYY-MM-DD

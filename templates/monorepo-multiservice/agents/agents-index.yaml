@@ -1,0 +1,46 @@
+agents:
+  - id: service-agent
+    name: Service Agent
+    path: agents/service-agent.md
+    responsibilities:
+      - Service Agent responsibilities
+    must_read:
+      - manifest.yaml
+      - docs/00_repository/service-registry.md
+      - docs/00_repository/package-map.md
+  - id: package-agent
+    name: Package Agent
+    path: agents/package-agent.md
+    responsibilities:
+      - Package Agent responsibilities
+    must_read:
+      - manifest.yaml
+      - docs/00_repository/service-registry.md
+      - docs/00_repository/package-map.md
+  - id: platform-agent
+    name: Platform Agent
+    path: agents/platform-agent.md
+    responsibilities:
+      - Platform Agent responsibilities
+    must_read:
+      - manifest.yaml
+      - docs/00_repository/service-registry.md
+      - docs/00_repository/package-map.md
+  - id: integration-agent
+    name: Integration Agent
+    path: agents/integration-agent.md
+    responsibilities:
+      - Integration Agent responsibilities
+    must_read:
+      - manifest.yaml
+      - docs/00_repository/service-registry.md
+      - docs/00_repository/package-map.md
+  - id: release-agent
+    name: Release Agent
+    path: agents/release-agent.md
+    responsibilities:
+      - Release Agent responsibilities
+    must_read:
+      - manifest.yaml
+      - docs/00_repository/service-registry.md
+      - docs/00_repository/package-map.md

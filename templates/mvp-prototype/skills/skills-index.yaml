@@ -1,0 +1,17 @@
+skills:
+  - id: rapid-requirements
+    name: Rapid Requirements
+    path: rapid-requirements/SKILL.md
+    status: active
+  - id: prototype-implementation
+    name: Prototype Implementation
+    path: prototype-implementation/SKILL.md
+    status: active
+  - id: quick-test-design
+    name: Quick Test Design
+    path: quick-test-design/SKILL.md
+    status: active
+  - id: feedback-analysis
+    name: Feedback Analysis
+    path: feedback-analysis/SKILL.md
+    status: active

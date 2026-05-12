@@ -1,0 +1,25 @@
+skills:
+  - id: requirements-analysis
+    name: Requirements Analysis
+    path: requirements-analysis/SKILL.md
+    status: active
+  - id: api-design
+    name: Api Design
+    path: api-design/SKILL.md
+    status: active
+  - id: code-implementation
+    name: Code Implementation
+    path: code-implementation/SKILL.md
+    status: active
+  - id: code-review
+    name: Code Review
+    path: code-review/SKILL.md
+    status: active
+  - id: test-design
+    name: Test Design
+    path: test-design/SKILL.md
+    status: active
+  - id: documentation
+    name: Documentation
+    path: documentation/SKILL.md
+    status: active

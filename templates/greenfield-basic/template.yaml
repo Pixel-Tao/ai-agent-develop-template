@@ -1,0 +1,49 @@
+id: "greenfield-basic"
+name: "Greenfield Basic"
+version: "1.0.0"
+status: "active"
+updated_at: "2026-05-12"
+owner: "TAO"
+
+description: "신규 개발 프로젝트를 위한 기본 AI Agent 친화 구조"
+
+best_for:
+  - "신규 프로젝트"
+  - "1~3인 소규모 개발"
+  - "빠른 초기 세팅"
+
+not_for:
+  - "이미 복잡한 코드베이스가 있는 프로젝트"
+  - "역할 분리가 필요한 대규모 프로젝트"
+
+complexity: "low"
+governance_level: "low"
+agent_structure: "single"
+recommended_team_size: "1~3명"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+
+optional_files:
+  - outputs
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

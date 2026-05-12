@@ -1,0 +1,25 @@
+skills:
+  - id: security-review
+    name: Security Review
+    path: security-review/SKILL.md
+    status: active
+  - id: threat-modeling
+    name: Threat Modeling
+    path: threat-modeling/SKILL.md
+    status: active
+  - id: compliance-mapping
+    name: Compliance Mapping
+    path: compliance-mapping/SKILL.md
+    status: active
+  - id: privacy-review
+    name: Privacy Review
+    path: privacy-review/SKILL.md
+    status: active
+  - id: auth-review
+    name: Auth Review
+    path: auth-review/SKILL.md
+    status: active
+  - id: audit-readiness
+    name: Audit Readiness
+    path: audit-readiness/SKILL.md
+    status: active

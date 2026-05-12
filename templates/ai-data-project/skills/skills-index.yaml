@@ -1,0 +1,29 @@
+skills:
+  - id: data-analysis
+    name: Data Analysis
+    path: data-analysis/SKILL.md
+    status: active
+  - id: prompt-design
+    name: Prompt Design
+    path: prompt-design/SKILL.md
+    status: active
+  - id: prompt-review
+    name: Prompt Review
+    path: prompt-review/SKILL.md
+    status: active
+  - id: evaluation-design
+    name: Evaluation Design
+    path: evaluation-design/SKILL.md
+    status: active
+  - id: failure-analysis
+    name: Failure Analysis
+    path: failure-analysis/SKILL.md
+    status: active
+  - id: model-card-writing
+    name: Model Card Writing
+    path: model-card-writing/SKILL.md
+    status: active
+  - id: documentation
+    name: Documentation
+    path: documentation/SKILL.md
+    status: active

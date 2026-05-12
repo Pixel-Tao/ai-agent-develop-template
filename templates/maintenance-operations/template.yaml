@@ -1,0 +1,49 @@
+id: "maintenance-operations"
+name: "Maintenance Operations"
+version: "1.0.0"
+status: "active"
+updated_at: "2026-05-12"
+owner: "TAO"
+
+description: "운영 중인 서비스의 유지보수, 장애 대응, 릴리즈 관리를 위한 구조"
+
+best_for:
+  - "운영 중인 서비스"
+  - "장애 대응"
+  - "정기 릴리즈와 패치"
+
+not_for:
+  - "아직 배포되지 않은 신규 실험"
+  - "운영 절차가 필요 없는 일회성 도구"
+
+complexity: "medium"
+governance_level: "medium"
+agent_structure: "single"
+recommended_team_size: "2~8명"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+
+optional_files:
+  - outputs
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

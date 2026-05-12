@@ -1,0 +1,155 @@
+agents:
+  - id: product-manager-agent
+    name: Product Manager Agent
+    path: agents/product-manager-agent.md
+    responsibilities:
+      - 요구사항 정리
+      - 우선순위 조정
+      - 범위 관리
+    must_read:
+      - manifest.yaml
+      - agents/product-manager-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: tech-lead-agent
+    name: Tech Lead Agent
+    path: agents/tech-lead-agent.md
+    responsibilities:
+      - 아키텍처 판단
+      - 기술 방향
+      - 리뷰 기준 관리
+    must_read:
+      - manifest.yaml
+      - agents/tech-lead-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: frontend-agent
+    name: Frontend Agent
+    path: agents/frontend-agent.md
+    responsibilities:
+      - UI 구현
+      - 접근성
+      - 상태 관리
+      - 프론트엔드 테스트
+    must_read:
+      - manifest.yaml
+      - agents/frontend-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: backend-agent
+    name: Backend Agent
+    path: agents/backend-agent.md
+    responsibilities:
+      - API 구현
+      - 서버 비즈니스 로직
+      - DB 접근 로직
+      - 인증/인가 로직
+      - 테스트 작성
+    must_read:
+      - manifest.yaml
+      - agents/backend-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: database-agent
+    name: Database Agent
+    path: agents/database-agent.md
+    responsibilities:
+      - 스키마 설계
+      - 마이그레이션
+      - 데이터 무결성
+      - 성능 검토
+    must_read:
+      - manifest.yaml
+      - agents/database-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: qa-agent
+    name: QA Agent
+    path: agents/qa-agent.md
+    responsibilities:
+      - 테스트 전략
+      - 테스트 케이스
+      - 회귀 검증
+      - 릴리즈 품질 확인
+    must_read:
+      - manifest.yaml
+      - agents/qa-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: devops-agent
+    name: DevOps Agent
+    path: agents/devops-agent.md
+    responsibilities:
+      - CI/CD
+      - 배포
+      - 인프라
+      - 모니터링
+      - 운영 자동화
+    must_read:
+      - manifest.yaml
+      - agents/devops-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: security-agent
+    name: Security Agent
+    path: agents/security-agent.md
+    responsibilities:
+      - 인증/인가 검토
+      - 입력값 검증
+      - 민감정보 처리
+      - 권한 경계 검토
+      - 보안 취약점 리뷰
+      - 보안 승인 필요 조건 판단
+    must_read:
+      - manifest.yaml
+      - agents/security-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent
+  - id: documentation-agent
+    name: Documentation Agent
+    path: agents/documentation-agent.md
+    responsibilities:
+      - 사용자/개발자 문서
+      - 변경 이력
+      - 의사결정 기록 정리
+    must_read:
+      - manifest.yaml
+      - agents/documentation-agent.md
+      - docs/02_architecture/architecture.md
+      - docs/04_tasks/work-allocation.md
+    collaborates_with:
+      - tech-lead-agent
+      - qa-agent
+      - security-agent

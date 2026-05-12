@@ -1,0 +1,46 @@
+agents:
+  - id: data-agent
+    name: Data Agent
+    path: agents/data-agent.md
+    responsibilities:
+      - Data Agent responsibilities
+    must_read:
+      - docs/01_data/data-catalog.md
+      - docs/04_evaluation/evaluation-plan.md
+      - docs/05_experiments/experiment-log.md
+  - id: model-agent
+    name: Model Agent
+    path: agents/model-agent.md
+    responsibilities:
+      - Model Agent responsibilities
+    must_read:
+      - docs/01_data/data-catalog.md
+      - docs/04_evaluation/evaluation-plan.md
+      - docs/05_experiments/experiment-log.md
+  - id: prompt-agent
+    name: Prompt Agent
+    path: agents/prompt-agent.md
+    responsibilities:
+      - Prompt Agent responsibilities
+    must_read:
+      - docs/01_data/data-catalog.md
+      - docs/04_evaluation/evaluation-plan.md
+      - docs/05_experiments/experiment-log.md
+  - id: evaluation-agent
+    name: Evaluation Agent
+    path: agents/evaluation-agent.md
+    responsibilities:
+      - Evaluation Agent responsibilities
+    must_read:
+      - docs/01_data/data-catalog.md
+      - docs/04_evaluation/evaluation-plan.md
+      - docs/05_experiments/experiment-log.md
+  - id: documentation-agent
+    name: Documentation Agent
+    path: agents/documentation-agent.md
+    responsibilities:
+      - Documentation Agent responsibilities
+    must_read:
+      - docs/01_data/data-catalog.md
+      - docs/04_evaluation/evaluation-plan.md
+      - docs/05_experiments/experiment-log.md

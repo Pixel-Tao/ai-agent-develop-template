@@ -1,0 +1,21 @@
+id: prototype-implementation
+name: Prototype Implementation
+version: "1.0.0"
+status: active
+description: Prototype Implementation 작업을 수행하기 위한 템플릿 전용 Skill
+owner: TAO
+updated_at: "2026-05-12"
+input:
+  - task description
+  - related project documents
+output:
+  - result summary
+  - verification notes
+triggers:
+  - prototype-implementation
+read_first:
+  - SKILL.md
+constraints:
+  - 템플릿의 AGENTS.md 규칙을 우선한다.
+quality_gate:
+  - 산출물과 검증 결과가 기록되어 있다.

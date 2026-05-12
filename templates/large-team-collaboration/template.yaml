@@ -1,0 +1,49 @@
+id: "large-team-collaboration"
+name: "Large Team Collaboration"
+version: "1.0.0"
+status: "active"
+updated_at: "2026-05-12"
+owner: "TAO"
+
+description: "역할 기반 협업과 승인 흐름이 필요한 대규모 프로젝트 구조"
+
+best_for:
+  - "대규모 협업"
+  - "역할별 책임 분리"
+  - "승인과 인수인계가 중요한 프로젝트"
+
+not_for:
+  - "1인 프로젝트"
+  - "문서 유지 비용을 감당하기 어려운 실험"
+
+complexity: "high"
+governance_level: "high"
+agent_structure: "router-based"
+recommended_team_size: "5명 이상"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+
+optional_files:
+  - outputs
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

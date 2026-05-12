@@ -1,0 +1,49 @@
+id: "existing-project-onboarding"
+name: "Existing Project Onboarding"
+version: "1.0.0"
+status: "active"
+updated_at: "2026-05-12"
+owner: "TAO"
+
+description: "기존 코드베이스 분석과 AI Agent 투입을 위한 온보딩 구조"
+
+best_for:
+  - "기존 코드베이스"
+  - "문서 부족 프로젝트"
+  - "변경 전 영향 분석이 필요한 프로젝트"
+
+not_for:
+  - "코드가 거의 없는 신규 프로젝트"
+  - "빠른 폐기형 프로토타입"
+
+complexity: "medium"
+governance_level: "medium"
+agent_structure: "single"
+recommended_team_size: "2~6명"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+
+optional_files:
+  - outputs
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

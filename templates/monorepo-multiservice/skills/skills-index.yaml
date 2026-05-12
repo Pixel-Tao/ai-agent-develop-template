@@ -1,0 +1,21 @@
+skills:
+  - id: service-analysis
+    name: Service Analysis
+    path: service-analysis/SKILL.md
+    status: active
+  - id: dependency-analysis
+    name: Dependency Analysis
+    path: dependency-analysis/SKILL.md
+    status: active
+  - id: api-contract-review
+    name: Api Contract Review
+    path: api-contract-review/SKILL.md
+    status: active
+  - id: package-maintenance
+    name: Package Maintenance
+    path: package-maintenance/SKILL.md
+    status: active
+  - id: release-planning
+    name: Release Planning
+    path: release-planning/SKILL.md
+    status: active
