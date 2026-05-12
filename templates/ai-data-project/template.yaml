@@ -2,8 +2,8 @@ id: "ai-data-project"
 name: "AI Data Project"
 version: "1.0.0"
 status: "active"
-updated_at: "2026-05-12"
-owner: "your-name"
+updated_at: "{{YYYY-MM-DD}}"
+owner: "{{OWNER_NAME}}"
 
 description: "AI, 데이터, LLM, 모델 평가 프로젝트를 위한 구조"
 

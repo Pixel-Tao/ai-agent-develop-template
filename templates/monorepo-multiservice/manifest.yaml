@@ -3,8 +3,8 @@ project:
   name: "{{PROJECT_NAME}}"
   type: "monorepo-multiservice"
   status: "{{PROJECT_STATUS}}"
-  owner: "your-name"
-  updated_at: "2026-05-12"
+  owner: "{{OWNER_NAME}}"
+  updated_at: "{{YYYY-MM-DD}}"
 
 template:
   id: "monorepo-multiservice"

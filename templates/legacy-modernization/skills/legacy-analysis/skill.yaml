@@ -3,8 +3,8 @@ name: Legacy Analysis
 version: "1.0.0"
 status: active
 description: Legacy Analysis 작업을 수행하기 위한 템플릿 전용 Skill
-owner: your-name
-updated_at: "2026-05-12"
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
 input:
   - task description
   - related project documents

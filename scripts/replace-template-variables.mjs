@@ -13,7 +13,7 @@ function printHelp() {
 Usage:
   node scripts/replace-template-variables.mjs --root . --variables-file scripts/template-variables.example.yaml
   node scripts/replace-template-variables.mjs --root . --variables-file ./my-project.variables.yaml --apply
-  node scripts/replace-template-variables.mjs --root . --set PROJECT_NAME="My Project" --set PROJECT_STATUS=active --apply
+  node scripts/replace-template-variables.mjs --root . --set PROJECT_NAME=my-project --set PROJECT_STATUS=active --apply
 
 Options:
   --root, -r <path>             Root directory to scan. Default: .

@@ -3,8 +3,8 @@ name: Security Review
 version: "1.0.0"
 status: active
 description: Security Review 작업을 수행하기 위한 공통 Skill
-owner: your-name
-updated_at: "2026-05-12"
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
 input:
   - task description
   - related documents

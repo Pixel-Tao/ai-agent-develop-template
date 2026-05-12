@@ -2,15 +2,27 @@
 
 AI Agent가 개발 프로젝트의 목표, 구조, 역할, 작업 상태, 협업 규칙을 빠르게 이해하도록 돕는 템플릿 저장소다. 실제 제품 코드가 아니라 여러 프로젝트에 복사해서 쓰는 시작 구조를 제공한다.
 
+## Requirements
+
+- Node.js 18 이상이 필요하다.
+- 새 프로젝트 zip 생성은 루트의 `scripts/create-project.mjs` 하나로 처리한다.
+- 프로젝트명은 `my-project`처럼 lower-kebab-case만 허용한다.
+
 ## 빠른 사용법
 
-1. decision-guide.md에서 프로젝트 상황에 맞는 템플릿을 고른다.
-2. templates/{template-id}/ 내용을 새 프로젝트 루트로 복사한다.
-3. scripts/template-variables.example.yaml을 복사해 값을 채운다.
-4. node scripts/replace-template-variables.mjs --root . --variables-file <variables.yaml>로 Dry Run을 확인한다.
-5. 문제가 없으면 --apply를 붙여 변수 치환을 적용한다.
-6. inputs/initial-development-docs/에 초기 기획서, 메모, 요구사항 초안, 화면 스케치, 참고 링크를 넣는다.
-7. Agent는 AGENTS.md, manifest.yaml, inputs/source-documents-index.md를 먼저 읽고 인터뷰를 시작한다.
+대화형 실행:
+
+```bash
+node scripts/create-project.mjs
+```
+
+값을 직접 전달해서 실행:
+
+```bash
+node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
+```
+
+실행 결과로 저장소 루트에 `my-project.zip`이 생성된다. 날짜는 입력하지 않으며 실행일 기준 `YYYY-MM-DD` 값으로 자동 치환된다.
 
 ## 템플릿 목록
 
@@ -28,20 +40,19 @@ AI Agent가 개발 프로젝트의 목표, 구조, 역할, 작업 상태, 협업
 
 ## 선택 기준
 
-- 새 프로젝트면 greenfield-basic부터 시작한다.
-- 기존 코드가 있으면 existing-project-onboarding으로 먼저 분석한다.
-- 역할, 승인, 인수인계가 중요하면 large-team-collaboration을 사용한다.
+- 새 프로젝트면 `greenfield-basic`부터 시작한다.
+- 기존 코드가 있으면 `existing-project-onboarding`으로 먼저 분석한다.
+- 역할, 승인, 인수인계가 중요하면 `large-team-collaboration`을 사용한다.
 - 보안, 운영, AI/데이터처럼 도메인 통제가 있으면 해당 전문 템플릿을 선택하거나 병합한다.
 
-## 공통 구성
+## 생성기가 하는 일
 
-- AGENTS.md: Agent 작업 규칙
-- manifest.yaml: Agent가 먼저 읽을 진입점과 폴더 구조
-- docs/: 프로젝트 맥락, 요구사항, 결정, 상태 기록
-- skills/: 작업 유형별 Agent Skill
-- inputs/: 사용자가 미리 가진 초기 개발 문서와 참고 자료
-- outputs/: 분석, 리뷰, 보고서 산출물
+1. 템플릿을 선택한다.
+2. 임시 폴더에 템플릿을 복사한다.
+3. `{{PROJECT_ID}}`, `{{PROJECT_NAME}}`, `{{OWNER_NAME}}`, `{{YYYY-MM-DD}}` 등을 치환한다.
+4. 루트에 `project-name.zip`을 만든다.
+5. 임시 폴더를 정리한다.
 
 ## 초기 개발 문서
 
-사용자는 대개 아이디어를 완성된 요구사항으로 갖고 있지 않다. 그래서 각 템플릿은 inputs/ 공간을 제공한다. Agent는 이 자료를 확정 요구사항으로 보지 않고, 사실/추정/충돌/질문으로 나눈 뒤 Project Discovery Interview를 통해 목표, 기능, 기술 방향, 콘텐츠, 제약을 구체화한다.
+각 템플릿에는 `inputs/` 공간이 있다. 사용자는 기획서, 메모, 요구사항 초안, 화면 스케치, 참고 링크를 `inputs/initial-development-docs/` 또는 `inputs/references/`에 넣을 수 있다. Agent는 이 자료를 확정 요구사항으로 보지 않고, 사실/추정/충돌/질문으로 나눈 뒤 Project Discovery Interview를 통해 목표, 기능, 기술 방향, 콘텐츠, 제약을 구체화한다.

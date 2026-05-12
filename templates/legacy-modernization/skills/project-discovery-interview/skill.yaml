@@ -3,8 +3,8 @@ name: Project Discovery Interview
 version: "1.0.0"
 status: active
 description: 사용자의 막연한 프로젝트 아이디어를 목표, 사용자, 콘텐츠, 기술 범위, 성공 기준으로 구체화하는 인터뷰 Skill
-owner: your-name
-updated_at: "2026-05-12"
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
 input:
   - initial project idea
   - constraints

@@ -2,8 +2,8 @@ id: "maintenance-operations"
 name: "Maintenance Operations"
 version: "1.0.0"
 status: "active"
-updated_at: "2026-05-12"
-owner: "your-name"
+updated_at: "{{YYYY-MM-DD}}"
+owner: "{{OWNER_NAME}}"
 
 description: "운영 중인 서비스의 유지보수, 장애 대응, 릴리즈 관리를 위한 구조"
 

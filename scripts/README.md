@@ -1,63 +1,63 @@
-# Template Variable Replacement Scripts
+# Template Scripts
 
-이 폴더에는 템플릿의 VARIABLE placeholder를 실제 프로젝트 값으로 치환하는 스크립트가 있다.
+이 폴더에는 템플릿 생성과 변수 치환을 위한 스크립트가 있다. 모든 스크립트는 Node.js 또는 PowerShell 기본 기능만 사용하며, npm 패키지 설치가 필요 없다.
 
-## 권장: Node.js 스크립트
+## 권장: 프로젝트 zip 생성
 
-macOS, Linux, Windows에서 동일하게 실행하려면 Node.js 스크립트를 사용한다. 외부 npm 패키지는 필요하지 않다.
+Node.js 18 이상이 필요하다.
 
-```sh
-node scripts/replace-template-variables.mjs \
-  --root . \
-  --variables-file scripts/template-variables.example.yaml
+대화형 실행:
+
+```bash
+node scripts/create-project.mjs
 ```
 
-기본 동작은 Dry Run이다. 실제 파일에 적용하려면 `--apply`를 붙인다.
+명령형 실행:
 
-```sh
-node scripts/replace-template-variables.mjs \
-  --root . \
-  --variables-file ./my-project.variables.yaml \
-  --apply
+```bash
+node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
-CLI에서 값을 직접 넘길 수도 있다.
+동작:
 
-```sh
-node scripts/replace-template-variables.mjs \
-  --root . \
-  --set PROJECT_NAME="My Project" \
-  --set PROJECT_STATUS=active \
-  --apply
+1. 템플릿을 선택한다.
+2. 프로젝트명을 lower-kebab-case로 검증한다.
+3. 오너명을 입력받는다.
+4. 날짜는 실행일 기준으로 자동 설정한다.
+5. 템플릿을 복사하고 변수를 치환한다.
+6. 저장소 루트에 `my-project.zip`을 만든다.
+
+기존 zip을 덮어써야 하면 `--force`를 붙인다.
+
+## 템플릿 목록 확인
+
+```bash
+node scripts/create-project.mjs --list
 ```
 
-## Windows PowerShell 스크립트
+## 변수만 치환
 
-Windows PowerShell 환경에서는 기존 PowerShell 스크립트도 사용할 수 있다.
+이미 복사된 프로젝트에서 변수 치환만 다시 실행해야 할 때 사용한다.
+
+```bash
+node scripts/replace-template-variables.mjs --root . --variables-file scripts/template-variables.example.yaml
+node scripts/replace-template-variables.mjs --root . --variables-file scripts/template-variables.example.yaml --apply
+```
+
+Windows PowerShell만 사용할 경우:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts/replace-template-variables.ps1 `
-  -RootPath . `
-  -VariablesFile scripts/template-variables.example.yaml
+powershell -ExecutionPolicy Bypass -File scripts/replace-template-variables.ps1 -RootPath . -VariablesFile scripts/template-variables.example.yaml
 ```
-
-실제 적용은 `-Apply`를 붙인다.
 
 ## 변수 파일 형식
 
-변수 파일은 flat YAML 형식만 지원한다.
+`scripts/template-variables.example.yaml`은 flat YAML 형식만 지원한다.
 
 ```yaml
 PROJECT_ID: my-project
-PROJECT_NAME: My Project
+PROJECT_NAME: my-project
 PROJECT_STATUS: planning
-OWNER_NAME: your-name
+OWNER_NAME: "{{OWNER_NAME}}"
 YYYY-MM-DD: 2026-05-12
 ```
-
-## 안전 옵션
-
-- `--backup` 또는 `-Backup`: 치환 전 `.bak` 파일 생성
-- `--fail-on-unresolved` 또는 `-FailOnUnresolved`: 남은 placeholder가 있으면 실패
-- `--include`: 치환 대상 파일 패턴 추가
-- `--exclude-dir`: 제외할 디렉터리 추가
