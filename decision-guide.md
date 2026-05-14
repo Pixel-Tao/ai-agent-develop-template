@@ -1,5 +1,7 @@
 # Template Decision Guide
 
+한국어가 기본 문서입니다. 영어판은 [decision-guide.en.md](decision-guide.en.md)를 참고하세요.
+
 ## 빠른 선택
 
 | 상황 | 선택할 템플릿 |

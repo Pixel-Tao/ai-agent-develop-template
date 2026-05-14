@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const requiredTemplateFiles = [
   "README.md",
+  "README.en.md",
   "AGENTS.md",
   "INIT.md",
   "manifest.yaml",
@@ -17,6 +18,15 @@ const requiredTemplateFiles = [
   "harness/verification-matrix.md",
   "harness/evidence-log.md",
   "skills/skills-index.yaml",
+];
+
+const requiredEnglishCompanionFiles = [
+  ["README.md", "README.en.md"],
+  ["decision-guide.md", "decision-guide.en.md"],
+  ["template-usage-guide.md", "template-usage-guide.en.md"],
+  ["scripts/README.md", "scripts/README.en.md"],
+  ["common/README.md", "common/README.en.md"],
+  ["docs/localization.md", "docs/localization.en.md"],
 ];
 
 const allowedTemplateVariables = new Set([
@@ -363,6 +373,21 @@ function validateGeneratorSnapshotHarness(root, errors) {
   }
 }
 
+function validateEnglishCompanionDocs(root, errors) {
+  for (const [sourceFile, companionFile] of requiredEnglishCompanionFiles) {
+    const sourcePath = path.join(root, sourceFile);
+    const companionPath = path.join(root, companionFile);
+
+    if (!fs.existsSync(sourcePath)) {
+      reportError(errors, sourceFile, "Required Korean source document is missing.");
+    }
+
+    if (!fs.existsSync(companionPath)) {
+      reportError(errors, companionFile, `Required English companion for ${sourceFile} is missing.`);
+    }
+  }
+}
+
 function validateRequiredFiles(root, template, errors) {
   const templatePath = path.join(root, template.path ?? `templates/${template.id}`);
   const templateRelativePath = path.relative(root, templatePath);
@@ -481,6 +506,7 @@ function main() {
   validateIndexAgainstDirectories(root, templates, errors);
   validateCreateProjectList(root, templates, errors);
   validateGeneratorSnapshotHarness(root, errors);
+  validateEnglishCompanionDocs(root, errors);
 
   let yamlFileCount = 1;
   for (const template of templates) {

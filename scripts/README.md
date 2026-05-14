@@ -1,5 +1,7 @@
 # Template Scripts
 
+한국어가 기본 문서입니다. 영어판은 [README.en.md](README.en.md)를 참고하세요.
+
 이 폴더에는 템플릿 생성과 변수 치환을 위한 스크립트가 있다. 모든 스크립트는 Node.js 또는 PowerShell 기본 기능만 사용하며, npm 패키지 설치가 필요 없다.
 
 ## 권장: 프로젝트 zip 생성
