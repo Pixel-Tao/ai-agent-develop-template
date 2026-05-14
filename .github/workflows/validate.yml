@@ -1,0 +1,54 @@
+name: Validate templates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate template registry and required files
+        run: node scripts/validate-template.mjs
+
+      - name: List available templates
+        run: node scripts/create-project.mjs --list
+
+      - name: Run generator golden snapshot test
+        run: npm run test:generator
+
+      - name: Install production agent template dependencies
+        working-directory: templates/production-agent-system
+        run: npm install
+
+      - name: Build production agent template
+        working-directory: templates/production-agent-system
+        run: npm run build
+
+      - name: Validate production agent tools
+        working-directory: templates/production-agent-system
+        run: npm run validate:tools
+
+      - name: Test production agent template
+        working-directory: templates/production-agent-system
+        run: npm run test
+
+      - name: Run production agent smoke eval
+        working-directory: templates/production-agent-system
+        run: npm run eval:smoke
+
+      - name: Build production agent Docker image
+        working-directory: templates/production-agent-system
+        run: docker build -f deploy/Dockerfile -t production-agent-system:ci .

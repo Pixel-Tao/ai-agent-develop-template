@@ -13,6 +13,7 @@
 | 보안, 개인정보, 감사, 규제 요구 | security-regulated |
 | 운영 중인 서비스 유지보수 | maintenance-operations |
 | AI, 데이터, LLM, 평가 실험 | ai-data-project |
+| 실제 Agent API 서버, worker queue, tool calling, memory, eval, tracing, Docker 배포 필요 | production-agent-system |
 
 ## 선택 질문
 
@@ -24,10 +25,13 @@
 6. 레거시 동작 보존이나 단계적 마이그레이션이 핵심인가?
 7. 모노레포, 멀티서비스, 공통 패키지 의존성이 있는가?
 8. 데이터셋, 프롬프트, 모델 평가, 실험 관리가 중요한가?
+9. Agent runtime, tool approval, memory, eval, tracing, 배포가 한 프로젝트 안에 필요한가?
 
 ## 혼합 사용
 
 템플릿은 하나만 써야 하는 구조가 아니다. 예를 들어 기존 금융 서비스라면 existing-project-onboarding으로 먼저 분석하고, security-regulated의 보안/감사 문서를 병합한다. 운영 중인 모노레포라면 monorepo-multiservice에 maintenance-operations의 runbook과 incident log를 추가한다.
+
+`production-agent-system`은 단순 문서 템플릿이 아니라 Agent 서비스를 실행형 시스템으로 발전시키기 위한 선택지다. 기존 서비스에 Agent를 붙이는 경우에는 먼저 `existing-project-onboarding`으로 현재 시스템을 분석한 뒤 필요한 runtime, tool, eval, security, deployment 구조를 병합한다.
 
 ## 추천 흐름
 
