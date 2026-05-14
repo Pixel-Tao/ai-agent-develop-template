@@ -1,0 +1,170 @@
+id: "production-agent-system"
+name: "Production Agent System"
+version: "1.0.0"
+status: "active"
+updated_at: "{{YYYY-MM-DD}}"
+owner: "{{OWNER_NAME}}"
+
+description: "실제 AI Agent 서비스를 생성, 실행, 평가, 추적, 배포하기 위한 시스템 템플릿"
+
+best_for:
+  - "실제 AI Agent API 서버"
+  - "tool calling이 있는 Agent"
+  - "RAG, workflow, background worker가 필요한 Agent"
+  - "평가와 tracing이 필요한 Agent"
+  - "운영 배포 대상 Agent"
+
+not_for:
+  - "단순 문서 정리 프로젝트"
+  - "빠른 MVP 문서 템플릿"
+  - "Agent runtime이 필요 없는 일반 앱"
+
+complexity: "high"
+governance_level: "high"
+agent_structure: "runtime-system"
+recommended_team_size: "2~10명"
+
+required_files:
+  - README.md
+  - AGENTS.md
+  - manifest.yaml
+  - INIT.md
+  - template.yaml
+  - validation-checklist.md
+  - package.json
+  - package-lock.json
+  - .dockerignore
+  - tsconfig.json
+  - src/index.ts
+  - src/config/env.ts
+  - src/config/model-config.ts
+  - src/agent/agent.ts
+  - src/agent/runner.ts
+  - src/runtime/run-context.ts
+  - src/runtime/run-state.ts
+  - src/runtime/errors.ts
+  - src/runtime/lifecycle-hooks.ts
+  - src/api/server.ts
+  - src/api/routes.ts
+  - src/api/health.ts
+  - src/api/healthcheck.ts
+  - src/workers/agent-worker.ts
+  - src/workers/queue.ts
+  - src/tools/tool.ts
+  - src/tools/tool-registry.ts
+  - src/tools/tool-runner.ts
+  - src/tools/approval.ts
+  - src/tools/schemas.ts
+  - src/tools/builtin/echo-tool.ts
+  - src/tools/builtin/search-docs-tool.ts
+  - src/memory/memory-store.ts
+  - src/memory/checkpoint-store.ts
+  - src/memory/conversation-store.ts
+  - src/memory/memory-policy.ts
+  - src/evals/eval-runner.ts
+  - src/evals/dataset-loader.ts
+  - src/evals/scorers.ts
+  - src/evals/report-writer.ts
+  - src/observability/tracer.ts
+  - src/observability/logger.ts
+  - src/observability/metrics.ts
+  - src/observability/audit-log.ts
+  - src/observability/redaction.ts
+  - src/security/policy-engine.ts
+  - src/security/approval-gate.ts
+  - src/security/data-classifier.ts
+  - src/security/secret-redactor.ts
+  - src/security/prompt-injection-check.ts
+  - scripts/validate-structure.mjs
+  - scripts/validate-tools.mjs
+  - tests/runtime.test.ts
+  - tests/tools.test.ts
+  - tests/memory.test.ts
+  - tests/evals.test.ts
+  - tests/observability.test.ts
+  - tests/security.test.ts
+  - tests/api.test.ts
+  - tests/deployment.test.ts
+  - evals/datasets/smoke.yaml
+  - evals/datasets/tool-use.yaml
+  - evals/datasets/refusal.yaml
+  - evals/datasets/regression.yaml
+  - evals/scorers/exact-match.ts
+  - evals/scorers/rubric-score.ts
+  - evals/scorers/tool-call-score.ts
+  - evals/scorers/safety-score.ts
+  - tools/tool-registry.yaml
+  - tools/permissions.yaml
+  - memory/memory-policy.yaml
+  - observability/tracing-policy.md
+  - security/approval-policy.md
+  - deploy/Dockerfile
+  - deploy/docker-compose.yml
+  - deploy/env.example
+  - deploy/deployment.md
+  - deploy/healthcheck.md
+  - harness/harness.yaml
+  - harness/commands.md
+  - harness/verification-matrix.md
+  - skills/skills-index.yaml
+
+optional_files:
+  - CLAUDE.md
+  - evals/reports
+  - harness/reports
+  - inputs/initial-development-docs
+  - inputs/references
+  - docs/09_agent_state/handoff-notes.md
+
+entrypoints:
+  human:
+    - README.md
+  agent:
+    - AGENTS.md
+    - manifest.yaml
+    - harness/harness.yaml
+    - tools/tool-registry.yaml
+    - security/approval-policy.md
+
+quality_gate:
+  minimum:
+    - README.md exists
+    - AGENTS.md exists
+    - manifest.yaml exists
+    - package.json exists
+    - tsconfig.json exists
+    - src/index.ts exists
+    - tests/runtime.test.ts exists
+    - scripts/validate-tools.mjs exists
+    - src/memory/memory-store.ts exists
+    - src/memory/checkpoint-store.ts exists
+    - src/memory/memory-policy.ts exists
+    - src/evals/eval-runner.ts exists
+    - src/observability/tracer.ts exists
+    - src/observability/logger.ts exists
+    - src/observability/metrics.ts exists
+    - tests/observability.test.ts exists
+    - src/security/policy-engine.ts exists
+    - src/security/approval-gate.ts exists
+    - src/security/prompt-injection-check.ts exists
+    - tests/security.test.ts exists
+    - src/api/health.ts exists
+    - src/api/healthcheck.ts exists
+    - src/workers/queue.ts exists
+    - tests/api.test.ts exists
+    - tests/deployment.test.ts exists
+    - deploy/Dockerfile exists
+    - deploy/docker-compose.yml exists
+    - scripts/validate-structure.mjs exists
+    - evals/datasets/smoke.yaml exists
+    - tools/tool-registry.yaml exists
+    - security/approval-policy.md exists
+    - harness/harness.yaml exists
+    - harness/evidence-log.md exists
+    - docs/09_agent_state/current-status.md exists
+
+initialization:
+  init_prompt: INIT.md
+  archive_after_completion: docs/09_agent_state/archive/init
+  prompt: initialization-prompt.md
+  checklist: validation-checklist.md

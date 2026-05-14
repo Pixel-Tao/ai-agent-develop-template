@@ -1,0 +1,30 @@
+services:
+  agent-api:
+    image: production-agent-system:local
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    command: ["npm", "run", "serve"]
+    ports:
+      - "3000:3000"
+    env_file:
+      - env.example
+    environment:
+      HOST: "0.0.0.0"
+      HEALTHCHECK_URL: "http://127.0.0.1:3000/healthz"
+    healthcheck:
+      test: ["CMD", "node", "dist/src/api/healthcheck.js"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  agent-worker:
+    image: production-agent-system:local
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    command: ["npm", "run", "worker"]
+    env_file:
+      - env.example
+    environment:
+      QUEUE_MODE: "memory"

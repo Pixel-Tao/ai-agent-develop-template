@@ -1,0 +1,18 @@
+id: harness-engineering
+name: Harness Engineering
+version: "1.0.0"
+status: active
+owner: "{{OWNER_NAME}}"
+updated_at: "{{YYYY-MM-DD}}"
+
+purpose: "Keep command inventory, verification matrix, and evidence log accurate for the Agent system."
+
+inputs:
+  - task request
+  - command output
+  - verification result
+
+outputs:
+  - updated harness command inventory
+  - updated evidence log
+  - handoff note

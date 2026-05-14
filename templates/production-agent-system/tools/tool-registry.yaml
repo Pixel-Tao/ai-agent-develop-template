@@ -1,0 +1,47 @@
+tools:
+  - name: echo
+    description: "Returns the provided input for runtime smoke testing."
+    risk_level: low
+    implementation: src/tools/builtin/echo-tool.ts
+    input_schema:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+    output_schema:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+  - name: read_project_docs
+    description: "Reads local project documentation for context."
+    risk_level: low
+    implementation: src/tools/builtin/search-docs-tool.ts
+    input_schema:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+    output_schema:
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            required:
+              - path
+              - snippet
+            properties:
+              path:
+                type: string
+              snippet:
+                type: string
