@@ -1,0 +1,9 @@
+skills:
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active
+  - id: agent-system-design
+    name: Agent System Design
+    path: agent-system-design/SKILL.md
+    status: draft

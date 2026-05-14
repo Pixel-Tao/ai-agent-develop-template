@@ -1,0 +1,26 @@
+{
+  "name": "production-agent-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Generated production AI Agent system template.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "validate:structure": "node scripts/validate-structure.mjs",
+    "validate:tools": "node scripts/validate-tools.mjs",
+    "eval": "npm run build && node dist/src/evals/eval-runner.js --dataset all",
+    "eval:smoke": "npm run build && node dist/src/evals/eval-runner.js --dataset smoke",
+    "start": "npm run build && npm run serve",
+    "serve": "node dist/src/api/server.js",
+    "dev": "npm run build && npm run serve",
+    "worker": "node dist/src/workers/agent-worker.js",
+    "worker:dev": "npm run build && npm run worker",
+    "healthcheck": "node dist/src/api/healthcheck.js",
+    "docker:build": "docker build -f deploy/Dockerfile -t production-agent-system:local ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "typescript": "^5.6.3"
+  }
+}

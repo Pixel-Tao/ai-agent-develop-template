@@ -1,0 +1,32 @@
+namespaces:
+  run:
+    lifetime: single-run
+    long_term_storage: false
+  thread:
+    lifetime: conversation-thread
+    long_term_storage: true
+  user:
+    lifetime: long-term
+    long_term_storage: true
+    sensitive_data_allowed: false
+  project:
+    lifetime: long-term
+    long_term_storage: true
+  scratchpad:
+    lifetime: ephemeral
+    long_term_storage: false
+  audit:
+    lifetime: long-term
+    append_only: true
+
+write_policy:
+  require_namespace: true
+  require_source: true
+  redact_secrets: true
+  reject_sensitive_user_memory: true
+  reject_sensitive_long_term_memory_by_default: true
+
+adapters:
+  default: in-memory
+  production_interface: src/memory/memory-store.ts
+  checkpoint_interface: src/memory/checkpoint-store.ts

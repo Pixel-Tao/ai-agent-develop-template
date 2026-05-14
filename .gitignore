@@ -1,2 +1,5 @@
 # Generated project archives
 *.zip
+
+# Generator test scratch directories
+.tmp-generator-*

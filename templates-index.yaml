@@ -215,3 +215,38 @@ templates:
       - harness
       - docs
       - skills
+  - id: production-agent-system
+    name: Production Agent System
+    path: templates/production-agent-system
+    description: 실제 AI Agent 서비스를 생성, 실행, 평가, 추적, 배포하기 위한 시스템 템플릿
+    best_for:
+      - 실제 AI Agent API 서버
+      - tool calling이 있는 Agent
+      - RAG, workflow, background worker가 필요한 Agent
+      - 평가와 tracing이 필요한 Agent
+      - 운영 배포 대상 Agent
+    not_for:
+      - 단순 문서 정리 프로젝트
+      - 빠른 MVP 문서 템플릿
+      - Agent runtime이 필요 없는 일반 앱
+    complexity: high
+    governance_level: high
+    agent_structure: runtime-system
+    includes:
+      - README.md
+      - AGENTS.md
+      - manifest.yaml
+      - INIT.md
+      - CLAUDE.md
+      - src
+      - tests
+      - tools
+      - memory
+      - evals
+      - observability
+      - security
+      - deploy
+      - inputs
+      - harness
+      - docs
+      - skills

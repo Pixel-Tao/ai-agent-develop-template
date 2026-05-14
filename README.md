@@ -24,6 +24,28 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 
 실행 결과로 저장소 루트에 `my-project.zip`이 생성된다. 압축 파일 안에는 추가 `my-project/` 폴더를 만들지 않고 프로젝트 파일이 바로 들어간다. 날짜는 입력하지 않으며 실행일 기준 `YYYY-MM-DD` 값으로 자동 치환된다.
 
+## 검증
+
+템플릿 인덱스, 필수 파일, YAML 기본 구조, template id 정합성, 허용되지 않은 placeholder를 검증한다.
+
+```bash
+node scripts/validate-template.mjs
+```
+
+생성 스크립트가 인식하는 템플릿 목록은 다음 명령으로 확인한다. 이 결과는 `templates-index.yaml`과 일치해야 한다.
+
+```bash
+node scripts/create-project.mjs --list
+```
+
+`production-agent-system` 생성 결과는 golden snapshot 테스트로도 검증한다.
+
+```bash
+npm run test:generator
+```
+
+GitHub Actions의 `.github/workflows/validate.yml`에서도 같은 검증과 생성 프로젝트 smoke 검증을 실행한다.
+
 ## 템플릿 목록
 
 | 템플릿 ID | 사용 상황 | 주요 특징 | 추천 대상 |
@@ -37,6 +59,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 | security-regulated | 보안/규제 요구 프로젝트 | 보안 검토, 감사 증적, 승인 기록 | Security, Compliance, Backend |
 | maintenance-operations | 운영 서비스 유지보수 | runbook, incident log, release/rollback | SRE, DevOps, QA |
 | ai-data-project | AI/데이터/LLM 프로젝트 | 데이터, 프롬프트, 평가, 실험 추적 | ML Engineer, Data Scientist |
+| production-agent-system | 프로덕션 AI Agent 시스템 | runtime, tool calling, memory, eval, tracing, security, API/worker deploy | AI Platform, Backend, DevOps |
 
 ## 선택 기준
 
@@ -44,6 +67,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 - 기존 코드가 있으면 `existing-project-onboarding`으로 먼저 분석한다.
 - 역할, 승인, 인수인계가 중요하면 `large-team-collaboration`을 사용한다.
 - 보안, 운영, AI/데이터처럼 도메인 통제가 있으면 해당 전문 템플릿을 선택하거나 병합한다.
+- 실제 Agent API 서버, worker queue, tool calling, memory, eval, tracing, Docker 배포가 필요하면 `production-agent-system`을 선택한다.
 
 ## 생성기가 하는 일
 

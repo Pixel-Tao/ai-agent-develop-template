@@ -35,6 +35,12 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 node scripts/create-project.mjs --list
 ```
 
+Run the production-agent-system generator regression test:
+
+```bash
+npm run test:generator
+```
+
 ## 변수만 치환
 
 이미 복사된 프로젝트에서 변수 치환만 다시 실행해야 할 때 사용한다.

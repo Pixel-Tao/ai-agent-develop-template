@@ -1,0 +1,24 @@
+risk_levels:
+  low:
+    approval_required: false
+    audit_required: true
+  medium:
+    approval_required: false
+    audit_required: true
+  high:
+    approval_required: true
+    audit_required: true
+  destructive:
+    approval_required: true
+    audit_required: true
+
+defaults:
+  timeout_ms: 30000
+  retry_count: 0
+  redact_output: true
+
+approval:
+  approver_role: human-operator
+  required_for:
+    - high
+    - destructive

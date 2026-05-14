@@ -1,0 +1,9 @@
+node_modules
+dist
+evals/reports/*
+!evals/reports/.gitkeep
+harness/reports/*
+!harness/reports/.gitkeep
+.docker-tmp
+.git
+*.zip

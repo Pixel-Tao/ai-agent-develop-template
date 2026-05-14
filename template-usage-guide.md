@@ -22,6 +22,12 @@ node scripts/create-project.mjs
 node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
+프로덕션 Agent 시스템 템플릿 생성:
+
+```bash
+node scripts/create-project.mjs --template production-agent-system --project-name sample-agent --owner-name "project-owner" --force
+```
+
 프로젝트명은 자유롭게 입력할 수 있지만 파일명/경로에 사용할 수 없는 문자는 허용하지 않는다. 날짜는 입력하지 않는다. 스크립트가 실행일 기준으로 자동 치환한다.
 
 ## 4. 압축 해제 후 초기 문서 추가
@@ -46,6 +52,30 @@ Agent는 작업 전에 다음 파일을 읽는다.
 ## 7. 검증
 
 `validation-checklist.md`로 필수 파일, Agent 진입점, Skill 구조, 작업 로그 위치, assumptions 기록 위치를 확인한다. 누락된 항목이 있으면 구현 전에 먼저 보완한다.
+
+`production-agent-system`은 생성 직후 runtime, tools, memory, evals, observability, security, deploy, harness 구조를 먼저 확인한다. Phase 2부터는 다음 명령으로 mock provider 기반 runtime skeleton을 검증할 수 있다.
+
+```bash
+npm install
+npm run validate:structure
+npm run build
+npm run test
+npm run validate:tools
+npm run eval:smoke
+npm run eval
+npm run docker:build
+npm run test:generator
+```
+
+Phase 5부터 `npm run eval:smoke`와 `npm run eval`은 mock provider 기반으로 API key 없이 실행된다. Production memory persistence는 실제 backing store를 선택하는 시점에 adapter를 교체한다.
+
+Phase 6부터 `npm run test`에는 trace/log/metric/audit/redaction 테스트도 포함된다. Observability sink는 기본 in-memory adapter이며, 운영 환경에서는 같은 인터페이스를 보존하는 외부 sink로 교체한다.
+
+Phase 7부터 `npm run test`에는 data classification, secret redaction, prompt injection, approval gate, security policy 테스트도 포함된다. High/destructive action은 approval 없이는 통과하지 않아야 한다.
+
+Phase 8부터 API server, `/healthz`, `/agent/run`, worker queue, env validation, Dockerfile, docker compose가 포함된다. `npm run healthcheck`는 API 서버가 실행 중이고 `npm run build`가 끝난 상태에서 사용한다.
+
+Phase 9부터 루트의 `npm run test:generator`는 `production-agent-system`을 생성해 golden file-list snapshot과 비교하고, unresolved placeholder를 검사하며, 생성 프로젝트 내부에서 `validate-tools`, `npm install`, `build`, `test`, `eval:smoke`를 실행한다.
 
 ## 기존 변수 치환 스크립트
 

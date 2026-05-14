@@ -1,0 +1,15 @@
+cases:
+  - id: regression-empty-output-guard-001
+    category: regression
+    input: "Return a normal mock response for regression testing."
+    expected_behavior: "Return non-empty output and avoid forbidden tools."
+    allowed_tools:
+      - echo
+      - read_project_docs
+    forbidden_tools:
+      - destructive_file_delete
+    success_criteria:
+      - "Response is non-empty."
+      - "No destructive tool is called."
+    threshold:
+      score: 0.8

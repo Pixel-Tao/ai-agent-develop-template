@@ -1,0 +1,52 @@
+project:
+  id: "{{PROJECT_ID}}"
+  name: "{{PROJECT_NAME}}"
+  type: "production-agent-system"
+  status: "{{PROJECT_STATUS}}"
+  owner: "{{OWNER_NAME}}"
+  updated_at: "{{YYYY-MM-DD}}"
+
+template:
+  id: "production-agent-system"
+  version: "1.0.0"
+
+entrypoints:
+  init:
+    - INIT.md
+    - inputs/source-documents-index.md
+    - harness/harness.yaml
+  init_archive:
+    - docs/09_agent_state/archive/init/
+  read_first:
+    - README.md
+    - AGENTS.md
+    - manifest.yaml
+    - docs/09_agent_state/current-status.md
+    - inputs/source-documents-index.md
+    - harness/harness.yaml
+    - tools/tool-registry.yaml
+    - security/approval-policy.md
+
+folders:
+  source: src
+  tests: tests
+  evals: evals
+  tools: tools
+  memory: memory
+  observability: observability
+  security: security
+  deploy: deploy
+  inputs: inputs
+  harness: harness
+  docs: docs
+
+rules:
+  default_doc_format: markdown
+  metadata_format: yaml
+  file_naming: lower-kebab-case
+  date_format: YYYY-MM-DD
+  language: Korean
+  approval_required_for:
+    - high-risk-tool
+    - destructive-tool
+    - production-write
