@@ -1,5 +1,8 @@
 # Agent Project Templates
 
+한국어가 기본 문서입니다. 영어판은 [README.en.md](README.en.md)를 참고하세요.
+문서 언어 정책은 [docs/localization.md](docs/localization.md)에 정리되어 있습니다.
+
 AI Agent가 개발 프로젝트의 목표, 구조, 역할, 작업 상태, 협업 규칙을 빠르게 이해하도록 돕는 템플릿 저장소다. 실제 제품 코드가 아니라 여러 프로젝트에 복사해서 쓰는 시작 구조를 제공한다.
 
 ## Requirements

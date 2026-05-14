@@ -1,5 +1,7 @@
 # Production Agent System
 
+한국어가 기본 문서입니다. 영어판은 [README.en.md](README.en.md)를 참고하세요.
+
 ## 목적
 
 실제 AI Agent 서비스를 생성하기 위한 실행형 시스템 템플릿이다. API 서버, worker, tool calling, memory, eval, observability, security, deployment 구조를 한 프로젝트 안에서 분리해 운영 가능한 Agent 시스템으로 확장할 수 있게 한다.

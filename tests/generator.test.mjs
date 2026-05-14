@@ -156,6 +156,7 @@ function inflateEntry(compressedData, compressionMethod) {
 
 function assertGeneratedArchiveIsClean(files) {
   const names = files.map((entry) => entry.name);
+  assert.ok(names.includes("README.en.md"));
   assert.ok(names.includes("src/index.ts"));
   assert.ok(names.includes("src/api/healthcheck.ts"));
   assert.ok(names.includes("src/workers/queue.ts"));

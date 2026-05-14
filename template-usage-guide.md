@@ -1,5 +1,7 @@
 # Template Usage Guide
 
+한국어가 기본 문서입니다. 영어판은 [template-usage-guide.en.md](template-usage-guide.en.md)를 참고하세요.
+
 ## 1. 준비
 
 Node.js 18 이상을 설치한다. 이 저장소의 생성 스크립트는 별도 npm 패키지 없이 Node.js 기본 기능만 사용한다.

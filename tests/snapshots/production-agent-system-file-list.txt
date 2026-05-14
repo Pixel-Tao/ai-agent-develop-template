@@ -48,6 +48,7 @@ observability/redaction-policy.md
 observability/tracing-policy.md
 package-lock.json
 package.json
+README.en.md
 README.md
 scripts/validate-structure.mjs
 scripts/validate-tools.mjs
