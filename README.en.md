@@ -3,69 +3,188 @@
 Korean is the default documentation language. This file is the English companion for [README.md](README.md).
 See [docs/localization.en.md](docs/localization.en.md) for the documentation language policy.
 
-This repository provides reusable project templates that help AI agents quickly understand a project's goals, structure, roles, working state, and collaboration rules. It is not product code; it is a starting structure that can be copied into different projects.
+This repository provides project templates that help AI agents quickly understand a project's goals, structure, roles, working state, and collaboration rules. It is not a product-code repository; it provides AI-agent-friendly starting structures that can be copied into new or existing projects.
+
+The repository currently includes 10 templates, a project zip generator, a template validator, generator regression tests, Korean source documentation, and English sidecar documentation.
+
+## Scope
+
+- AI-agent working structures for different project types
+- Agent entrypoints based on `AGENTS.md`, `CLAUDE.md`, `INIT.md`, and `manifest.yaml`
+- Document skeletons for requirements, design, tasks, decisions, and state tracking
+- Initial source-material intake through `inputs/`
+- Command, verification, and evidence tracking through `harness/`
+- Common skills and template-specific skills
+- Project zip generation and template variable replacement
+- Validation for template structure, YAML, placeholders, and English companion documents
+- Golden snapshot regression testing for generated `production-agent-system` projects
 
 ## Requirements
 
-- Node.js 18 or later.
-- Project archives are created with `scripts/create-project.mjs`.
-- Project names may be free-form, but path-unsafe filename characters are rejected.
+- Node.js 18 or later
+- The default generator and validator run without additional npm dependencies.
+- Projects generated from `production-agent-system` need TypeScript development dependencies installed before build and test commands can run.
 
 ## Quick Start
 
-Interactive mode:
-
-```bash
-node scripts/create-project.mjs
-```
-
-Command mode:
-
-```bash
-node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
-```
-
-The command creates `my-project.zip` in the repository root. Files are placed at the archive root, not inside an extra `my-project/` directory.
-
-## Validation
-
-Validate template registry entries, required files, YAML basics, template ids, placeholders, and generator configuration:
-
-```bash
-npm run validate
-```
-
-List templates known to the generator:
+List available templates:
 
 ```bash
 node scripts/create-project.mjs --list
 ```
 
-Run the production-agent-system generator regression test:
+Create a project zip interactively:
+
+```bash
+node scripts/create-project.mjs
+```
+
+Create a project zip with explicit values:
+
+```bash
+node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
+```
+
+Create a production AI Agent system project:
+
+```bash
+node scripts/create-project.mjs --template production-agent-system --project-name sample-agent --owner-name "project-owner"
+```
+
+The output is `<project-name>.zip` in the repository root. Files are placed directly at the archive root, without an extra top-level project folder. Date placeholders are automatically replaced with the current `YYYY-MM-DD` value.
+
+Use `--force` only when you want to overwrite an existing zip with the same name.
+
+## Templates
+
+| Template ID | Use case | Key traits | Recommended for |
+|---|---|---|---|
+| `greenfield-basic` | New small projects | Basic requirements, design, task, and state docs | Developers, Tech Leads |
+| `existing-project-onboarding` | Existing codebases | Codebase discovery, risk areas, convention preservation | Developers, Tech Leads |
+| `large-team-collaboration` | Larger role-based teams | Router AGENTS, role-based agents, RACI, workflows | PMs, Tech Leads, QA, DevOps |
+| `legacy-modernization` | Legacy improvement or migration | Behavior preservation, characterization tests, rollback planning | Tech Leads, maintenance teams |
+| `mvp-prototype` | Fast validation and MVPs | Lightweight docs, experiment planning, feedback tracking | PMs, founders, developers |
+| `monorepo-multiservice` | Monorepos and multi-service systems | Service/package ownership and dependency management | Platform, DevOps |
+| `security-regulated` | Security or compliance-heavy projects | Security review, audit evidence, approvals | Security, Compliance, Backend |
+| `maintenance-operations` | Operating service maintenance | Runbooks, incident logs, release/rollback | SRE, DevOps, QA |
+| `ai-data-project` | AI/data/LLM projects | Data, prompts, evaluation, experiment tracking | ML Engineers, Data Scientists |
+| `production-agent-system` | Production AI Agent systems | Runtime, tool calling, memory, evals, tracing, security, API/worker deploy | AI Platform, Backend, DevOps |
+
+See [decision-guide.en.md](decision-guide.en.md) for detailed selection guidance.
+
+## Recommended Workflow
+
+1. Choose a template with [decision-guide.en.md](decision-guide.en.md).
+2. Create a zip with `node scripts/create-project.mjs`.
+3. Extract the generated zip into the real project location.
+4. Add planning docs, notes, draft requirements, sketches, and reference links under `inputs/`.
+5. Ask the agent to run `init` or `/init`.
+6. The agent reads `INIT.md`, `AGENTS.md`, `manifest.yaml`, and `harness/`, then runs the initial interview and state setup.
+7. Record implementation, verification, review, and release evidence in `harness/evidence-log.md` and `docs/09_agent_state/`.
+
+## Generated Project Structure
+
+| Path | Purpose |
+|---|---|
+| `README.md` | Purpose and usage of the generated project |
+| `README.en.md` | English companion document |
+| `AGENTS.md` | Agent working rules and priorities |
+| `CLAUDE.md` | Entry instructions for Claude-family agents |
+| `INIT.md` | First-run initialization procedure |
+| `manifest.yaml` | Project and template metadata |
+| `template.yaml` | Template definition and required files |
+| `validation-checklist.md` | Post-generation checklist |
+| `inputs/` | Initial development materials and references |
+| `docs/` | Requirements, design, tasks, decisions, and state docs |
+| `skills/` | Task-specific skills for agents |
+| `harness/` | Commands, verification matrix, and evidence log |
+
+Some templates add domain folders such as `agents/`, `workflows/`, `security/`, `operations/`, `evals/`, or `deploy/`.
+
+## Production Agent System
+
+`production-agent-system` is an executable template for building real AI Agent services. It includes a TypeScript skeleton in addition to documentation structure.
+
+Included capabilities:
+
+- Agent runtime and run lifecycle
+- API server, `/healthz`, `/agent/run`
+- Background worker queue
+- Tool registry, schema validation, permissions, and approval gates
+- Memory namespaces, checkpoints, and write policies
+- Eval datasets, scorers, and eval runner
+- Traces, structured logs, metrics, audit events, and redaction
+- Data classification, secret redaction, prompt-injection checks, and security policy
+- Dockerfile, Docker Compose, env validation, and healthcheck
+- Generator golden snapshot regression coverage
+
+Common commands inside a generated project:
+
+```bash
+npm install
+npm run validate:structure
+npm run build
+npm run test
+npm run validate:tools
+npm run eval:smoke
+npm run eval
+npm run docker:build
+```
+
+The default skeleton uses a mock provider, so basic build, tests, and smoke evals can run without an API key. For production use, replace the provider, memory store, observability sink, secret handling, and deployment environment according to the project requirements.
+
+## Repository Validation
+
+Validate all templates from the repository root:
+
+```bash
+npm run validate
+```
+
+Validation checks:
+
+- `templates-index.yaml` matches the actual `templates/` directories
+- Required files exist for each template
+- IDs match across `manifest.yaml`, `template.yaml`, and `templates-index.yaml`
+- YAML has a valid basic structure
+- Unsupported `{{PLACEHOLDER}}` values are not used
+- Required English companion documents exist
+- Generator list output matches the template index
+
+Run the generated `production-agent-system` snapshot test:
 
 ```bash
 npm run test:generator
 ```
 
-GitHub Actions runs the same validation workflow.
+The GitHub Actions workflow in `.github/workflows/validate.yml` runs the same validation flow.
 
-## Templates
+## Scripts
 
-| Template ID | Use case | Key traits |
-|---|---|---|
-| `greenfield-basic` | New small projects | Basic AI-agent friendly project structure |
-| `existing-project-onboarding` | Existing codebases | Codebase discovery and risk analysis |
-| `large-team-collaboration` | Larger teams | Role-based agents, ownership, approvals |
-| `legacy-modernization` | Legacy improvement or migration | Behavior preservation and migration planning |
-| `mvp-prototype` | Fast MVPs | Lightweight planning and feedback loops |
-| `monorepo-multiservice` | Monorepos and multi-service systems | Service and package ownership |
-| `security-regulated` | Security or compliance-heavy projects | Audit, approvals, control mapping |
-| `maintenance-operations` | Operating services | Runbooks, incidents, releases |
-| `ai-data-project` | AI/data/LLM projects | Data, model, prompt, and evaluation docs |
-| `production-agent-system` | Production AI agent services | Runtime, tools, memory, evals, tracing, security, deployment |
+| Command | Description |
+|---|---|
+| `node scripts/create-project.mjs --list` | List templates available to the generator |
+| `node scripts/create-project.mjs` | Create a project zip interactively |
+| `node scripts/create-project.mjs --template <id> --project-name <name> --owner-name <owner>` | Create a project zip with explicit values |
+| `node scripts/validate-template.mjs` | Validate the template repository |
+| `npm run validate` | Run the validator |
+| `npm run test:generator` | Run the generated project snapshot test |
+| `node scripts/replace-template-variables.mjs --root <path> --variables-file <file> --apply` | Replace variables in an already copied project |
 
-## Language Policy
+See [scripts/README.en.md](scripts/README.en.md) for details.
 
-- Korean documentation is the source of truth.
-- English companion files use the `.en.md` suffix.
-- New top-level guides and template entrypoint READMEs should include both Korean and English versions.
+## Documentation Language Policy
+
+- Korean documentation is the default and acts as the source of truth.
+- English documentation is provided as `.en.md` sidecar files in the same location.
+- Root guides and template entrypoint READMEs are maintained in both Korean and English.
+- Detailed domain docs, skill examples, and checklists remain Korean by default; add `.en.md` files in the same location when English coverage is needed.
+
+## Related Documents
+
+- [decision-guide.en.md](decision-guide.en.md): template selection guide
+- [template-usage-guide.en.md](template-usage-guide.en.md): post-generation usage flow
+- [template-notes.md](template-notes.md): template design notes
+- [common/README.en.md](common/README.en.md): common files, documents, and skills
+- [scripts/README.en.md](scripts/README.en.md): generation, validation, and replacement scripts
+- [docs/localization.en.md](docs/localization.en.md): documentation language policy

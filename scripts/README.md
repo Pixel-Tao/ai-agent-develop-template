@@ -37,7 +37,7 @@ node scripts/create-project.mjs --template greenfield-basic --project-name my-pr
 node scripts/create-project.mjs --list
 ```
 
-Run the production-agent-system generator regression test:
+`production-agent-system` 생성 결과 회귀 테스트를 실행한다.
 
 ```bash
 npm run test:generator

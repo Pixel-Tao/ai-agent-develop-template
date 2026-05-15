@@ -3,91 +3,188 @@
 한국어가 기본 문서입니다. 영어판은 [README.en.md](README.en.md)를 참고하세요.
 문서 언어 정책은 [docs/localization.md](docs/localization.md)에 정리되어 있습니다.
 
-AI Agent가 개발 프로젝트의 목표, 구조, 역할, 작업 상태, 협업 규칙을 빠르게 이해하도록 돕는 템플릿 저장소다. 실제 제품 코드가 아니라 여러 프로젝트에 복사해서 쓰는 시작 구조를 제공한다.
+AI Agent가 개발 프로젝트의 목표, 구조, 역할, 작업 상태, 협업 규칙을 빠르게 이해하도록 돕는 프로젝트 템플릿 저장소입니다. 실제 제품 코드 저장소가 아니라, 새 프로젝트나 기존 프로젝트에 복사해 쓸 수 있는 Agent 친화 개발 구조를 제공합니다.
 
-## Requirements
+현재 저장소는 10개 템플릿, 프로젝트 zip 생성기, 템플릿 검증기, 생성 결과 회귀 테스트, 한국어 기본 문서와 영어 sidecar 문서 체계를 포함합니다.
 
-- Node.js 18 이상이 필요하다.
-- 새 프로젝트 zip 생성은 루트의 `scripts/create-project.mjs` 하나로 처리한다.
-- 프로젝트명은 자유롭게 입력할 수 있지만 파일명/경로에 사용할 수 없는 문자는 허용하지 않는다.
+## 제공 범위
 
-## 빠른 사용법
+- 프로젝트 유형별 AI Agent 작업 구조
+- `AGENTS.md`, `CLAUDE.md`, `INIT.md`, `manifest.yaml` 기반 Agent 진입점
+- 요구사항, 설계, 작업, 의사결정, 상태 기록을 위한 문서 골격
+- `inputs/` 기반 초기 자료 수집 흐름
+- `harness/` 기반 실행 명령, 검증 기준, 증거 로그
+- 공통 Skill과 템플릿별 Skill 구조
+- 프로젝트 zip 생성 스크립트와 변수 치환
+- 템플릿 구조, YAML, placeholder, 영어 companion 문서 검증
+- `production-agent-system` 생성 결과 golden snapshot 테스트
 
-대화형 실행:
+## 요구사항
 
-```bash
-node scripts/create-project.mjs
-```
+- Node.js 18 이상
+- 별도 npm 의존성 없이 기본 생성기와 검증기를 실행할 수 있습니다.
+- `production-agent-system`으로 생성한 프로젝트는 TypeScript 개발 의존성을 설치해야 빌드와 테스트를 실행할 수 있습니다.
 
-값을 직접 전달해서 실행:
+## 빠른 시작
 
-```bash
-node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
-```
-
-실행 결과로 저장소 루트에 `my-project.zip`이 생성된다. 압축 파일 안에는 추가 `my-project/` 폴더를 만들지 않고 프로젝트 파일이 바로 들어간다. 날짜는 입력하지 않으며 실행일 기준 `YYYY-MM-DD` 값으로 자동 치환된다.
-
-## 검증
-
-템플릿 인덱스, 필수 파일, YAML 기본 구조, template id 정합성, 허용되지 않은 placeholder를 검증한다.
-
-```bash
-node scripts/validate-template.mjs
-```
-
-생성 스크립트가 인식하는 템플릿 목록은 다음 명령으로 확인한다. 이 결과는 `templates-index.yaml`과 일치해야 한다.
+사용 가능한 템플릿을 확인합니다.
 
 ```bash
 node scripts/create-project.mjs --list
 ```
 
-`production-agent-system` 생성 결과는 golden snapshot 테스트로도 검증한다.
+대화형으로 프로젝트 zip을 생성합니다.
 
 ```bash
-npm run test:generator
+node scripts/create-project.mjs
 ```
 
-GitHub Actions의 `.github/workflows/validate.yml`에서도 같은 검증과 생성 프로젝트 smoke 검증을 실행한다.
+값을 직접 전달해 생성합니다.
+
+```bash
+node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
+```
+
+프로덕션 AI Agent 시스템 템플릿을 생성합니다.
+
+```bash
+node scripts/create-project.mjs --template production-agent-system --project-name sample-agent --owner-name "project-owner"
+```
+
+결과물은 저장소 루트의 `<project-name>.zip`입니다. zip 내부에는 추가 상위 폴더 없이 프로젝트 파일이 바로 들어갑니다. 날짜 placeholder는 실행일 기준 `YYYY-MM-DD`로 자동 치환됩니다.
+
+기존 zip을 덮어써야 할 때만 `--force`를 추가합니다.
 
 ## 템플릿 목록
 
 | 템플릿 ID | 사용 상황 | 주요 특징 | 추천 대상 |
 |---|---|---|---|
-| greenfield-basic | 신규 소규모 프로젝트 | 단일 Agent 지침, 기본 요구사항/설계/작업 문서 | 개발자, Tech Lead |
-| existing-project-onboarding | 기존 코드베이스 투입 | 코드 분석, 위험 영역, 기존 규칙 보존 | 개발자, Tech Lead |
-| large-team-collaboration | 역할이 나뉜 대규모 협업 | Router AGENTS, 역할별 Agent, RACI, workflow | PM, Tech Lead, QA, DevOps |
-| legacy-modernization | 레거시 개선/마이그레이션 | 동작 보존, characterization test, rollback | Tech Lead, 유지보수 팀 |
-| mvp-prototype | 빠른 검증과 MVP | 최소 문서, 실험, 피드백 기록 | PM, 창업자, 개발자 |
-| monorepo-multiservice | 모노레포/멀티서비스 | 서비스/패키지 소유권, 의존성 관리 | Platform, DevOps |
-| security-regulated | 보안/규제 요구 프로젝트 | 보안 검토, 감사 증적, 승인 기록 | Security, Compliance, Backend |
-| maintenance-operations | 운영 서비스 유지보수 | runbook, incident log, release/rollback | SRE, DevOps, QA |
-| ai-data-project | AI/데이터/LLM 프로젝트 | 데이터, 프롬프트, 평가, 실험 추적 | ML Engineer, Data Scientist |
-| production-agent-system | 프로덕션 AI Agent 시스템 | runtime, tool calling, memory, eval, tracing, security, API/worker deploy | AI Platform, Backend, DevOps |
+| `greenfield-basic` | 신규 소규모 프로젝트 | 기본 요구사항, 설계, 작업, 상태 문서 | 개발자, Tech Lead |
+| `existing-project-onboarding` | 기존 코드베이스 투입 | 코드베이스 조사, 위험 영역, 기존 규칙 보존 | 개발자, Tech Lead |
+| `large-team-collaboration` | 역할이 나뉜 대규모 협업 | Router AGENTS, 역할별 Agent, RACI, workflow | PM, Tech Lead, QA, DevOps |
+| `legacy-modernization` | 레거시 개선/마이그레이션 | 동작 보존, characterization test, rollback 계획 | Tech Lead, 유지보수 팀 |
+| `mvp-prototype` | 빠른 검증과 MVP | 최소 문서, 실험 계획, 피드백 기록 | PM, 창업자, 개발자 |
+| `monorepo-multiservice` | 모노레포/멀티서비스 | 서비스/패키지 소유권, 의존성 관리 | Platform, DevOps |
+| `security-regulated` | 보안/규제 요구 프로젝트 | 보안 검토, 감사 증적, 승인 기록 | Security, Compliance, Backend |
+| `maintenance-operations` | 운영 서비스 유지보수 | runbook, incident log, release/rollback | SRE, DevOps, QA |
+| `ai-data-project` | AI/데이터/LLM 프로젝트 | 데이터, 프롬프트, 평가, 실험 추적 | ML Engineer, Data Scientist |
+| `production-agent-system` | 프로덕션 AI Agent 시스템 | runtime, tool calling, memory, eval, tracing, security, API/worker deploy | AI Platform, Backend, DevOps |
 
-## 선택 기준
+자세한 선택 기준은 [decision-guide.md](decision-guide.md)를 참고하세요.
 
-- 새 프로젝트면 `greenfield-basic`부터 시작한다.
-- 기존 코드가 있으면 `existing-project-onboarding`으로 먼저 분석한다.
-- 역할, 승인, 인수인계가 중요하면 `large-team-collaboration`을 사용한다.
-- 보안, 운영, AI/데이터처럼 도메인 통제가 있으면 해당 전문 템플릿을 선택하거나 병합한다.
-- 실제 Agent API 서버, worker queue, tool calling, memory, eval, tracing, Docker 배포가 필요하면 `production-agent-system`을 선택한다.
+## 추천 사용 흐름
 
-## 생성기가 하는 일
+1. [decision-guide.md](decision-guide.md)로 프로젝트 상황에 맞는 템플릿을 고릅니다.
+2. `node scripts/create-project.mjs`로 zip을 생성합니다.
+3. 생성된 zip을 실제 프로젝트 위치에 풉니다.
+4. 기획서, 메모, 요구사항 초안, 화면 스케치, 참고 링크를 `inputs/`에 추가합니다.
+5. Agent에게 `init`, `/init`, `초기화` 중 하나를 요청합니다.
+6. Agent가 `INIT.md`, `AGENTS.md`, `manifest.yaml`, `harness/`를 읽고 초기 인터뷰와 작업 상태 정리를 진행합니다.
+7. 구현, 검증, 리뷰, 릴리즈 증거를 `harness/evidence-log.md`와 `docs/09_agent_state/`에 남깁니다.
 
-1. 템플릿을 선택한다.
-2. 임시 폴더에 템플릿을 복사한다.
-3. `{{PROJECT_ID}}`, `{{PROJECT_NAME}}`, `{{OWNER_NAME}}`, `{{YYYY-MM-DD}}` 등을 치환한다.
-4. 프로젝트 파일을 zip 최상위에 넣어 루트에 `project-name.zip`을 만든다.
-5. 임시 폴더를 정리한다.
+## 생성 프로젝트의 기본 구조
 
-## 초기 개발 문서
+| 경로 | 역할 |
+|---|---|
+| `README.md` | 생성 프로젝트의 목적과 사용법 |
+| `README.en.md` | 영어 companion 문서 |
+| `AGENTS.md` | Agent 작업 규칙과 우선순위 |
+| `CLAUDE.md` | Claude 계열 Agent를 위한 진입 지침 |
+| `INIT.md` | 최초 초기화 절차 |
+| `manifest.yaml` | 프로젝트와 템플릿 메타데이터 |
+| `template.yaml` | 템플릿 정의와 필수 파일 |
+| `validation-checklist.md` | 생성 직후 확인할 체크리스트 |
+| `inputs/` | 초기 개발 자료와 참고 문서 |
+| `docs/` | 요구사항, 설계, 작업, 의사결정, 상태 문서 |
+| `skills/` | Agent가 사용할 작업별 Skill |
+| `harness/` | 명령, 검증 매트릭스, evidence log |
 
-각 템플릿에는 `inputs/` 공간이 있다. 사용자는 기획서, 메모, 요구사항 초안, 화면 스케치, 참고 링크를 `inputs/initial-development-docs/` 또는 `inputs/references/`에 넣을 수 있다. Agent는 이 자료를 확정 요구사항으로 보지 않고, 사실/추정/충돌/질문으로 나눈 뒤 Project Discovery Interview를 통해 목표, 기능, 기술 방향, 콘텐츠, 제약을 구체화한다.
+템플릿별로 `agents/`, `workflows/`, `security/`, `operations/`, `evals/`, `deploy/` 같은 도메인 폴더가 추가될 수 있습니다.
 
-## 하네스 엔지니어링
+## Production Agent System
 
-각 템플릿에는 harness/ 폴더와 harness-engineering Skill이 포함된다. Agent는 구현 전에 실행 명령, 검증 기준, 증거 로그, 산출물 위치를 확인하고 작업 결과를 harness/evidence-log.md에 남긴다. 이 구조는 테스트, 리뷰, 릴리즈, 운영 대응을 반복 가능하게 만들기 위한 안전장치다.
+`production-agent-system`은 실제 AI Agent 서비스를 만들기 위한 실행형 템플릿입니다. 문서 골격뿐 아니라 TypeScript 기반 skeleton을 포함합니다.
 
-## Init 시작 방식
+포함 범위:
 
-생성된 프로젝트에서는 별도 스크립트 없이 Agent에게 `init`, `/init`, `초기화` 중 하나를 요청한다. Agent는 루트의 INIT.md를 읽고 inputs/ 확인, 문서 기반 또는 대화형 인터뷰, harness 초기화를 진행한다. 인터뷰 질문은 템플릿 성격에 맞게 다르며, 신규 개발, 기존 프로젝트 온보딩, 대규모 협업, 레거시 개선, MVP, 모노레포, 보안/규제, 운영, AI/데이터 상황별로 우선 확인할 내용이 분리되어 있다. 초기 설정이 완료되면 INIT.md는 docs/09_agent_state/archive/init/로 이동되어 다시 자동 실행되지 않는다.
+- Agent runtime과 run lifecycle
+- API server, `/healthz`, `/agent/run`
+- background worker queue
+- tool registry, schema validation, permission, approval gate
+- memory namespace, checkpoint, write policy
+- eval dataset, scorer, eval runner
+- trace, structured log, metric, audit event, redaction
+- data classification, secret redaction, prompt injection check, security policy
+- Dockerfile, docker compose, env validation, healthcheck
+- generator golden snapshot 회귀 테스트 대상
+
+생성한 프로젝트 안에서 주로 사용하는 명령:
+
+```bash
+npm install
+npm run validate:structure
+npm run build
+npm run test
+npm run validate:tools
+npm run eval:smoke
+npm run eval
+npm run docker:build
+```
+
+mock provider 기반으로 API key 없이 기본 빌드, 테스트, smoke eval을 실행할 수 있게 구성되어 있습니다. 실제 운영 적용 시에는 provider, memory store, observability sink, secret 관리, 배포 환경을 프로젝트 요구에 맞게 교체해야 합니다.
+
+## 저장소 검증
+
+루트 저장소에서 템플릿 전체를 검증합니다.
+
+```bash
+npm run validate
+```
+
+검증 항목:
+
+- `templates-index.yaml`과 실제 `templates/` 디렉터리 일치
+- 각 템플릿의 필수 파일 존재
+- `manifest.yaml`, `template.yaml`, `templates-index.yaml`의 ID 정합성
+- YAML 기본 구조
+- 허용되지 않은 `{{PLACEHOLDER}}` 사용 여부
+- 필수 영어 companion 문서 존재 여부
+- 생성기 목록과 템플릿 인덱스 일치
+
+`production-agent-system` 생성 결과를 snapshot으로 검증합니다.
+
+```bash
+npm run test:generator
+```
+
+GitHub Actions의 `.github/workflows/validate.yml`도 같은 검증 흐름을 실행합니다.
+
+## 스크립트
+
+| 명령 | 설명 |
+|---|---|
+| `node scripts/create-project.mjs --list` | 생성 가능한 템플릿 목록 출력 |
+| `node scripts/create-project.mjs` | 대화형 프로젝트 zip 생성 |
+| `node scripts/create-project.mjs --template <id> --project-name <name> --owner-name <owner>` | 명령형 프로젝트 zip 생성 |
+| `node scripts/validate-template.mjs` | 템플릿 저장소 검증 |
+| `npm run validate` | 검증 스크립트 실행 |
+| `npm run test:generator` | 생성 결과 snapshot 테스트 |
+| `node scripts/replace-template-variables.mjs --root <path> --variables-file <file> --apply` | 이미 복사된 프로젝트의 변수 치환 |
+
+자세한 내용은 [scripts/README.md](scripts/README.md)를 참고하세요.
+
+## 문서 언어 정책
+
+- 한국어 문서가 기본이며 원본 역할을 합니다.
+- 영어 문서는 같은 위치의 `.en.md` sidecar 파일로 제공합니다.
+- 루트 가이드와 각 템플릿의 진입점 README는 한국어와 영어판을 함께 유지합니다.
+- 세부 도메인 문서, Skill 예시, 체크리스트는 한국어를 기본으로 유지하되 필요할 때 같은 위치에 `.en.md`를 추가합니다.
+
+## 관련 문서
+
+- [decision-guide.md](decision-guide.md): 템플릿 선택 기준
+- [template-usage-guide.md](template-usage-guide.md): 생성 후 사용 절차
+- [template-notes.md](template-notes.md): 템플릿 설계 메모
+- [common/README.md](common/README.md): 공통 파일, 문서, Skill 구조
+- [scripts/README.md](scripts/README.md): 생성/검증/치환 스크립트
+- [docs/localization.md](docs/localization.md): 문서 언어 정책
