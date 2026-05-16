@@ -18,6 +18,22 @@ const requiredTemplateFiles = [
   "harness/verification-matrix.md",
   "harness/evidence-log.md",
   "skills/skills-index.yaml",
+  "delivery/sanitize-policy.yaml",
+  "delivery/delivery-manifest.yaml",
+  "delivery/delivery-checklist.md",
+  "delivery/archive-checklist.md",
+  "delivery/purge-checklist.md",
+  ".deliveryignore",
+  ".agentignore",
+];
+
+const requiredRootFiles = [
+  "LICENSE",
+  "CONTRIBUTING.md",
+  "SECURITY.md",
+  "CHANGELOG.md",
+  "docs/roadmap.md",
+  "docs/template-authoring-guide.md",
 ];
 
 const requiredEnglishCompanionFiles = [
@@ -27,7 +43,25 @@ const requiredEnglishCompanionFiles = [
   ["scripts/README.md", "scripts/README.en.md"],
   ["common/README.md", "common/README.en.md"],
   ["docs/localization.md", "docs/localization.en.md"],
+  ["common/delivery/README.md", "common/delivery/README.en.md"],
+  ["common/delivery/delivery-sanitization-guide.md", "common/delivery/delivery-sanitization-guide.en.md"],
 ];
+
+const requiredManifestSections = {
+  lifecycle: [
+    "status",
+    "allowed_statuses",
+  ],
+  delivery: [
+    "sanitization_required",
+    "policy",
+    "manifest",
+    "exclude_file",
+    "agent_ignore_file",
+    "package_output",
+    "archive_output",
+  ],
+};
 
 const allowedTemplateVariables = new Set([
   "OWNER_NAME",
@@ -388,6 +422,14 @@ function validateEnglishCompanionDocs(root, errors) {
   }
 }
 
+function validateRootFiles(root, errors) {
+  for (const requiredFile of requiredRootFiles) {
+    if (!fs.existsSync(path.join(root, requiredFile))) {
+      reportError(errors, requiredFile, "Required repository file is missing.");
+    }
+  }
+}
+
 function validateRequiredFiles(root, template, errors) {
   const templatePath = path.join(root, template.path ?? `templates/${template.id}`);
   const templateRelativePath = path.relative(root, templatePath);
@@ -439,6 +481,56 @@ function validateTemplateIds(root, template, errors) {
       path.relative(root, templateYamlPath),
       `template.yaml id '${templateYamlId}' does not match templates-index.yaml id '${template.id}'.`,
     );
+  }
+}
+
+function hasNestedKey(filePath, parentKey, childKey) {
+  const lines = fs.readFileSync(filePath, "utf8").split(/\r?\n/);
+  let parentIndent = null;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+
+    const indent = line.match(/^\s*/)[0].length;
+    if (parentIndent !== null && indent <= parentIndent) {
+      parentIndent = null;
+    }
+
+    if (parentIndent === null) {
+      if (new RegExp(`^${parentKey}:\\s*(.*)$`).test(trimmed)) {
+        parentIndent = indent;
+      }
+      continue;
+    }
+
+    if (new RegExp(`^${childKey}:\\s*(.*)$`).test(trimmed)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function validateManifestDeliveryConfig(root, template, errors) {
+  const templatePath = path.join(root, template.path ?? `templates/${template.id}`);
+  const manifestPath = path.join(templatePath, "manifest.yaml");
+  if (!fs.existsSync(manifestPath)) {
+    return;
+  }
+
+  for (const [section, keys] of Object.entries(requiredManifestSections)) {
+    for (const key of keys) {
+      if (!hasNestedKey(manifestPath, section, key)) {
+        reportError(
+          errors,
+          path.relative(root, manifestPath),
+          `manifest.yaml is missing ${section}.${key}.`,
+        );
+      }
+    }
   }
 }
 
@@ -507,11 +599,13 @@ function main() {
   validateCreateProjectList(root, templates, errors);
   validateGeneratorSnapshotHarness(root, errors);
   validateEnglishCompanionDocs(root, errors);
+  validateRootFiles(root, errors);
 
   let yamlFileCount = 1;
   for (const template of templates) {
     validateRequiredFiles(root, template, errors);
     validateTemplateIds(root, template, errors);
+    validateManifestDeliveryConfig(root, template, errors);
     validatePlaceholders(root, template, errors);
     yamlFileCount += validateYamlFiles(root, template, errors);
   }

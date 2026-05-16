@@ -5,7 +5,7 @@ See [docs/localization.en.md](docs/localization.en.md) for the documentation lan
 
 This repository provides project templates that help AI agents quickly understand a project's goals, structure, roles, working state, and collaboration rules. It is not a product-code repository; it provides AI-agent-friendly starting structures that can be copied into new or existing projects.
 
-The repository currently includes 10 templates, a project zip generator, a template validator, generator regression tests, Korean source documentation, and English sidecar documentation.
+The repository currently includes 10 templates, a project zip generator, Delivery Sanitization, a template validator, generator regression tests, Korean source documentation, and English sidecar documentation.
 
 ## Scope
 
@@ -16,6 +16,7 @@ The repository currently includes 10 templates, a project zip generator, a templ
 - Command, verification, and evidence tracking through `harness/`
 - Common skills and template-specific skills
 - Project zip generation and template variable replacement
+- Delivery Sanitization for clean customer packages and internal archives
 - Validation for template structure, YAML, placeholders, and English companion documents
 - Golden snapshot regression testing for generated `production-agent-system` projects
 
@@ -39,10 +40,10 @@ Create a project zip interactively:
 node scripts/create-project.mjs
 ```
 
-Create a project zip with explicit values:
+Create a project zip with explicit values. `--project-id` is used for filenames and manifest ids, while `--project-name` is the display name:
 
 ```bash
-node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
+node scripts/create-project.mjs --template greenfield-basic --project-id my-project --project-name "My Project" --owner-name "project-owner"
 ```
 
 Create a production AI Agent system project:
@@ -98,8 +99,23 @@ See [decision-guide.en.md](decision-guide.en.md) for detailed selection guidance
 | `docs/` | Requirements, design, tasks, decisions, and state docs |
 | `skills/` | Task-specific skills for agents |
 | `harness/` | Commands, verification matrix, and evidence log |
+| `delivery/` | Delivery policy, manifest, checklists, and reports |
+| `.deliveryignore` | Exclusion rules for delivery packages |
+| `.agentignore` | Active-context exclusion rules after delivery preparation |
 
 Some templates add domain folders such as `agents/`, `workflows/`, `security/`, `operations/`, `evals/`, or `deploy/`.
+
+## Delivery Sanitization
+
+After development is complete, a customer delivery package may need to include only source code, tests, required documentation, licenses, and deployment artifacts while excluding Agent operational materials. This repository provides a workflow that creates a separate clean package and internal archive without deleting the original working repository.
+
+```bash
+node scripts/archive-agent-workspace.mjs --policy delivery/sanitize-policy.yaml --output dist/internal-archive
+node scripts/create-delivery-package.mjs --policy delivery/sanitize-policy.yaml --output dist/delivery
+node scripts/validate-delivery-clean.mjs --package dist/delivery/<package>.zip --policy delivery/sanitize-policy.yaml
+```
+
+The default policy excludes Agent operational materials such as `AGENTS.md`, `CLAUDE.md`, `INIT.md`, `skills/`, `harness/`, `inputs/`, and `docs/09_agent_state/` from delivery packages. Materials with possible contractual, audit, security, or license retention obligations are archived or marked for review rather than deleted.
 
 ## Production Agent System
 
@@ -166,9 +182,16 @@ The GitHub Actions workflow in `.github/workflows/validate.yml` runs the same va
 | `node scripts/create-project.mjs --list` | List templates available to the generator |
 | `node scripts/create-project.mjs` | Create a project zip interactively |
 | `node scripts/create-project.mjs --template <id> --project-name <name> --owner-name <owner>` | Create a project zip with explicit values |
+| `node scripts/create-project.mjs --template <id> --project-id <id> --project-name <name> --owner-name <owner>` | Create a project zip with separate id and display name |
 | `node scripts/validate-template.mjs` | Validate the template repository |
+| `node scripts/create-delivery-package.mjs --policy <file> --output <dir>` | Create a clean delivery package |
+| `node scripts/archive-agent-workspace.mjs --policy <file> --output <dir>` | Create an internal archive of Agent operational materials |
+| `node scripts/validate-delivery-clean.mjs --package <zip> --policy <file>` | Validate a clean delivery package |
+| `node scripts/apply-template.mjs --template <id> --target <dir> --dry-run` | Safely apply a template to an existing project |
 | `npm run validate` | Run the validator |
 | `npm run test:generator` | Run the generated project snapshot test |
+| `npm run test:generator:all` | Run smoke tests for all generated templates |
+| `npm run test:delivery` | Run delivery package tests for all templates |
 | `node scripts/replace-template-variables.mjs --root <path> --variables-file <file> --apply` | Replace variables in an already copied project |
 
 See [scripts/README.en.md](scripts/README.en.md) for details.
@@ -186,5 +209,6 @@ See [scripts/README.en.md](scripts/README.en.md) for details.
 - [template-usage-guide.en.md](template-usage-guide.en.md): post-generation usage flow
 - [template-notes.md](template-notes.md): template design notes
 - [common/README.en.md](common/README.en.md): common files, documents, and skills
+- [common/delivery/README.en.md](common/delivery/README.en.md): Delivery Sanitization policy and workflow
 - [scripts/README.en.md](scripts/README.en.md): generation, validation, and replacement scripts
 - [docs/localization.en.md](docs/localization.en.md): documentation language policy

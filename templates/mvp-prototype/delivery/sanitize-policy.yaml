@@ -1,0 +1,93 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+owner: "{{OWNER_NAME}}"
+
+mode: "delivery-sanitization"
+
+delivery:
+  package_mode: "source-only"
+  include_git_history: false
+  include_agent_artifacts: false
+  include_internal_logs: false
+
+rules:
+  default_action: "exclude_from_delivery"
+  preserve_source_code: true
+  preserve_required_licenses: true
+  preserve_required_security_docs: true
+  preserve_required_audit_evidence: false
+
+categories:
+  deliver:
+    description: "납품 패키지에 포함할 자료"
+    paths:
+      - README.md
+      - README.en.md
+      - docs/one-page-brief.md
+      - docs/mvp-scope.md
+      - docs/experiment-plan.md
+      - docs/user-feedback.md
+      - docs/project-definition-brief.md
+      - LICENSE
+      - NOTICE
+      - SECURITY.md
+
+  internal_archive:
+    description: "납품하지 않지만 내부 보관할 자료"
+    paths:
+      - AGENTS.md
+      - CLAUDE.md
+      - INIT.md
+      - skills/
+      - agents/
+      - workflows/
+      - harness/
+      - inputs/
+      - outputs/
+      - docs/09_agent_state/
+
+  purge_if_allowed:
+    description: "계약, 감사, 보안 정책상 보존 의무가 없을 때만 삭제 가능한 자료"
+    paths:
+      - tmp/
+      - .cache/
+      - local-agent-traces/
+      - generated-debug-logs/
+
+  never_delete_without_review:
+    description: "검토 없이 삭제하면 안 되는 자료"
+    paths:
+      - LICENSE
+      - NOTICE
+      - SECURITY.md
+      - compliance/
+      - security/
+      - audit/
+      - docs/08_decisions/
+      - deploy/
+      - infrastructure/
+
+review_required:
+  - Git history delivery
+  - audit evidence deletion
+  - security review log deletion
+  - license or NOTICE file exclusion
+  - customer-specific contractual delivery scope
+
+scan:
+  forbidden_paths:
+    - AGENTS.md
+    - CLAUDE.md
+    - INIT.md
+    - skills/
+    - harness/
+    - docs/09_agent_state/
+
+  suspicious_patterns:
+    - "prompt log"
+    - "agent run log"
+    - "tool call trace"
+    - "internal assumption"
+    - "handoff notes"
+
+  allowed_contexts: []

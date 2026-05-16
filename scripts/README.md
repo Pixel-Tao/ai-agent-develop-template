@@ -20,6 +20,12 @@ node scripts/create-project.mjs
 node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
+프로젝트 id와 표시명을 분리할 경우:
+
+```bash
+node scripts/create-project.mjs --template greenfield-basic --project-id tao-crm --project-name "TAO CRM" --owner-name TAO
+```
+
 동작:
 
 1. 템플릿을 선택한다.
@@ -41,6 +47,29 @@ node scripts/create-project.mjs --list
 
 ```bash
 npm run test:generator
+```
+
+모든 템플릿 생성 smoke test와 delivery package test:
+
+```bash
+npm run test:generator:all
+npm run test:delivery
+```
+
+## Delivery Sanitization
+
+납품 전 Agent 운영자료를 제외한 clean package를 생성한다.
+
+```bash
+node scripts/archive-agent-workspace.mjs --policy delivery/sanitize-policy.yaml --output dist/internal-archive
+node scripts/create-delivery-package.mjs --policy delivery/sanitize-policy.yaml --output dist/delivery
+node scripts/validate-delivery-clean.mjs --package dist/delivery/project-delivery.zip --policy delivery/sanitize-policy.yaml
+```
+
+기존 프로젝트에 템플릿을 안전하게 적용할 때:
+
+```bash
+node scripts/apply-template.mjs --template existing-project-onboarding --target ../existing-project --dry-run
 ```
 
 ## 변수만 치환

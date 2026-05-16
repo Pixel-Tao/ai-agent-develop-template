@@ -11,10 +11,26 @@ agents:
       - agents/product-manager-agent.md
       - docs/02_architecture/architecture.md
       - docs/04_tasks/work-allocation.md
+      - docs/04_tasks/team-capacity.md
     collaborates_with:
       - tech-lead-agent
       - qa-agent
       - security-agent
+    authority:
+      can_decide:
+        - backlog ordering within approved scope
+        - requirement clarification wording
+      cannot_decide:
+        - technical architecture change
+        - security exception
+        - delivery scope change
+    approval_required:
+      - scope_change: tech-lead-agent
+      - release_scope_change: tech-lead-agent
+    handoff_to:
+      - tech-lead-agent
+      - documentation-agent
+
   - id: tech-lead-agent
     name: Tech Lead Agent
     path: agents/tech-lead-agent.md
@@ -27,10 +43,28 @@ agents:
       - agents/tech-lead-agent.md
       - docs/02_architecture/architecture.md
       - docs/04_tasks/work-allocation.md
+      - docs/04_tasks/team-capacity.md
     collaborates_with:
-      - tech-lead-agent
+      - product-manager-agent
       - qa-agent
       - security-agent
+    authority:
+      can_decide:
+        - internal architecture approach
+        - review standards
+        - technical task sequencing
+      cannot_decide:
+        - security exception without security-agent
+        - customer delivery scope without product-manager-agent
+    approval_required:
+      - security_exception: security-agent
+      - delivery_scope_change: product-manager-agent
+    handoff_to:
+      - frontend-agent
+      - backend-agent
+      - qa-agent
+      - devops-agent
+
   - id: frontend-agent
     name: Frontend Agent
     path: agents/frontend-agent.md
@@ -48,6 +82,20 @@ agents:
       - tech-lead-agent
       - qa-agent
       - security-agent
+    authority:
+      can_decide:
+        - component implementation details
+        - non-breaking UI state handling
+      cannot_decide:
+        - public API contract change
+        - authentication flow change
+    approval_required:
+      - api_contract_change: backend-agent
+      - auth_flow_change: security-agent
+    handoff_to:
+      - qa-agent
+      - documentation-agent
+
   - id: backend-agent
     name: Backend Agent
     path: agents/backend-agent.md
@@ -66,6 +114,22 @@ agents:
       - tech-lead-agent
       - qa-agent
       - security-agent
+    authority:
+      can_decide:
+        - internal service logic
+        - non-breaking API implementation
+      cannot_decide:
+        - public API contract change
+        - database schema change
+        - auth policy change
+    approval_required:
+      - api_contract_change: tech-lead-agent
+      - auth_change: security-agent
+      - db_schema_change: database-agent
+    handoff_to:
+      - qa-agent
+      - documentation-agent
+
   - id: database-agent
     name: Database Agent
     path: agents/database-agent.md
@@ -81,8 +145,22 @@ agents:
       - docs/04_tasks/work-allocation.md
     collaborates_with:
       - tech-lead-agent
-      - qa-agent
+      - backend-agent
       - security-agent
+    authority:
+      can_decide:
+        - index design
+        - migration implementation detail
+      cannot_decide:
+        - destructive migration without rollback
+        - data retention policy change
+    approval_required:
+      - destructive_migration: tech-lead-agent
+      - sensitive_data_change: security-agent
+    handoff_to:
+      - backend-agent
+      - qa-agent
+
   - id: qa-agent
     name: QA Agent
     path: agents/qa-agent.md
@@ -96,10 +174,25 @@ agents:
       - agents/qa-agent.md
       - docs/02_architecture/architecture.md
       - docs/04_tasks/work-allocation.md
+      - docs/05_quality/quality-gates.md
     collaborates_with:
       - tech-lead-agent
-      - qa-agent
+      - devops-agent
       - security-agent
+    authority:
+      can_decide:
+        - test coverage recommendation
+        - regression test scope
+      cannot_decide:
+        - release approval alone
+        - risk acceptance
+    approval_required:
+      - release_readiness: tech-lead-agent
+      - risk_acceptance: product-manager-agent
+    handoff_to:
+      - devops-agent
+      - documentation-agent
+
   - id: devops-agent
     name: DevOps Agent
     path: agents/devops-agent.md
@@ -118,6 +211,20 @@ agents:
       - tech-lead-agent
       - qa-agent
       - security-agent
+    authority:
+      can_decide:
+        - CI job implementation
+        - deployment script detail
+      cannot_decide:
+        - production release without approval
+        - secret handling exception
+    approval_required:
+      - production_release: tech-lead-agent
+      - secret_change: security-agent
+    handoff_to:
+      - qa-agent
+      - documentation-agent
+
   - id: security-agent
     name: Security Agent
     path: agents/security-agent.md
@@ -135,8 +242,23 @@ agents:
       - docs/04_tasks/work-allocation.md
     collaborates_with:
       - tech-lead-agent
+      - backend-agent
+      - devops-agent
+    authority:
+      can_decide:
+        - security review requirement
+        - sensitive data handling recommendation
+      cannot_decide:
+        - business risk acceptance
+        - audit evidence deletion
+    approval_required:
+      - risk_acceptance: product-manager-agent
+      - audit_evidence_change: tech-lead-agent
+    handoff_to:
+      - backend-agent
+      - devops-agent
       - qa-agent
-      - security-agent
+
   - id: documentation-agent
     name: Documentation Agent
     path: agents/documentation-agent.md
@@ -147,9 +269,22 @@ agents:
     must_read:
       - manifest.yaml
       - agents/documentation-agent.md
-      - docs/02_architecture/architecture.md
       - docs/04_tasks/work-allocation.md
+      - docs/08_decisions/decision-log.md
     collaborates_with:
+      - product-manager-agent
       - tech-lead-agent
       - qa-agent
-      - security-agent
+    authority:
+      can_decide:
+        - documentation structure
+        - wording that does not change scope
+      cannot_decide:
+        - requirement scope change
+        - release note approval
+    approval_required:
+      - requirement_change: product-manager-agent
+      - release_note_approval: tech-lead-agent
+    handoff_to:
+      - product-manager-agent
+      - qa-agent

@@ -1,0 +1,7 @@
+# Archived or finalized materials should not be used as active Agent context
+delivery/archive/
+dist/delivery/
+dist/internal-archive/
+docs/99_final_delivery/
+docs/09_agent_state/archive/
+.internal/

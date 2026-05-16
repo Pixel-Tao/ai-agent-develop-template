@@ -31,6 +31,15 @@ required_files:
   - harness/commands.md
   - harness/verification-matrix.md
 
+  - README.en.md
+  - delivery/sanitize-policy.yaml
+  - delivery/delivery-manifest.yaml
+  - delivery/delivery-checklist.md
+  - delivery/archive-checklist.md
+  - delivery/purge-checklist.md
+  - .deliveryignore
+  - .agentignore
+
 optional_files:
   - CLAUDE.md
   - harness/reports

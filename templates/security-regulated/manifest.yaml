@@ -42,3 +42,23 @@ rules:
   file_naming: lower-kebab-case
   date_format: YYYY-MM-DD
   language: Korean
+
+lifecycle:
+  status: "{{PROJECT_STATUS}}"
+  allowed_statuses:
+    - initializing
+    - active-development
+    - stabilization
+    - pre-delivery
+    - delivery-sanitization
+    - delivered
+    - archived
+
+delivery:
+  sanitization_required: true
+  policy: delivery/sanitize-policy.yaml
+  manifest: delivery/delivery-manifest.yaml
+  exclude_file: .deliveryignore
+  agent_ignore_file: .agentignore
+  package_output: dist/delivery
+  archive_output: dist/internal-archive

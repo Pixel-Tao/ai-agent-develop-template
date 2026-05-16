@@ -1,7 +1,16 @@
+.agentignore
+.deliveryignore
 .dockerignore
 .gitignore
 AGENTS.md
 CLAUDE.md
+delivery/archive-checklist.md
+delivery/delivery-checklist.md
+delivery/delivery-manifest.yaml
+delivery/purge-checklist.md
+delivery/README.md
+delivery/reports/.gitkeep
+delivery/sanitize-policy.yaml
 deploy/deployment.md
 deploy/docker-compose.yml
 deploy/Dockerfile
@@ -50,6 +59,10 @@ package-lock.json
 package.json
 README.en.md
 README.md
+scripts/archive-agent-workspace.mjs
+scripts/create-delivery-package.mjs
+scripts/delivery-utils.mjs
+scripts/validate-delivery-clean.mjs
 scripts/validate-structure.mjs
 scripts/validate-tools.mjs
 security/approval-policy.md

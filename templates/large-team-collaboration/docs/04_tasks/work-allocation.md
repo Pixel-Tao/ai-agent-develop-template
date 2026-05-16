@@ -6,5 +6,5 @@
 
 이 문서는 프로젝트 초기화 시 초안을 작성하고 작업 진행에 따라 갱신한다. AI Agent는 작업 전에 이 문서의 현재 상태를 확인하고, 불확실한 내용은 단정하지 않고 assumptions 또는 unknowns에 기록한다.
 
-| Task ID | 작업명 | 담당 역할 | 담당자 | 상태 | 우선순위 | 의존성 | 마감일 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| Task ID | 작업명 | Owner | Assignee | Role | Estimate | Capacity Impact | Reviewer | Approver | Status | Priority | Dependencies | Due |
+|---|---|---|---|---|---:|---:|---|---|---|---|---|---|

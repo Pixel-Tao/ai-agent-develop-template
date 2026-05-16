@@ -63,3 +63,15 @@ AI Agent는 Legacy Modernization 템플릿 기준으로 프로젝트 구조, 현
 ## Init 실행 규칙
 
 사용자가 init, /init, 초기화, 프로젝트 시작을 요청하면 루트의 INIT.md를 확인한다. INIT.md가 있으면 해당 문서를 읽고 초기 설정을 실행한다. INIT.md가 없고 docs/09_agent_state/archive/init/에 archived INIT이 있으면 초기 설정이 이미 완료된 것으로 보고 current-status.md를 먼저 확인하며, archived INIT을 자동으로 다시 실행하지 않는다.
+
+## Delivery Sanitization Rules
+
+프로젝트가 `pre-delivery`, `delivery-sanitization`, `delivered` 상태이면 Agent는 납품 정리 규칙을 따른다.
+
+1. 납품 패키지에는 Agent 운영자료를 포함하지 않는다.
+2. 삭제 전에는 `delivery/sanitize-policy.yaml`을 확인한다.
+3. 보존 의무가 있을 수 있는 자료는 삭제하지 않고 internal archive 대상으로 분류한다.
+4. 납품 패키지는 `scripts/create-delivery-package.mjs`로 생성한다.
+5. 생성 후 `scripts/validate-delivery-clean.mjs`를 실행한다.
+6. 검증하지 않은 납품본은 완료로 보고하지 않는다.
+7. 실제 저장소 파일 삭제는 명시적 정책과 승인 없이는 수행하지 않는다.

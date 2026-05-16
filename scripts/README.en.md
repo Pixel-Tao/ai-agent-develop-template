@@ -20,6 +20,12 @@ Command mode:
 node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
+Use separate project id and display name:
+
+```bash
+node scripts/create-project.mjs --template greenfield-basic --project-id tao-crm --project-name "TAO CRM" --owner-name TAO
+```
+
 The generator:
 
 1. Selects a template.
@@ -47,4 +53,27 @@ npm run validate
 
 ```bash
 npm run test:generator
+```
+
+Run all-template smoke tests and delivery package tests:
+
+```bash
+npm run test:generator:all
+npm run test:delivery
+```
+
+## Delivery Sanitization
+
+Create a clean package that excludes Agent operational materials before delivery:
+
+```bash
+node scripts/archive-agent-workspace.mjs --policy delivery/sanitize-policy.yaml --output dist/internal-archive
+node scripts/create-delivery-package.mjs --policy delivery/sanitize-policy.yaml --output dist/delivery
+node scripts/validate-delivery-clean.mjs --package dist/delivery/project-delivery.zip --policy delivery/sanitize-policy.yaml
+```
+
+Safely apply a template to an existing project:
+
+```bash
+node scripts/apply-template.mjs --template existing-project-onboarding --target ../existing-project --dry-run
 ```

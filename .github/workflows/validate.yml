@@ -29,6 +29,12 @@ jobs:
       - name: Run generator golden snapshot test
         run: npm run test:generator
 
+      - name: Run all template generator smoke tests
+        run: npm run test:generator:all
+
+      - name: Run delivery package tests
+        run: npm run test:delivery
+
       - name: Install production agent template dependencies
         working-directory: templates/production-agent-system
         run: npm install

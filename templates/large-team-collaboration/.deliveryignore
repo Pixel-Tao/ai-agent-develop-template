@@ -1,0 +1,33 @@
+# AI Agent operation files
+AGENTS.md
+CLAUDE.md
+INIT.md
+skills/
+agents/
+workflows/
+harness/
+
+# Agent state and internal logs
+inputs/
+outputs/
+docs/09_agent_state/
+docs/**/run-log.md
+docs/**/handoff-notes.md
+docs/**/assumptions.md
+docs/**/known-issues.md
+docs/**/unknowns.md
+docs/**/archive/
+
+# Template metadata and initialization helpers
+template.yaml
+initialization-prompt.md
+validation-checklist.md
+
+# Delivery internal reports
+delivery/reports/
+
+# Local and temporary files
+tmp/
+.cache/
+local-agent-traces/
+generated-debug-logs/

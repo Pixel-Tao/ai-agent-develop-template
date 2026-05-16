@@ -1,0 +1,37 @@
+project:
+  id: "{{PROJECT_ID}}"
+  name: "{{PROJECT_NAME}}"
+  delivery_date: "{{YYYY-MM-DD}}"
+  owner: "{{OWNER_NAME}}"
+
+delivery:
+  package_name: "{{PROJECT_ID}}-delivery-{{YYYY-MM-DD}}.zip"
+  mode: "source-only"
+  includes_git_history: false
+  includes_agent_artifacts: false
+  includes_internal_logs: false
+
+included: []
+
+excluded:
+  - AGENTS.md
+  - CLAUDE.md
+  - INIT.md
+  - skills/
+  - agents/
+  - harness/
+  - inputs/
+  - outputs/
+  - docs/09_agent_state/
+
+archive:
+  created: false
+  location: "dist/internal-archive"
+  encrypted: false
+  retention_policy: "project-policy-dependent"
+
+validation:
+  unresolved_placeholders: null
+  agent_artifacts_found: null
+  internal_logs_found: null
+  license_files_present: null

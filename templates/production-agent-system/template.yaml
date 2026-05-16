@@ -109,6 +109,14 @@ required_files:
   - harness/verification-matrix.md
   - skills/skills-index.yaml
 
+  - delivery/sanitize-policy.yaml
+  - delivery/delivery-manifest.yaml
+  - delivery/delivery-checklist.md
+  - delivery/archive-checklist.md
+  - delivery/purge-checklist.md
+  - .deliveryignore
+  - .agentignore
+
 optional_files:
   - CLAUDE.md
   - evals/reports

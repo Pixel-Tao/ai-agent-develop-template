@@ -48,13 +48,14 @@ function printHelp() {
 
 Usage:
   node scripts/create-project.mjs
-  node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "Owner Name"
+  node scripts/create-project.mjs --template greenfield-basic --project-id my-project --project-name "My Project" --owner-name "Owner Name"
 
 Options:
   --template, -t <id>       Template ID under templates/.
-  --project-name, -p <name> Project name. Any filename-safe name is allowed.
+  --project-id <id>         Project id used for filenames and manifests. Defaults to lower-kebab-case project name.
+  --project-name, -p <name> Display project name. Any filename-safe name is allowed.
   --owner-name, -o <name>   Owner name used for {{OWNER_NAME}}.
-  --force                   Overwrite an existing root zip with the same project name.
+  --force                   Overwrite an existing root zip with the same project id.
   --list                    List available templates.
   --help, -h                Show this help.
 
@@ -66,6 +67,7 @@ Output:
 function parseArgs(argv) {
   const options = {
     template: null,
+    projectId: null,
     projectName: null,
     ownerName: null,
     force: false,
@@ -88,6 +90,9 @@ function parseArgs(argv) {
       case "-t":
         options.template = next();
         break;
+      case "--project-id":
+        options.projectId = next();
+        break;
       case "--project-name":
       case "-p":
         options.projectName = next();
@@ -109,6 +114,8 @@ function parseArgs(argv) {
       default:
         if (arg.startsWith("--template=")) {
           options.template = arg.slice("--template=".length);
+        } else if (arg.startsWith("--project-id=")) {
+          options.projectId = arg.slice("--project-id=".length);
         } else if (arg.startsWith("--project-name=")) {
           options.projectName = arg.slice("--project-name=".length);
         } else if (arg.startsWith("--owner-name=")) {
@@ -135,6 +142,17 @@ function listTemplates(root) {
     .sort((a, b) => a.localeCompare(b));
 }
 
+function deriveProjectId(projectName) {
+  return projectName
+    .trim()
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-+/g, "-");
+}
+
 function validateProjectName(projectName) {
   if (!projectName) {
     throw new Error("Project name is required.");
@@ -155,6 +173,18 @@ function validateProjectName(projectName) {
   const firstPathSegment = projectName.split(".")[0].toUpperCase();
   if (reservedWindowsNames.has(firstPathSegment)) {
     throw new Error("Project name cannot be a reserved Windows device name such as CON, PRN, AUX, NUL, COM1, or LPT1.");
+  }
+}
+
+function validateProjectId(projectId) {
+  if (!projectId) {
+    throw new Error("Project id is required. Use --project-id or provide a project name that can be converted to lower-kebab-case.");
+  }
+
+  validateProjectName(projectId);
+
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(projectId)) {
+    throw new Error("Project id must be lower-kebab-case with letters, numbers, and single hyphens.");
   }
 }
 
@@ -208,8 +238,6 @@ function replaceVariables(projectRoot, variables) {
       return fullMatch;
     });
 
-    updated = updated.replaceAll("2026-05-12", variables.get("YYYY-MM-DD"));
-
     if (missing.size > 0) {
       unresolved.set(path.relative(projectRoot, file), [...missing]);
     }
@@ -229,7 +257,7 @@ async function promptMissingOptions(options, templates) {
   }
 
   if (!input.isTTY) {
-    throw new Error("Missing required options. Use --template, --project-name, and --owner-name.");
+    throw new Error("Missing required options. Use --template, --project-name, and --owner-name. --project-id is optional.");
   }
 
   const rl = readline.createInterface({ input, output });
@@ -250,6 +278,12 @@ async function promptMissingOptions(options, templates) {
       options.projectName = (await rl.question("Project name: ")).trim();
     }
 
+    if (!options.projectId) {
+      const derivedProjectId = deriveProjectId(options.projectName);
+      const answer = (await rl.question(`Project id [${derivedProjectId}]: `)).trim();
+      options.projectId = answer || derivedProjectId;
+    }
+
     if (!options.ownerName) {
       options.ownerName = (await rl.question("Owner name: ")).trim();
     }
@@ -258,6 +292,22 @@ async function promptMissingOptions(options, templates) {
   }
 
   return options;
+}
+
+function copyDeliveryScripts(root, projectRoot) {
+  const scriptNames = [
+    "delivery-utils.mjs",
+    "create-delivery-package.mjs",
+    "archive-agent-workspace.mjs",
+    "validate-delivery-clean.mjs",
+  ];
+  const sourceDir = path.join(root, "scripts");
+  const targetDir = path.join(projectRoot, "scripts");
+  fs.mkdirSync(targetDir, { recursive: true });
+
+  for (const scriptName of scriptNames) {
+    fs.copyFileSync(path.join(sourceDir, scriptName), path.join(targetDir, scriptName));
+  }
 }
 
 function makeCrcTable() {
@@ -431,26 +481,29 @@ async function main() {
   }
 
   const projectName = options.projectName.trim();
+  const projectId = (options.projectId ?? deriveProjectId(projectName)).trim();
   const ownerName = options.ownerName.trim();
   validateProjectName(projectName);
+  validateProjectId(projectId);
   if (!ownerName) {
     throw new Error("Owner name is required.");
   }
 
   const templateDir = path.join(root, "templates", options.template);
-  const zipPath = path.join(root, `${projectName}.zip`);
+  const zipPath = path.join(root, `${projectId}.zip`);
   if (fs.existsSync(zipPath) && !options.force) {
     throw new Error(`${path.basename(zipPath)} already exists. Use --force to overwrite it.`);
   }
 
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "agent-project-template-"));
-  const projectRoot = path.join(tempRoot, projectName);
+  const projectRoot = path.join(tempRoot, projectId);
 
   try {
     fs.cpSync(templateDir, projectRoot, { recursive: true });
+    copyDeliveryScripts(root, projectRoot);
 
     const variables = new Map([
-      ["PROJECT_ID", projectName],
+      ["PROJECT_ID", projectId],
       ["PROJECT_NAME", projectName],
       ["PROJECT_TYPE", options.template],
       ["PROJECT_STATUS", "planning"],
@@ -462,7 +515,8 @@ async function main() {
     createZip(projectRoot, zipPath);
 
     console.log(`Template: ${options.template}`);
-    console.log(`Project: ${projectName}`);
+    console.log(`Project ID: ${projectId}`);
+    console.log(`Project Name: ${projectName}`);
     console.log(`Owner: ${ownerName}`);
     console.log(`Date: ${variables.get("YYYY-MM-DD")}`);
     console.log(`Files changed: ${result.changedFiles}`);

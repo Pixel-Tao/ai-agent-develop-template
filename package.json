@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate-template.mjs",
-    "test:generator": "node --test tests/generator.test.mjs"
+    "test:generator": "node --test tests/generator.test.mjs",
+    "test:generator:all": "node --test tests/generator-all-templates.test.mjs",
+    "test:delivery": "node --test tests/delivery-package.test.mjs"
   }
 }
