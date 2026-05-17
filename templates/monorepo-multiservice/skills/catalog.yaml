@@ -1,0 +1,69 @@
+recommended_queries:
+  - requirements
+  - implementation
+  - test
+  - documentation
+  - monorepo
+  - dependency
+  - api
+  - contract
+  - release
+  - service
+
+catalog:
+  - id: project-discovery-interview
+    name: Project Discovery Interview
+    path: project-discovery-interview/SKILL.md
+    status: active
+    description: "Project Discovery Interview workflow is active in this template."
+    tags:
+      - project
+      - active
+  - id: service-analysis
+    name: Service Analysis
+    path: service-analysis/SKILL.md
+    status: active
+    description: "Service Analysis workflow is active in this template."
+    tags:
+      - service
+      - active
+  - id: dependency-analysis
+    name: Dependency Analysis
+    path: dependency-analysis/SKILL.md
+    status: active
+    description: "Dependency Analysis workflow is active in this template."
+    tags:
+      - dependency
+      - active
+  - id: api-contract-review
+    name: Api Contract Review
+    path: api-contract-review/SKILL.md
+    status: active
+    description: "Api Contract Review workflow is active in this template."
+    tags:
+      - api
+      - active
+  - id: package-maintenance
+    name: Package Maintenance
+    path: package-maintenance/SKILL.md
+    status: active
+    description: "Package Maintenance workflow is active in this template."
+    tags:
+      - package
+      - active
+  - id: release-planning
+    name: Release Planning
+    path: release-planning/SKILL.md
+    status: active
+    description: "Release Planning workflow is active in this template."
+    tags:
+      - release
+      - active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active
+    description: "Harness Engineering workflow is active in this template."
+    tags:
+      - harness
+      - active

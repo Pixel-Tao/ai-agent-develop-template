@@ -1,0 +1,92 @@
+recommended_queries:
+  - requirements
+  - implementation
+  - test
+  - documentation
+  - legacy
+  - dependency
+  - rollback
+  - migration
+  - characterization
+
+catalog:
+  - id: project-discovery-interview
+    name: Project Discovery Interview
+    path: project-discovery-interview/SKILL.md
+    status: active
+    description: "Project Discovery Interview workflow is active in this template."
+    tags:
+      - project
+      - active
+  - id: legacy-analysis
+    name: Legacy Analysis
+    path: legacy-analysis/SKILL.md
+    status: active
+    description: "Legacy Analysis workflow is active in this template."
+    tags:
+      - legacy
+      - active
+  - id: behavior-preservation
+    name: Behavior Preservation
+    path: behavior-preservation/SKILL.md
+    status: active
+    description: "Behavior Preservation workflow is active in this template."
+    tags:
+      - behavior
+      - active
+  - id: refactoring
+    name: Refactoring
+    path: refactoring/SKILL.md
+    status: active
+    description: "Refactoring workflow is active in this template."
+    tags:
+      - refactoring
+      - active
+  - id: migration-planning
+    name: Migration Planning
+    path: migration-planning/SKILL.md
+    status: active
+    description: "Migration Planning workflow is active in this template."
+    tags:
+      - migration
+      - active
+  - id: risk-analysis
+    name: Risk Analysis
+    path: risk-analysis/SKILL.md
+    status: active
+    description: "Risk Analysis workflow is active in this template."
+    tags:
+      - risk
+      - active
+  - id: test-design
+    name: Test Design
+    path: test-design/SKILL.md
+    status: active
+    description: "Test Design workflow is active in this template."
+    tags:
+      - test
+      - active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active
+    description: "Harness Engineering workflow is active in this template."
+    tags:
+      - harness
+      - active
+  - id: dependency-analysis
+    name: Dependency Analysis
+    path: dependency-analysis/SKILL.md
+    status: candidate
+    description: "Adds workflow for legacy dependency and replacement risk analysis."
+    tags:
+      - legacy
+      - dependency
+  - id: rollback-planning
+    name: Rollback Planning
+    path: rollback-planning/SKILL.md
+    status: candidate
+    description: "Adds workflow for migration rollback planning."
+    tags:
+      - rollback
+      - migration

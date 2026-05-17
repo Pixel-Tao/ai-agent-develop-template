@@ -1,0 +1,85 @@
+recommended_queries:
+  - requirements
+  - implementation
+  - test
+  - documentation
+  - bug
+  - debug
+  - legacy
+  - dependency
+  - impact
+  - onboarding
+
+catalog:
+  - id: project-discovery-interview
+    name: Project Discovery Interview
+    path: project-discovery-interview/SKILL.md
+    status: active
+    description: "Project Discovery Interview workflow is active in this template."
+    tags:
+      - project
+      - active
+  - id: codebase-analysis
+    name: Codebase Analysis
+    path: codebase-analysis/SKILL.md
+    status: active
+    description: "Codebase Analysis workflow is active in this template."
+    tags:
+      - codebase
+      - active
+  - id: dependency-analysis
+    name: Dependency Analysis
+    path: dependency-analysis/SKILL.md
+    status: active
+    description: "Dependency Analysis workflow is active in this template."
+    tags:
+      - dependency
+      - active
+  - id: risk-analysis
+    name: Risk Analysis
+    path: risk-analysis/SKILL.md
+    status: active
+    description: "Risk Analysis workflow is active in this template."
+    tags:
+      - risk
+      - active
+  - id: code-review
+    name: Code Review
+    path: code-review/SKILL.md
+    status: active
+    description: "Code Review workflow is active in this template."
+    tags:
+      - code
+      - active
+  - id: bug-analysis
+    name: Bug Analysis
+    path: bug-analysis/SKILL.md
+    status: active
+    description: "Bug Analysis workflow is active in this template."
+    tags:
+      - bug
+      - active
+  - id: documentation
+    name: Documentation
+    path: documentation/SKILL.md
+    status: active
+    description: "Documentation workflow is active in this template."
+    tags:
+      - documentation
+      - active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active
+    description: "Harness Engineering workflow is active in this template."
+    tags:
+      - harness
+      - active
+  - id: security-review
+    name: Security Review
+    path: security-review/SKILL.md
+    status: candidate
+    description: "Adds workflow for security risk review."
+    tags:
+      - security
+      - review

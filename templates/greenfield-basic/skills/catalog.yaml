@@ -1,0 +1,104 @@
+recommended_queries:
+  - requirements
+  - implementation
+  - test
+  - documentation
+  - frontend
+  - ui
+  - accessibility
+  - database
+  - schema
+  - data
+
+catalog:
+  - id: project-discovery-interview
+    name: Project Discovery Interview
+    path: project-discovery-interview/SKILL.md
+    status: active
+    description: "Project Discovery Interview workflow is active in this template."
+    tags:
+      - project
+      - active
+  - id: requirements-analysis
+    name: Requirements Analysis
+    path: requirements-analysis/SKILL.md
+    status: active
+    description: "Requirements Analysis workflow is active in this template."
+    tags:
+      - requirements
+      - active
+  - id: api-design
+    name: Api Design
+    path: api-design/SKILL.md
+    status: active
+    description: "Api Design workflow is active in this template."
+    tags:
+      - api
+      - active
+  - id: code-implementation
+    name: Code Implementation
+    path: code-implementation/SKILL.md
+    status: active
+    description: "Code Implementation workflow is active in this template."
+    tags:
+      - code
+      - active
+  - id: code-review
+    name: Code Review
+    path: code-review/SKILL.md
+    status: active
+    description: "Code Review workflow is active in this template."
+    tags:
+      - code
+      - active
+  - id: test-design
+    name: Test Design
+    path: test-design/SKILL.md
+    status: active
+    description: "Test Design workflow is active in this template."
+    tags:
+      - test
+      - active
+  - id: documentation
+    name: Documentation
+    path: documentation/SKILL.md
+    status: active
+    description: "Documentation workflow is active in this template."
+    tags:
+      - documentation
+      - active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active
+    description: "Harness Engineering workflow is active in this template."
+    tags:
+      - harness
+      - active
+  - id: frontend-implementation
+    name: Frontend Implementation
+    path: frontend-implementation/SKILL.md
+    status: candidate
+    description: "Adds workflow for UI, state, and accessibility implementation."
+    tags:
+      - frontend
+      - ui
+      - accessibility
+  - id: database-design
+    name: Database Design
+    path: database-design/SKILL.md
+    status: candidate
+    description: "Adds workflow for initial data model and schema design."
+    tags:
+      - database
+      - schema
+      - data
+  - id: api-contract-review
+    name: API Contract Review
+    path: api-contract-review/SKILL.md
+    status: candidate
+    description: "Adds workflow for API contract review and impact analysis."
+    tags:
+      - api
+      - contract
+      - review

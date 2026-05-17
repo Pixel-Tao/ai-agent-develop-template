@@ -300,6 +300,8 @@ function copyDeliveryScripts(root, projectRoot) {
     "create-delivery-package.mjs",
     "archive-agent-workspace.mjs",
     "validate-delivery-clean.mjs",
+    "skills.mjs",
+    "skills.sh",
   ];
   const sourceDir = path.join(root, "scripts");
   const targetDir = path.join(projectRoot, "scripts");

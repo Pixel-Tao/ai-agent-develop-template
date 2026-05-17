@@ -45,6 +45,9 @@ categories:
       - inputs/
       - outputs/
       - docs/09_agent_state/
+      - scripts/skills.sh
+      - scripts/skills.mjs
+      - skills/selected-skills.md
 
   purge_if_allowed:
     description: "계약, 감사, 보안 정책상 보존 의무가 없을 때만 삭제 가능한 자료"

@@ -35,6 +35,9 @@ jobs:
       - name: Run delivery package tests
         run: npm run test:delivery
 
+      - name: Run skills initialization tests
+        run: npm run test:skills
+
       - name: Install production agent template dependencies
         working-directory: templates/production-agent-system
         run: npm install

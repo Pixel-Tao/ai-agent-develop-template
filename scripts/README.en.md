@@ -60,6 +60,18 @@ Run all-template smoke tests and delivery package tests:
 ```bash
 npm run test:generator:all
 npm run test:delivery
+npm run test:skills
+```
+
+## Skill Setup
+
+Generated projects can search and add skills during initialization.
+
+```bash
+sh scripts/skills.sh list
+sh scripts/skills.sh search api
+sh scripts/skills.sh add --from-catalog api-contract-review
+sh scripts/skills.sh add --id custom-skill --name "Custom Skill" --description "Project-specific workflow"
 ```
 
 ## Delivery Sanitization

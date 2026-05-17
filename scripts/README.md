@@ -54,6 +54,18 @@ npm run test:generator
 ```bash
 npm run test:generator:all
 npm run test:delivery
+npm run test:skills
+```
+
+## Skill 구성
+
+생성된 프로젝트에서는 초기화 중 필요한 Skill을 검색하고 추가할 수 있다.
+
+```bash
+sh scripts/skills.sh list
+sh scripts/skills.sh search api
+sh scripts/skills.sh add --from-catalog api-contract-review
+sh scripts/skills.sh add --id custom-skill --name "Custom Skill" --description "프로젝트 전용 작업 절차"
 ```
 
 ## Delivery Sanitization

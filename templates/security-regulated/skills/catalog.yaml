@@ -1,0 +1,76 @@
+recommended_queries:
+  - requirements
+  - implementation
+  - test
+  - documentation
+  - privacy
+  - security
+  - compliance
+  - audit
+  - threat
+
+catalog:
+  - id: project-discovery-interview
+    name: Project Discovery Interview
+    path: project-discovery-interview/SKILL.md
+    status: active
+    description: "Project Discovery Interview workflow is active in this template."
+    tags:
+      - project
+      - active
+  - id: security-review
+    name: Security Review
+    path: security-review/SKILL.md
+    status: active
+    description: "Security Review workflow is active in this template."
+    tags:
+      - security
+      - active
+  - id: threat-modeling
+    name: Threat Modeling
+    path: threat-modeling/SKILL.md
+    status: active
+    description: "Threat Modeling workflow is active in this template."
+    tags:
+      - threat
+      - active
+  - id: compliance-mapping
+    name: Compliance Mapping
+    path: compliance-mapping/SKILL.md
+    status: active
+    description: "Compliance Mapping workflow is active in this template."
+    tags:
+      - compliance
+      - active
+  - id: privacy-review
+    name: Privacy Review
+    path: privacy-review/SKILL.md
+    status: active
+    description: "Privacy Review workflow is active in this template."
+    tags:
+      - privacy
+      - active
+  - id: auth-review
+    name: Auth Review
+    path: auth-review/SKILL.md
+    status: active
+    description: "Auth Review workflow is active in this template."
+    tags:
+      - auth
+      - active
+  - id: audit-readiness
+    name: Audit Readiness
+    path: audit-readiness/SKILL.md
+    status: active
+    description: "Audit Readiness workflow is active in this template."
+    tags:
+      - audit
+      - active
+  - id: harness-engineering
+    name: Harness Engineering
+    path: harness-engineering/SKILL.md
+    status: active
+    description: "Harness Engineering workflow is active in this template."
+    tags:
+      - harness
+      - active
