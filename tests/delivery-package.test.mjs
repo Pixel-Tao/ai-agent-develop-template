@@ -27,8 +27,6 @@ const forbiddenDeliveryPaths = [
   "inputs/",
   "outputs/",
   "docs/09_agent_state/",
-  "scripts/skills.sh",
-  "scripts/skills.mjs",
   "skills/selected-skills.md",
 ];
 

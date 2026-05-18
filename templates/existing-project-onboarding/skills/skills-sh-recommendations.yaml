@@ -1,0 +1,46 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "codebase architecture"
+  - "code review"
+  - "systematic debugging"
+  - "migration"
+  - "testing"
+
+recommended_sources:
+  - source: "mattpocock/skills"
+    install_command: "npx skills add mattpocock/skills"
+    reason: "Existing codebase diagnosis and architecture improvement workflows."
+    suggested_skill_search_terms:
+      - "improve-codebase-architecture"
+      - "diagnose"
+      - "triage"
+  - source: "obra/superpowers"
+    install_command: "npx skills add obra/superpowers"
+    reason: "Disciplined debugging and verification workflows."
+    suggested_skill_search_terms:
+      - "systematic-debugging"
+      - "verification-before-completion"
+  - source: "anthropics/skills"
+    install_command: "npx skills add anthropics/skills"
+    reason: "Testing and source-document handling support."
+    suggested_skill_search_terms:
+      - "webapp-testing"
+      - "pdf"
+      - "docx"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

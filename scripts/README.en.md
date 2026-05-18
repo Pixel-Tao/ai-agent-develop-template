@@ -63,16 +63,16 @@ npm run test:delivery
 npm run test:skills
 ```
 
-## Skill Setup
+## skills.sh Integration
 
-Generated projects can search and add skills during initialization.
+Generated projects use `skills/skills-sh-recommendations.yaml` to search `https://www.skills.sh/` and install reviewed Skills with the `skills` CLI.
 
 ```bash
-sh scripts/skills.sh list
-sh scripts/skills.sh search api
-sh scripts/skills.sh add --from-catalog api-contract-review
-sh scripts/skills.sh add --id custom-skill --name "Custom Skill" --description "Project-specific workflow"
+npx skills add <owner/repo>
+DISABLE_TELEMETRY=1 npx skills add <owner/repo>
 ```
+
+Record installed Skills and rejected candidates in `skills/selected-skills.md` and `docs/09_agent_state/run-log.md`.
 
 ## Delivery Sanitization
 

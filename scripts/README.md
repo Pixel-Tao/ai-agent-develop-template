@@ -57,16 +57,16 @@ npm run test:delivery
 npm run test:skills
 ```
 
-## Skill 구성
+## skills.sh 연동
 
-생성된 프로젝트에서는 초기화 중 필요한 Skill을 검색하고 추가할 수 있다.
+생성된 프로젝트에서는 `skills/skills-sh-recommendations.yaml`을 참고해 `https://www.skills.sh/`에서 필요한 Skill을 검색하고, 검토 후 `skills` CLI로 설치한다.
 
 ```bash
-sh scripts/skills.sh list
-sh scripts/skills.sh search api
-sh scripts/skills.sh add --from-catalog api-contract-review
-sh scripts/skills.sh add --id custom-skill --name "Custom Skill" --description "프로젝트 전용 작업 절차"
+npx skills add <owner/repo>
+DISABLE_TELEMETRY=1 npx skills add <owner/repo>
 ```
+
+설치한 Skill과 제외한 후보는 `skills/selected-skills.md`와 `docs/09_agent_state/run-log.md`에 기록한다.
 
 ## Delivery Sanitization
 

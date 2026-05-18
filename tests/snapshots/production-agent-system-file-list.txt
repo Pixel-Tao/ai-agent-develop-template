@@ -62,8 +62,6 @@ README.md
 scripts/archive-agent-workspace.mjs
 scripts/create-delivery-package.mjs
 scripts/delivery-utils.mjs
-scripts/skills.mjs
-scripts/skills.sh
 scripts/validate-delivery-clean.mjs
 scripts/validate-structure.mjs
 scripts/validate-tools.mjs
@@ -75,10 +73,10 @@ security/threat-model.md
 security/tool-risk-policy.md
 skills/agent-system-design/SKILL.md
 skills/agent-system-design/skill.yaml
-skills/catalog.yaml
 skills/harness-engineering/SKILL.md
 skills/harness-engineering/skill.yaml
 skills/skills-index.yaml
+skills/skills-sh-recommendations.yaml
 src/agent/agent.ts
 src/agent/handoffs.ts
 src/agent/instructions.ts

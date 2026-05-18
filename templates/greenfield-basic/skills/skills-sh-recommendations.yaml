@@ -1,0 +1,47 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "project discovery"
+  - "requirements analysis"
+  - "api design"
+  - "frontend design"
+  - "testing"
+  - "documentation"
+
+recommended_sources:
+  - source: "anthropics/skills"
+    install_command: "npx skills add anthropics/skills"
+    reason: "Frontend, testing, and document-oriented implementation support."
+    suggested_skill_search_terms:
+      - "frontend-design"
+      - "webapp-testing"
+      - "docx"
+  - source: "vercel-labs/agent-skills"
+    install_command: "npx skills add vercel-labs/agent-skills"
+    reason: "Web application design and implementation guidance."
+    suggested_skill_search_terms:
+      - "web-design-guidelines"
+      - "vercel-react-best-practices"
+  - source: "mattpocock/skills"
+    install_command: "npx skills add mattpocock/skills"
+    reason: "PRD, implementation, and test-driven development workflows."
+    suggested_skill_search_terms:
+      - "to-prd"
+      - "tdd"
+      - "code-review"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

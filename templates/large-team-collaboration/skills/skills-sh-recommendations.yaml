@@ -1,0 +1,47 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "parallel agents"
+  - "code review"
+  - "handoff"
+  - "worktree"
+  - "task planning"
+
+recommended_sources:
+  - source: "obra/superpowers"
+    install_command: "npx skills add obra/superpowers"
+    reason: "Parallel agent, handoff, review, and worktree workflows."
+    suggested_skill_search_terms:
+      - "subagent-driven-development"
+      - "dispatching-parallel-agents"
+      - "using-git-worktrees"
+      - "requesting-code-review"
+      - "finishing-a-development-branch"
+  - source: "mattpocock/skills"
+    install_command: "npx skills add mattpocock/skills"
+    reason: "Issue breakdown, triage, and review routines."
+    suggested_skill_search_terms:
+      - "to-issues"
+      - "triage"
+      - "code-review"
+  - source: "xixu-me/skills"
+    install_command: "npx skills add xixu-me/skills"
+    reason: "CI and GitHub Actions reference workflows."
+    suggested_skill_search_terms:
+      - "github-actions-docs"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

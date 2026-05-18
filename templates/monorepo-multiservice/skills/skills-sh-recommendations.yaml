@@ -1,0 +1,44 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "monorepo"
+  - "service architecture"
+  - "github actions"
+  - "deployment"
+  - "testing"
+
+recommended_sources:
+  - source: "vercel-labs/agent-skills"
+    install_command: "npx skills add vercel-labs/agent-skills"
+    reason: "Web service implementation and deployment workflows."
+    suggested_skill_search_terms:
+      - "vercel-react-best-practices"
+      - "deploy-to-vercel"
+  - source: "xixu-me/skills"
+    install_command: "npx skills add xixu-me/skills"
+    reason: "CI workflow reference for multi-service repositories."
+    suggested_skill_search_terms:
+      - "github-actions-docs"
+  - source: "mattpocock/skills"
+    install_command: "npx skills add mattpocock/skills"
+    reason: "Architecture and testing routines across services."
+    suggested_skill_search_terms:
+      - "improve-codebase-architecture"
+      - "tdd"
+      - "triage"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

@@ -1,0 +1,43 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "security audit"
+  - "auth"
+  - "secret scanning"
+  - "secure cloud"
+  - "approval policy"
+
+recommended_sources:
+  - source: "xixu-me/skills"
+    install_command: "npx skills add xixu-me/skills"
+    reason: "Security and CI hardening support."
+    suggested_skill_search_terms:
+      - "openclaw-secure-linux-cloud"
+      - "github-actions-docs"
+  - source: "better-auth/skills"
+    install_command: "npx skills add better-auth/skills"
+    reason: "Authentication implementation review support."
+    suggested_skill_search_terms:
+      - "better-auth-best-practices"
+  - source: "microsoft/azure-skills"
+    install_command: "npx skills add microsoft/azure-skills"
+    reason: "Regulated cloud planning and observability guidance."
+    suggested_skill_search_terms:
+      - "azure-observability"
+      - "azure-enterprise-infra-planner"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

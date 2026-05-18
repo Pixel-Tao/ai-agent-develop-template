@@ -5,8 +5,6 @@ INIT.md
 skills/
 agents/
 workflows/
-scripts/skills.sh
-scripts/skills.mjs
 skills/selected-skills.md
 harness/
 
