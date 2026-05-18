@@ -58,6 +58,10 @@ validation-checklist.md의 기본 파일, 문서 구조, Skill 구조, Agent 작
 
 프로젝트 초기화 시 harness/ 구조를 확인하고 실제 프로젝트에서 사용할 설치, 실행, 테스트, 빌드, 검증 명령을 harness/commands.md에 정리한다. 작업 유형별 최소 검증은 harness/verification-matrix.md에 기록하고, 초기 실행 결과나 미확정 명령은 harness/evidence-log.md와 docs/09_agent_state/assumptions.md에 남긴다.
 
+## README 프로젝트화
+
+루트 README.md를 프로젝트 맞춤 문서로 재작성하기 전에 기존 README.md를 docs/09_agent_state/archive/init/original-README-{{YYYY-MM-DD}}.md로 보관한다. README.md는 project-definition-brief, manifest, harness 명령, 현재 상태를 기준으로 프로젝트 목적, 실행/검증 방법, 문서 구조를 설명해야 한다. README.en.md가 있으면 동기화하거나 갱신 필요 상태를 명시한다.
+
 ## Init 프롬프트 사용
 
 생성된 프로젝트에서는 루트 INIT.md를 초기 설정의 단일 진입점으로 사용한다. 초기 설정 완료 후 INIT.md를 docs/09_agent_state/archive/init/로 이동하고, 이후에는 current-status.md와 run-log.md를 기준으로 작업을 이어간다.

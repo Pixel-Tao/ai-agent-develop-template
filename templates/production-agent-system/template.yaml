@@ -110,6 +110,11 @@ required_files:
   - skills/skills-index.yaml
   - skills/skills-sh-recommendations.yaml
   - skills/selected-skills.md
+  - mcp/reports/.gitkeep
+  - mcp/mcp-selection-log.md
+  - mcp/mcp-servers.yaml
+  - mcp/mcp-policy.yaml
+  - mcp/README.md
 
   - delivery/sanitize-policy.yaml
   - delivery/delivery-manifest.yaml

@@ -8,6 +8,7 @@
     "test:generator": "node --test tests/generator.test.mjs",
     "test:generator:all": "node --test tests/generator-all-templates.test.mjs",
     "test:delivery": "node --test tests/delivery-package.test.mjs",
-    "test:skills": "node --test tests/skills-sh-recommendations.test.mjs"
+    "test:skills": "node --test tests/skills-sh-recommendations.test.mjs",
+    "test:mcp": "node scripts/validate-mcp-config.mjs"
   }
 }

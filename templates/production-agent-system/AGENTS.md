@@ -37,6 +37,10 @@ AI Agent는 Production Agent System 템플릿 기준으로 runtime, tool calling
 
 가장 작은 관련 검증을 실행하고 결과를 `harness/evidence-log.md`에 남긴다. 현재 Phase에서 아직 구현되지 않은 명령은 `harness/commands.md`에 draft/TBD로 남기고 완료로 보고하지 않는다.
 
+## README 초기화 규칙
+
+초기 설정 완료 전 루트 README.md는 템플릿 설명이 아니라 현재 Agent 시스템 프로젝트 설명이어야 한다. README.md를 재작성하기 전 기존 내용은 docs/09_agent_state/archive/init/original-README-{{YYYY-MM-DD}}.md 또는 충돌 방지 suffix 파일로 보관한다. README.en.md가 있으면 같은 기준으로 동기화하고, 즉시 갱신할 수 없으면 README.en.md와 run-log에 갱신 필요 상태를 명시한다.
+
 ## 금지사항
 
 - tool schema 없이 tool을 추가하지 않는다.

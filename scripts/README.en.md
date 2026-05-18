@@ -63,6 +63,7 @@ Run all-template smoke tests and delivery package tests:
 npm run test:generator:all
 npm run test:delivery
 npm run test:skills
+npm run test:mcp
 ```
 
 ## skills.sh Integration
@@ -75,6 +76,14 @@ DISABLE_TELEMETRY=1 npx skills add <owner/repo>
 ```
 
 Record installed Skills and rejected candidates in `skills/selected-skills.md` and `docs/09_agent_state/run-log.md`.
+
+## MCP Validation
+
+Validate MCP policies, candidate servers, selection logs, and delivery exclusions for all templates.
+
+```bash
+npm run test:mcp
+```
 
 ## Delivery Sanitization
 

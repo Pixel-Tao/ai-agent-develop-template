@@ -1,0 +1,51 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+owner: "{{OWNER_NAME}}"
+
+mode: "mcp-control"
+
+defaults:
+  auto_install: false
+  auto_start: false
+  require_approval: true
+  allow_network_access: "review_required"
+  allow_filesystem_access: "review_required"
+
+risk_levels:
+  low:
+    approval_required: false
+    allowed: true
+  medium:
+    approval_required: true
+    allowed: true
+  high:
+    approval_required: true
+    allowed: "review_required"
+  destructive:
+    approval_required: true
+    allowed: false
+
+allowed_transports:
+  - stdio
+  - http
+  - sse
+
+secrets:
+  allow_plaintext: false
+  allowed_env_prefixes:
+    - MCP_
+    - "{{PROJECT_ID}}_"
+
+audit:
+  record_selection: mcp/mcp-selection-log.md
+  record_runtime_logs: docs/09_agent_state/run-log.md
+
+delivery:
+  review_required:
+    - mcp/mcp-policy.yaml
+    - mcp/mcp-servers.yaml
+  exclude_from_delivery:
+    - mcp/reports/
+    - mcp/mcp-selection-log.md
+    - .mcp.local.json
+    - .mcp*.local.json

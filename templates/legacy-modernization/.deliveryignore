@@ -24,6 +24,16 @@ template.yaml
 initialization-prompt.md
 validation-checklist.md
 
+
+
+
+
+
+# MCP local and review files
+mcp/reports/
+mcp/mcp-selection-log.md
+.mcp.local.json
+.mcp*.local.json
 # Delivery internal reports
 delivery/reports/
 

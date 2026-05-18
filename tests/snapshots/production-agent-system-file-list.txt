@@ -48,6 +48,11 @@ inputs/README.md
 inputs/references/.gitkeep
 inputs/source-documents-index.md
 manifest.yaml
+mcp/mcp-policy.yaml
+mcp/mcp-selection-log.md
+mcp/mcp-servers.yaml
+mcp/README.md
+mcp/reports/.gitkeep
 memory/memory-policy.yaml
 memory/namespaces.md
 memory/retention-policy.md
