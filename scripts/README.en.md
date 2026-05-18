@@ -67,7 +67,7 @@ npm run test:skills
 
 ## skills.sh Integration
 
-Generated projects use `skills/skills-sh-recommendations.yaml` to search `https://www.skills.sh/` and install reviewed Skills with the `skills` CLI.
+Generated projects use `skills/skills-sh-recommendations.yaml` to detect the technology stack, search `https://www.skills.sh/` for stack-specific Skills, and install reviewed Skills with the `skills` CLI.
 
 ```bash
 npx skills add <owner/repo>

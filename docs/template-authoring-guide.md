@@ -20,7 +20,8 @@
 ## `skills/` 작성 규칙
 
 - `skills/skills-index.yaml`에 모든 Skill을 등록한다.
-- `skills/skills-sh-recommendations.yaml`에는 skills.sh에서 검색할 키워드와 검토할 외부 Skill source를 등록한다.
+- `skills/skills-sh-recommendations.yaml`에는 기술 스택 감지 규칙, skills.sh에서 검색할 키워드, 검토할 외부 Skill source를 등록한다.
+- `skills/selected-skills.md`에는 초기화 중 검토한 Skill 후보와 적용/제외 사유를 기록할 표를 둔다.
 - Skill 문서는 입력, 절차, 출력, 검증 기준을 분리한다.
 - 템플릿 특화 Skill이 아니라면 `common/base-skills/` 재사용을 우선한다.
 

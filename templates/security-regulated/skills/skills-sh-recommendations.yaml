@@ -11,6 +11,111 @@ install:
     - skills/selected-skills.md
     - docs/09_agent_state/run-log.md
 
+stack_detection:
+  required: true
+  description: "Detect the project technology stack before choosing external Skills."
+  scan_paths:
+    - "."
+    - "inputs/"
+    - "inputs/initial-development-docs/"
+    - "inputs/references/"
+  evidence_files:
+    nodejs:
+      - "package.json"
+      - "package-lock.json"
+      - "pnpm-lock.yaml"
+      - "yarn.lock"
+      - "tsconfig.json"
+      - "next.config.js"
+      - "vite.config.ts"
+    dotnet:
+      - "*.sln"
+      - "*.csproj"
+      - "Directory.Build.props"
+      - "global.json"
+      - "NuGet.config"
+    python:
+      - "pyproject.toml"
+      - "requirements.txt"
+      - "uv.lock"
+      - "poetry.lock"
+      - "setup.py"
+    java:
+      - "pom.xml"
+      - "build.gradle"
+      - "settings.gradle"
+    go:
+      - "go.mod"
+      - "go.sum"
+    rust:
+      - "Cargo.toml"
+      - "Cargo.lock"
+    infra:
+      - "Dockerfile"
+      - "docker-compose.yml"
+      - "*.tf"
+      - "k8s/"
+      - "helm/"
+  query_sets:
+    nodejs:
+      - "nodejs"
+      - "npm"
+      - "typescript"
+      - "express"
+      - "nextjs"
+      - "react"
+      - "vite"
+    dotnet:
+      - "dotnet"
+      - "csharp"
+      - "aspnet"
+      - "entity-framework"
+      - "nuget"
+      - "azure"
+    python:
+      - "python"
+      - "pytest"
+      - "fastapi"
+      - "django"
+      - "pandas"
+      - "notebook"
+    java:
+      - "java"
+      - "spring"
+      - "maven"
+      - "gradle"
+      - "junit"
+    go:
+      - "golang"
+      - "go-test"
+      - "grpc"
+      - "kubernetes"
+    rust:
+      - "rust"
+      - "cargo"
+      - "tokio"
+      - "wasm"
+    infra:
+      - "docker"
+      - "terraform"
+      - "kubernetes"
+      - "github-actions"
+      - "deployment"
+  search_workflow:
+    - "Search https://www.skills.sh/ with every detected stack query."
+    - "If the skills CLI search command is available, also run: npx skills find <query>."
+    - "Install only reviewed Skills with: npx skills add <owner/repo>."
+  review_required:
+    - "source reputation"
+    - "license"
+    - "maintenance status"
+    - "project fit"
+    - "security and delivery sanitization impact"
+  record_required:
+    selected: "skills/selected-skills.md"
+    run_log: "docs/09_agent_state/run-log.md"
+    no_match: "Record when no suitable stack-specific Skill is found."
+
 search_queries:
   - "security audit"
   - "auth"
