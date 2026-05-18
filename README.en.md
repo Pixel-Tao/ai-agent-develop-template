@@ -13,6 +13,7 @@ The repository currently includes 10 templates, a project zip generator, Deliver
 - Agent entrypoints based on `AGENTS.md`, `CLAUDE.md`, `INIT.md`, and `manifest.yaml`
 - Document skeletons for requirements, design, tasks, decisions, and state tracking
 - Initial source-material intake through `inputs/`
+- skills.sh discovery and installation planning through `skills/skills-sh-recommendations.yaml`
 - Command, verification, and evidence tracking through `harness/`
 - Common skills and template-specific skills
 - Project zip generation and template variable replacement
@@ -80,7 +81,7 @@ See [decision-guide.en.md](decision-guide.en.md) for detailed selection guidance
 3. Extract the generated zip into the real project location.
 4. Add planning docs, notes, draft requirements, sketches, and reference links under `inputs/`.
 5. Ask the agent to run `init` or `/init`.
-6. The agent reads `INIT.md`, `AGENTS.md`, `manifest.yaml`, and `harness/`, then runs the initial interview and state setup.
+6. The agent reads `INIT.md`, `AGENTS.md`, `manifest.yaml`, `skills/skills-sh-recommendations.yaml`, and `harness/`, then runs the initial interview, skills.sh-based skill setup, and state setup.
 7. Record implementation, verification, review, and release evidence in `harness/evidence-log.md` and `docs/09_agent_state/`.
 
 ## Generated Project Structure
@@ -98,6 +99,7 @@ See [decision-guide.en.md](decision-guide.en.md) for detailed selection guidance
 | `inputs/` | Initial development materials and references |
 | `docs/` | Requirements, design, tasks, decisions, and state docs |
 | `skills/` | Task-specific skills for agents |
+| `skills/skills-sh-recommendations.yaml` | skills.sh search terms and recommended sources |
 | `harness/` | Commands, verification matrix, and evidence log |
 | `delivery/` | Delivery policy, manifest, checklists, and reports |
 | `.deliveryignore` | Exclusion rules for delivery packages |
@@ -188,10 +190,12 @@ The GitHub Actions workflow in `.github/workflows/validate.yml` runs the same va
 | `node scripts/archive-agent-workspace.mjs --policy <file> --output <dir>` | Create an internal archive of Agent operational materials |
 | `node scripts/validate-delivery-clean.mjs --package <zip> --policy <file>` | Validate a clean delivery package |
 | `node scripts/apply-template.mjs --template <id> --target <dir> --dry-run` | Safely apply a template to an existing project |
+| `npx skills add <owner/repo>` | Install an external Skill reviewed through skills.sh |
 | `npm run validate` | Run the validator |
 | `npm run test:generator` | Run the generated project snapshot test |
 | `npm run test:generator:all` | Run smoke tests for all generated templates |
 | `npm run test:delivery` | Run delivery package tests for all templates |
+| `npm run test:skills` | Test skills.sh recommendation files for all templates |
 | `node scripts/replace-template-variables.mjs --root <path> --variables-file <file> --apply` | Replace variables in an already copied project |
 
 See [scripts/README.en.md](scripts/README.en.md) for details.

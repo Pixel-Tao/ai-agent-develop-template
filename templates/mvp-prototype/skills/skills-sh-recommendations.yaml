@@ -1,0 +1,45 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "prototype"
+  - "prd"
+  - "frontend design"
+  - "signup flow"
+  - "launch strategy"
+
+recommended_sources:
+  - source: "mattpocock/skills"
+    install_command: "npx skills add mattpocock/skills"
+    reason: "Prototype and PRD shaping workflows."
+    suggested_skill_search_terms:
+      - "prototype"
+      - "to-prd"
+  - source: "anthropics/skills"
+    install_command: "npx skills add anthropics/skills"
+    reason: "Fast UI iteration and webapp validation support."
+    suggested_skill_search_terms:
+      - "frontend-design"
+      - "webapp-testing"
+  - source: "coreyhaines31/marketingskills"
+    install_command: "npx skills add coreyhaines31/marketingskills"
+    reason: "Launch, signup, and copy workflows for early products."
+    suggested_skill_search_terms:
+      - "launch-strategy"
+      - "signup-flow-cro"
+      - "copywriting"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

@@ -1,0 +1,43 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "triage"
+  - "incident"
+  - "systematic debugging"
+  - "sentry"
+  - "observability"
+
+recommended_sources:
+  - source: "mattpocock/skills"
+    install_command: "npx skills add mattpocock/skills"
+    reason: "Maintenance triage and diagnosis workflows."
+    suggested_skill_search_terms:
+      - "triage"
+      - "diagnose"
+  - source: "obra/superpowers"
+    install_command: "npx skills add obra/superpowers"
+    reason: "Incident debugging and completion verification workflows."
+    suggested_skill_search_terms:
+      - "systematic-debugging"
+      - "verification-before-completion"
+  - source: "sentry/dev"
+    install_command: "npx skills add sentry/dev"
+    reason: "Sentry-oriented operational debugging support."
+    suggested_skill_search_terms:
+      - "sentry-cli"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

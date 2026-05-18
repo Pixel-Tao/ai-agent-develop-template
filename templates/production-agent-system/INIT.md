@@ -21,6 +21,35 @@
 8. docs/09_agent_state/current-status.md
 9. tools/tool-registry.yaml
 10. security/approval-policy.md
+11. skills/skills-index.yaml
+12. skills/skills-sh-recommendations.yaml
+
+## Skill 구성 초기화
+
+초기 인터뷰와 문서 확인 후 Agent는 `skills/skills-sh-recommendations.yaml`을 기준으로 skills.sh에서 필요한 Skill을 검색한다.
+
+1. 추천 검색어와 후보 source를 확인한다.
+
+   ```bash
+   cat skills/skills-sh-recommendations.yaml
+   ```
+
+2. `https://www.skills.sh/`에서 템플릿 목적과 기술 스택에 맞는 Skill을 검색한다. 문서 기준 설치 명령은 다음 형식이다.
+
+   ```bash
+   npx skills add <owner/repo>
+   ```
+
+3. 보안, 라이선스, 유지보수 상태를 검토한 뒤 필요한 Skill만 설치한다. 익명 telemetry를 비활성화해야 하면 다음 형식을 사용한다.
+
+   ```bash
+   DISABLE_TELEMETRY=1 npx skills add <owner/repo>
+   ```
+
+4. 설치한 Skill과 제외한 후보, 검토 사유를 `skills/selected-skills.md`와 `docs/09_agent_state/run-log.md`에 기록한다.
+
+외부 Skill은 프로젝트 요구와 보안 정책에 맞을 때만 추가한다. 불확실한 후보는 설치하지 말고 `assumptions.md` 또는 run log에 검토 필요로 남긴다.
+
 
 ## 1. 초기 문서 확인
 

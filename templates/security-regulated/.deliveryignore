@@ -5,6 +5,7 @@ INIT.md
 skills/
 agents/
 workflows/
+skills/selected-skills.md
 harness/
 
 # Agent state and internal logs

@@ -1,0 +1,43 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "data analysis"
+  - "paper reproduction"
+  - "dataset"
+  - "eval"
+  - "notebook"
+
+recommended_sources:
+  - source: "lllllllama/ai-paper-reproduction-skill"
+    install_command: "npx skills add lllllllama/ai-paper-reproduction-skill"
+    reason: "Research-paper and reproduction context workflows."
+    suggested_skill_search_terms:
+      - "paper-context-resolver"
+  - source: "anthropics/skills"
+    install_command: "npx skills add anthropics/skills"
+    reason: "Dataset and document handling support."
+    suggested_skill_search_terms:
+      - "xlsx"
+      - "pdf"
+      - "docx"
+  - source: "inference-sh-skills/skills"
+    install_command: "npx skills add inference-sh-skills/skills"
+    reason: "AI media/data pipeline exploration support when relevant."
+    suggested_skill_search_terms:
+      - "ai-image-generation"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

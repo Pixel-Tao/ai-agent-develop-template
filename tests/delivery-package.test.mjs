@@ -27,6 +27,7 @@ const forbiddenDeliveryPaths = [
   "inputs/",
   "outputs/",
   "docs/09_agent_state/",
+  "skills/selected-skills.md",
 ];
 
 for (const templateId of templateIds) {

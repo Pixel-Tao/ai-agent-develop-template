@@ -1,0 +1,48 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+source: "https://www.skills.sh/"
+purpose: "Template-specific recommendations for discovering and installing external Agent Skills during project initialization."
+
+install:
+  default_command: "npx skills add <owner/repo>"
+  telemetry_opt_out_command: "DISABLE_TELEMETRY=1 npx skills add <owner/repo>"
+  review_required: true
+  record_results_in:
+    - skills/selected-skills.md
+    - docs/09_agent_state/run-log.md
+
+search_queries:
+  - "agent workflows"
+  - "tool use"
+  - "evals"
+  - "guardrails"
+  - "memory"
+
+recommended_sources:
+  - source: "vercel-labs/skills"
+    install_command: "npx skills add vercel-labs/skills"
+    reason: "Skill discovery workflow for agent development."
+    suggested_skill_search_terms:
+      - "find-skills"
+  - source: "anthropics/skills"
+    install_command: "npx skills add anthropics/skills"
+    reason: "Skill creation and validation support."
+    suggested_skill_search_terms:
+      - "skill-creator"
+      - "webapp-testing"
+  - source: "vercel-labs/agent-browser"
+    install_command: "npx skills add vercel-labs/agent-browser"
+    reason: "Browser-enabled agent workflow testing."
+    suggested_skill_search_terms:
+      - "agent-browser"
+  - source: "obra/superpowers"
+    install_command: "npx skills add obra/superpowers"
+    reason: "Agent collaboration and verification workflows."
+    suggested_skill_search_terms:
+      - "subagent-driven-development"
+      - "verification-before-completion"
+
+notes:
+  - "Search skills.sh before installing because availability and ranking can change."
+  - "Review source, license, security posture, and project fit before installing external skills."
+  - "Do not install skills that conflict with customer, security, or delivery sanitization requirements."

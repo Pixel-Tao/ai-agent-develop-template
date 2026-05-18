@@ -50,6 +50,7 @@ for (const templateId of templateIds) {
       "manifest.yaml",
       "template.yaml",
       "skills/skills-index.yaml",
+      "skills/skills-sh-recommendations.yaml",
       "harness/harness.yaml",
       "delivery/sanitize-policy.yaml",
       "delivery/delivery-manifest.yaml",

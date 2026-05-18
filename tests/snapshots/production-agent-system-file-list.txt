@@ -76,6 +76,7 @@ skills/agent-system-design/skill.yaml
 skills/harness-engineering/SKILL.md
 skills/harness-engineering/skill.yaml
 skills/skills-index.yaml
+skills/skills-sh-recommendations.yaml
 src/agent/agent.ts
 src/agent/handoffs.ts
 src/agent/instructions.ts

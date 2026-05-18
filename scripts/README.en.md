@@ -60,7 +60,19 @@ Run all-template smoke tests and delivery package tests:
 ```bash
 npm run test:generator:all
 npm run test:delivery
+npm run test:skills
 ```
+
+## skills.sh Integration
+
+Generated projects use `skills/skills-sh-recommendations.yaml` to search `https://www.skills.sh/` and install reviewed Skills with the `skills` CLI.
+
+```bash
+npx skills add <owner/repo>
+DISABLE_TELEMETRY=1 npx skills add <owner/repo>
+```
+
+Record installed Skills and rejected candidates in `skills/selected-skills.md` and `docs/09_agent_state/run-log.md`.
 
 ## Delivery Sanitization
 

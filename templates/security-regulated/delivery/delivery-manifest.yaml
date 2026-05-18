@@ -23,6 +23,7 @@ excluded:
   - inputs/
   - outputs/
   - docs/09_agent_state/
+  - skills/selected-skills.md
 
 archive:
   created: false
