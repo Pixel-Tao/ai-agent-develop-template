@@ -18,6 +18,12 @@ const templateIds = fs
   .sort((a, b) => a.localeCompare(b));
 const placeholderPattern = /\{\{[A-Za-z0-9_-]+\}\}/;
 
+test("create-project list prints template summaries", () => {
+  const output = runCommand(process.execPath, ["scripts/create-project.mjs", "--list"], repoRoot);
+  assert.match(output, /greenfield-basic\s+New project starter/);
+  assert.match(output, /production-agent-system\s+Build production AI Agent systems/);
+});
+
 for (const templateId of templateIds) {
   test(`${templateId} generated archive passes smoke checks`, (t) => {
     const projectId = `smoke-${templateId}`;

@@ -43,6 +43,8 @@ node scripts/create-project.mjs --template greenfield-basic --project-id tao-crm
 node scripts/create-project.mjs --list
 ```
 
+`--list`는 템플릿 ID와 간략한 용도 설명을 함께 출력한다.
+
 `production-agent-system` 생성 결과 회귀 테스트를 실행한다.
 
 ```bash
