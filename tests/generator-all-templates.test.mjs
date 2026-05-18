@@ -24,6 +24,52 @@ test("create-project list prints template summaries", () => {
   assert.match(output, /production-agent-system\s+Build production AI Agent systems/);
 });
 
+test("create-project accepts path-safe custom project ids", (t) => {
+  for (const projectId of ["Project.Name", "ProjectName", "project_name"]) {
+    const zipPath = path.join(repoRoot, `${projectId}.zip`);
+    removeIfExists(zipPath);
+    t.after(() => removeIfExists(zipPath));
+
+    runCommand(process.execPath, [
+      "scripts/create-project.mjs",
+      "--template",
+      "greenfield-basic",
+      "--project-id",
+      projectId,
+      "--project-name",
+      "Flexible Project ID",
+      "--owner-name",
+      "smoke-owner",
+      "--force",
+    ], repoRoot);
+
+    assert.ok(fs.existsSync(zipPath), `${projectId}.zip should be created`);
+    const files = readZipEntries(zipPath).filter((entry) => !entry.directory);
+    assert.match(getFileText(files, "manifest.yaml"), new RegExp(`id:\\s*"${escapeRegExp(projectId)}"`));
+  }
+});
+
+test("create-project rejects path-unsafe custom project ids", () => {
+  for (const projectId of ["Project/Name", "Project\\Name", "Project:Name", "Project?Name", "Project."]) {
+    assert.throws(
+      () => runCommand(process.execPath, [
+        "scripts/create-project.mjs",
+        "--template",
+        "greenfield-basic",
+        "--project-id",
+        projectId,
+        "--project-name",
+        "Invalid Project ID",
+        "--owner-name",
+        "smoke-owner",
+        "--force",
+      ], repoRoot),
+      /Project name cannot/,
+      `${projectId} should be rejected`,
+    );
+  }
+});
+
 for (const templateId of templateIds) {
   test(`${templateId} generated archive passes smoke checks`, (t) => {
     const projectId = `smoke-${templateId}`;
@@ -121,6 +167,10 @@ function getFileText(files, name) {
   const file = files.find((entry) => entry.name === name);
   assert.ok(file, `${name} should exist`);
   return file.data.toString("utf8");
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function removeIfExists(targetPath) {

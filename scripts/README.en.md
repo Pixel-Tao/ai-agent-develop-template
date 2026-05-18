@@ -20,10 +20,10 @@ Command mode:
 node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
-Use separate project id and display name:
+Use separate project id and display name. A manually provided project id may use any single path-safe directory/archive filename such as `Project.Name`, `ProjectName`, `project_name`, or `project-name`.
 
 ```bash
-node scripts/create-project.mjs --template greenfield-basic --project-id tao-crm --project-name "TAO CRM" --owner-name TAO
+node scripts/create-project.mjs --template greenfield-basic --project-id Project.Name --project-name "TAO CRM" --owner-name TAO
 ```
 
 The generator:
