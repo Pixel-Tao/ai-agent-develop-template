@@ -364,7 +364,8 @@ function validateCreateProjectList(root, templates, errors) {
     cwd: root,
     encoding: "utf8",
   });
-  const listedIds = output.split(/\r?\n/).map((line) => line.trim()).filter(Boolean).sort((a, b) => a.localeCompare(b));
+  const listRows = output.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+  const listedIds = listRows.map((line) => line.split(/\s+/)[0]).sort((a, b) => a.localeCompare(b));
   const indexIds = templates.map((template) => template.id).filter(Boolean).sort((a, b) => a.localeCompare(b));
 
   if (listedIds.join("\n") !== indexIds.join("\n")) {
@@ -373,6 +374,12 @@ function validateCreateProjectList(root, templates, errors) {
       "scripts/create-project.mjs",
       `--list output does not match templates-index.yaml. listed=[${listedIds.join(", ")}], indexed=[${indexIds.join(", ")}]`,
     );
+  }
+
+  for (const row of listRows) {
+    if (!/^\S+\s{2,}\S+/.test(row)) {
+      reportError(errors, "scripts/create-project.mjs", `--list row is missing a template summary: ${row}`);
+    }
   }
 }
 

@@ -181,7 +181,7 @@ The GitHub Actions workflow in `.github/workflows/validate.yml` runs the same va
 
 | Command | Description |
 |---|---|
-| `node scripts/create-project.mjs --list` | List templates available to the generator |
+| `node scripts/create-project.mjs --list` | List templates available to the generator with short summaries |
 | `node scripts/create-project.mjs` | Create a project zip interactively |
 | `node scripts/create-project.mjs --template <id> --project-name <name> --owner-name <owner>` | Create a project zip with explicit values |
 | `node scripts/create-project.mjs --template <id> --project-id <id> --project-name <name> --owner-name <owner>` | Create a project zip with separate id and display name |

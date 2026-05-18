@@ -43,6 +43,19 @@ const reservedWindowsNames = new Set([
   "LPT9",
 ]);
 
+const templateSummaries = new Map([
+  ["greenfield-basic", "New project starter for small teams and first implementation planning."],
+  ["existing-project-onboarding", "Safely onboard an existing codebase with discovery, risk mapping, and first tasks."],
+  ["large-team-collaboration", "Coordinate multi-agent or larger team work with ownership, reviews, and handoffs."],
+  ["legacy-modernization", "Modernize legacy systems with discovery, migration planning, and controlled validation."],
+  ["mvp-prototype", "Shape and build an MVP or prototype with fast scope decisions and feedback loops."],
+  ["monorepo-multiservice", "Plan and operate monorepo or multi-service projects with service boundaries."],
+  ["security-regulated", "Run projects that need security, compliance, approval, and audit discipline."],
+  ["maintenance-operations", "Support maintenance, incident response, triage, and operational follow-up work."],
+  ["ai-data-project", "Structure data, AI, evaluation, and research-oriented project workflows."],
+  ["production-agent-system", "Build production AI Agent systems with tools, evals, memory, and guardrails."],
+]);
+
 function printHelp() {
   console.log(`Create a project archive from an Agent Project Template.
 
@@ -56,7 +69,7 @@ Options:
   --project-name, -p <name> Display project name. Any filename-safe name is allowed.
   --owner-name, -o <name>   Owner name used for {{OWNER_NAME}}.
   --force                   Overwrite an existing root zip with the same project id.
-  --list                    List available templates.
+  --list                    List available templates with short descriptions.
   --help, -h                Show this help.
 
 Output:
@@ -140,6 +153,17 @@ function listTemplates(root) {
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
     .sort((a, b) => a.localeCompare(b));
+}
+
+function getTemplateSummary(templateId) {
+  return templateSummaries.get(templateId) ?? "No summary available.";
+}
+
+function printTemplateList(templates) {
+  const width = templates.reduce((max, templateId) => Math.max(max, templateId.length), 0);
+  for (const templateId of templates) {
+    console.log(`${templateId.padEnd(width)}  ${getTemplateSummary(templateId)}`);
+  }
 }
 
 function deriveProjectId(projectName) {
@@ -265,7 +289,7 @@ async function promptMissingOptions(options, templates) {
     if (!options.template) {
       console.log("Available templates:");
       templates.forEach((templateId, index) => {
-        console.log(`  ${index + 1}. ${templateId}`);
+        console.log(`  ${index + 1}. ${templateId} - ${getTemplateSummary(templateId)}`);
       });
       const answer = (await rl.question("Select template number or ID: ")).trim();
       const selectedIndex = Number(answer);
@@ -470,7 +494,7 @@ async function main() {
   }
 
   if (options.list) {
-    console.log(templates.join("\n"));
+    printTemplateList(templates);
     return;
   }
 

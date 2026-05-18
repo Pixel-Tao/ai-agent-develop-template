@@ -43,6 +43,8 @@ Use `--force` to overwrite an existing archive.
 node scripts/create-project.mjs --list
 ```
 
+`--list` prints each template ID with a short usage summary.
+
 ## Validate Templates
 
 ```bash
