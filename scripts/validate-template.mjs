@@ -19,6 +19,7 @@ const requiredTemplateFiles = [
   "harness/evidence-log.md",
   "skills/skills-index.yaml",
   "skills/skills-sh-recommendations.yaml",
+  "skills/selected-skills.md",
   "delivery/sanitize-policy.yaml",
   "delivery/delivery-manifest.yaml",
   "delivery/delivery-checklist.md",

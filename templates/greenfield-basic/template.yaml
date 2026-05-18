@@ -41,6 +41,7 @@ required_files:
   - .agentignore
 
   - skills/skills-sh-recommendations.yaml
+  - skills/selected-skills.md
 
 optional_files:
   - CLAUDE.md

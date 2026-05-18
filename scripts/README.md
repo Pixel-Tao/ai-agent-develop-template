@@ -61,7 +61,7 @@ npm run test:skills
 
 ## skills.sh 연동
 
-생성된 프로젝트에서는 `skills/skills-sh-recommendations.yaml`을 참고해 `https://www.skills.sh/`에서 필요한 Skill을 검색하고, 검토 후 `skills` CLI로 설치한다.
+생성된 프로젝트에서는 `skills/skills-sh-recommendations.yaml`을 참고해 기술 스택을 감지하고, `https://www.skills.sh/`에서 필요한 stack-specific Skill을 검색한 뒤 검토 후 `skills` CLI로 설치한다.
 
 ```bash
 npx skills add <owner/repo>

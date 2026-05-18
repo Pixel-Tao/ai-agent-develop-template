@@ -103,6 +103,7 @@ for (const templateId of templateIds) {
       "template.yaml",
       "skills/skills-index.yaml",
       "skills/skills-sh-recommendations.yaml",
+      "skills/selected-skills.md",
       "harness/harness.yaml",
       "delivery/sanitize-policy.yaml",
       "delivery/delivery-manifest.yaml",
