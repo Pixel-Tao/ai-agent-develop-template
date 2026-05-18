@@ -23,6 +23,8 @@
 10. security/approval-policy.md
 11. skills/skills-index.yaml
 12. skills/skills-sh-recommendations.yaml
+13. mcp/mcp-policy.yaml
+14. mcp/mcp-servers.yaml
 
 ## Skill 구성 초기화
 
@@ -81,6 +83,29 @@
    - 필요 시 `docs/09_agent_state/assumptions.md`
 
 적합한 Skill이 없으면 "검토했지만 적용하지 않음"을 명시한다. 필요한 경우 프로젝트 전용 임시 Skill 작성 여부를 제안하되, 외부 Skill은 프로젝트 요구와 보안 정책에 맞을 때만 추가한다.
+
+
+## MCP 구성 초기화
+
+Agent는 필요한 외부 capability를 식별하고, 승인된 MCP만 활성화한다. MCP는 외부 시스템, 로컬 파일, credential, 고객 데이터에 접근할 수 있으므로 Skill보다 엄격하게 검토한다.
+
+1. `mcp/mcp-policy.yaml`과 `mcp/mcp-servers.yaml`을 읽는다.
+2. 프로젝트에 필요한 capability를 식별한다.
+
+   - repository, issue, pull request
+   - local filesystem inspection
+   - database inspection
+   - cloud deployment
+   - browser automation
+   - observability, incident, support tools
+   - collaboration tools such as Slack, Teams, Notion, calendar
+
+3. 각 MCP 후보의 목적, risk level, transport, credential, allowed operation, denied operation, data scope를 검토한다.
+4. `high` 또는 `destructive` risk MCP는 승인 없이 활성화하지 않는다.
+5. secret은 plaintext로 저장하지 않고 필요한 env var만 기록한다.
+6. 승인/보류/거절 결정을 `mcp/mcp-selection-log.md`와 `docs/09_agent_state/run-log.md`에 기록한다.
+
+적합한 MCP가 없으면 "검토했지만 활성화하지 않음"을 명시한다. 프로젝트에 제품 runtime용 tool/MCP bridge가 있다면 Agent 운영용 MCP와 혼동하지 않는다.
 
 
 ## 1. 초기 문서 확인
@@ -142,17 +167,29 @@
 - docs/09_agent_state/run-log.md
 - docs/09_agent_state/handoff-notes.md
 
-## 6. INIT 아카이브 규칙
+## 6. README 프로젝트화
+
+루트 README.md는 초기화 후 템플릿 설명이 아니라 현재 Agent 시스템 프로젝트 설명이어야 한다. README를 갱신하기 전에 기존 내용을 보관한다.
+
+1. docs/09_agent_state/archive/init/ 폴더가 있는지 확인한다.
+2. 현재 README.md를 docs/09_agent_state/archive/init/original-README-{{YYYY-MM-DD}}.md로 복사해 참조용으로 보관한다. 같은 이름이 이미 있으면 덮어쓰지 말고 suffix를 붙인다.
+3. project-definition-brief.md, manifest.yaml, harness/commands.md, current-status.md, tools/tool-registry.yaml, security/approval-policy.md를 기준으로 README.md를 프로젝트 맞춤 README로 재작성한다.
+4. README.md에는 최소한 Agent 목표와 비목표, 대상 사용자/workflow, tool 범위와 approval 정책, memory/eval/observability/deployment 방향, 설치/실행/검증 명령, 문서 구조, 현재 상태와 다음 Phase 링크를 포함한다.
+5. README.en.md가 있으면 같은 기준으로 동기화한다. 바로 갱신할 수 없으면 README.en.md 상단과 docs/09_agent_state/run-log.md에 한국어 README 기준으로 갱신 필요 상태를 명시한다.
+6. README 아카이브 경로와 갱신 결과를 docs/09_agent_state/run-log.md와 init-archive-log.md에 기록한다.
+
+## 7. INIT 아카이브 규칙
 
 초기 설정이 완료되면 이 문서는 더 이상 활성 프롬프트로 사용하지 않는다.
 
 1. docs/09_agent_state/archive/init/ 폴더가 있는지 확인한다.
 2. 이 파일의 내용을 docs/09_agent_state/archive/init/INIT-{{YYYY-MM-DD}}.md로 옮긴다.
 3. docs/09_agent_state/archive/init/init-archive-log.md에 완료일, 실행 Agent, 산출물, 남은 질문을 기록한다.
-4. 루트의 INIT.md는 삭제하거나 archive 폴더로 이동한다.
-5. 이후 사용자가 다시 `init`을 요청하면 archived INIT을 다시 실행하지 말고 current-status.md를 먼저 확인한다.
+4. README 보관 파일과 README 갱신 결과가 init-archive-log.md에 포함됐는지 확인한다.
+5. 루트의 INIT.md는 삭제하거나 archive 폴더로 이동한다.
+6. 이후 사용자가 다시 `init`을 요청하면 archived INIT을 다시 실행하지 말고 current-status.md를 먼저 확인한다.
 
-## 7. 완료 조건
+## 8. 완료 조건
 
 초기 설정은 아래 조건을 만족해야 완료로 본다.
 
@@ -161,14 +198,21 @@
 - memory, eval, observability, deployment 방향이 정리되어 있다.
 - harness/commands.md와 harness/verification-matrix.md가 프로젝트 상황에 맞게 갱신되어 있다.
 - 기술 스택별 Skill 후보를 검색하고 적용/제외 사유가 기록되어 있다.
+- MCP 후보를 검토하고 승인/보류/거절 사유가 기록되어 있다.
+- 기존 README.md가 original-README-{{YYYY-MM-DD}}.md 또는 충돌 방지 suffix 파일로 보관되어 있다.
+- 루트 README.md가 현재 Agent 시스템 목적, 실행/검증 방법, 문서 구조를 설명한다.
+- README.en.md가 동기화되었거나 갱신 필요 상태가 명시되어 있다.
 - 미정 사항과 다음 작업 후보가 기록되어 있다.
 
-## 8. 최종 보고 형식
+## 9. 최종 보고 형식
 
 - 초기 문서 확인 결과
 - Stack Skill Discovery 결과
+- MCP 구성 검토 결과
 - 인터뷰 방식: 문서 기반 / 대화형
 - 생성 또는 갱신한 문서
+- README 보관 위치
+- README 갱신 및 README.en.md 동기화 상태
 - harness 초기화 결과
 - 남은 질문
 - 다음 추천 작업

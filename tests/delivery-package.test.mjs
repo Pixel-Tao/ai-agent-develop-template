@@ -28,6 +28,9 @@ const forbiddenDeliveryPaths = [
   "outputs/",
   "docs/09_agent_state/",
   "skills/selected-skills.md",
+  "mcp/reports/",
+  "mcp/mcp-selection-log.md",
+  ".mcp.local.json",
 ];
 
 for (const templateId of templateIds) {

@@ -38,6 +38,9 @@ jobs:
       - name: Run skills.sh recommendation tests
         run: npm run test:skills
 
+      - name: Run MCP config validation
+        run: npm run test:mcp
+
       - name: Install production agent template dependencies
         working-directory: templates/production-agent-system
         run: npm install

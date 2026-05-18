@@ -6,6 +6,7 @@
 - English documentation is provided as `.en.md` sidecar files in the same location.
 - New root-level guides and template entrypoint READMEs should include both Korean and English versions.
 - English files are companion documents. Update the Korean source first, then synchronize the English version.
+- When initialization rewrites README.md for the generated project, synchronize README.en.md from the same source. If it cannot be updated immediately, mark README.en.md and the run log as needing synchronization.
 
 ## Naming
 

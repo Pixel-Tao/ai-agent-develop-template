@@ -57,6 +57,7 @@ npm run test:generator
 npm run test:generator:all
 npm run test:delivery
 npm run test:skills
+npm run test:mcp
 ```
 
 ## skills.sh 연동
@@ -69,6 +70,14 @@ DISABLE_TELEMETRY=1 npx skills add <owner/repo>
 ```
 
 설치한 Skill과 제외한 후보는 `skills/selected-skills.md`와 `docs/09_agent_state/run-log.md`에 기록한다.
+
+## MCP 검증
+
+모든 템플릿의 MCP 정책, 후보 서버, selection log, delivery 제외 설정을 검증한다.
+
+```bash
+npm run test:mcp
+```
 
 ## Delivery Sanitization
 

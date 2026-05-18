@@ -101,9 +101,16 @@ for (const templateId of templateIds) {
       "INIT.md",
       "manifest.yaml",
       "template.yaml",
+      "docs/09_agent_state/archive/init/README.md",
+      "docs/09_agent_state/archive/init/init-archive-log.md",
       "skills/skills-index.yaml",
       "skills/skills-sh-recommendations.yaml",
       "skills/selected-skills.md",
+      "mcp/README.md",
+      "mcp/mcp-policy.yaml",
+      "mcp/mcp-servers.yaml",
+      "mcp/mcp-selection-log.md",
+      "mcp/reports/.gitkeep",
       "harness/harness.yaml",
       "delivery/sanitize-policy.yaml",
       "delivery/delivery-manifest.yaml",
@@ -118,6 +125,7 @@ for (const templateId of templateIds) {
 
     assertNoUnresolvedPlaceholders(files);
     assertTemplateIdsMatch(files, templateId);
+    assertReadmeInitializationPolicy(files);
   });
 }
 
@@ -162,6 +170,26 @@ function assertTemplateIdsMatch(files, templateId) {
 
   assert.equal(manifestTemplateId, templateId);
   assert.equal(templateYamlId, templateId);
+}
+
+function assertReadmeInitializationPolicy(files) {
+  const init = getFileText(files, "INIT.md");
+  const agents = getFileText(files, "AGENTS.md");
+  const initializationPrompt = getFileText(files, "initialization-prompt.md");
+  const initArchiveReadme = getFileText(files, "docs/09_agent_state/archive/init/README.md");
+  const initArchiveLog = getFileText(files, "docs/09_agent_state/archive/init/init-archive-log.md");
+
+  assert.match(init, /README 프로젝트화/);
+  assert.match(init, /original-README-\d{4}-\d{2}-\d{2}\.md/);
+  assert.match(init, /README\.en\.md/);
+  assert.match(agents, /README 초기화 규칙/);
+  assert.match(agents, /템플릿 설명이 아니라/);
+  assert.match(initializationPrompt, /original-README-\d{4}-\d{2}-\d{2}\.md/);
+  assert.match(initializationPrompt, /README\.en\.md/);
+  assert.match(initArchiveReadme, /original-README-\d{4}-\d{2}-\d{2}\.md/);
+  assert.match(initArchiveReadme, /README\.en\.md/);
+  assert.match(initArchiveLog, /README Archive/);
+  assert.match(initArchiveLog, /README Status/);
 }
 
 function getFileText(files, name) {

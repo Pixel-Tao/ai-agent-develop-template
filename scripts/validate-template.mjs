@@ -13,6 +13,8 @@ const requiredTemplateFiles = [
   "manifest.yaml",
   "template.yaml",
   "validation-checklist.md",
+  "docs/09_agent_state/archive/init/README.md",
+  "docs/09_agent_state/archive/init/init-archive-log.md",
   "harness/harness.yaml",
   "harness/commands.md",
   "harness/verification-matrix.md",
@@ -20,6 +22,11 @@ const requiredTemplateFiles = [
   "skills/skills-index.yaml",
   "skills/skills-sh-recommendations.yaml",
   "skills/selected-skills.md",
+  "mcp/README.md",
+  "mcp/mcp-policy.yaml",
+  "mcp/mcp-servers.yaml",
+  "mcp/mcp-selection-log.md",
+  "mcp/reports/.gitkeep",
   "delivery/sanitize-policy.yaml",
   "delivery/delivery-manifest.yaml",
   "delivery/delivery-checklist.md",
@@ -64,6 +71,48 @@ const requiredManifestSections = {
     "archive_output",
   ],
 };
+
+const requiredInitializationPolicyChecks = [
+  {
+    file: "INIT.md",
+    fragments: [
+      ["README 프로젝트화", "INIT.md must include a README project rewrite section."],
+      ["original-README-{{YYYY-MM-DD}}.md", "INIT.md must archive the original README before rewriting it."],
+      ["프로젝트 맞춤 README", "INIT.md must require README.md to become project-specific."],
+      ["README.en.md", "INIT.md must define README.en.md synchronization or update-needed handling."],
+    ],
+  },
+  {
+    file: "AGENTS.md",
+    fragments: [
+      ["README 초기화 규칙", "AGENTS.md must include README initialization rules."],
+      ["템플릿 설명이 아니라", "AGENTS.md must state that README.md should not remain template-focused after initialization."],
+      ["original-README-{{YYYY-MM-DD}}.md", "AGENTS.md must mention the original README archive path."],
+      ["README.en.md", "AGENTS.md must mention README.en.md synchronization or update-needed handling."],
+    ],
+  },
+  {
+    file: "initialization-prompt.md",
+    fragments: [
+      ["original-README-{{YYYY-MM-DD}}.md", "initialization-prompt.md must mention the original README archive path."],
+      ["README.en.md", "initialization-prompt.md must mention README.en.md synchronization or update-needed handling."],
+    ],
+  },
+  {
+    file: "docs/09_agent_state/archive/init/README.md",
+    fragments: [
+      ["original-README-{{YYYY-MM-DD}}.md", "Init archive README must document where the original README is stored."],
+      ["README.en.md", "Init archive README must document README.en.md synchronization status tracking."],
+    ],
+  },
+  {
+    file: "docs/09_agent_state/archive/init/init-archive-log.md",
+    fragments: [
+      ["README Archive", "init-archive-log.md must include a README Archive column."],
+      ["README Status", "init-archive-log.md must include a README Status column."],
+    ],
+  },
+];
 
 const allowedTemplateVariables = new Set([
   "OWNER_NAME",
@@ -543,6 +592,29 @@ function validateManifestDeliveryConfig(root, template, errors) {
   }
 }
 
+function validateInitializationReadmePolicy(root, template, errors) {
+  const templatePath = path.join(root, template.path ?? `templates/${template.id}`);
+  if (!fs.existsSync(templatePath)) {
+    return;
+  }
+
+  for (const check of requiredInitializationPolicyChecks) {
+    const filePath = path.join(templatePath, check.file);
+    const relativePath = path.relative(root, filePath);
+    if (!fs.existsSync(filePath)) {
+      reportError(errors, relativePath, "Required README initialization policy file is missing.");
+      continue;
+    }
+
+    const content = fs.readFileSync(filePath, "utf8");
+    for (const [fragment, message] of check.fragments) {
+      if (!content.includes(fragment)) {
+        reportError(errors, relativePath, message);
+      }
+    }
+  }
+}
+
 function validatePlaceholders(root, template, errors) {
   const templatePath = path.join(root, template.path ?? `templates/${template.id}`);
   if (!fs.existsSync(templatePath)) {
@@ -615,6 +687,7 @@ function main() {
     validateRequiredFiles(root, template, errors);
     validateTemplateIds(root, template, errors);
     validateManifestDeliveryConfig(root, template, errors);
+    validateInitializationReadmePolicy(root, template, errors);
     validatePlaceholders(root, template, errors);
     yamlFileCount += validateYamlFiles(root, template, errors);
   }

@@ -1,0 +1,52 @@
+version: "1.0.0"
+updated_at: "{{YYYY-MM-DD}}"
+
+servers:
+  - id: github
+    purpose: "Repository, issue, pull request, and review workflows"
+    status: "candidate"
+    risk_level: "medium"
+    transport: "stdio"
+    install: "review_required"
+    approval:
+      required: true
+      approver: "{{OWNER_NAME}}"
+    credentials:
+      required_env:
+        - GITHUB_TOKEN
+      plaintext_allowed: false
+    access_scope:
+      repositories: "project-only"
+      network: "github.com"
+    allowed_operations:
+      - read_repository
+      - create_issue
+      - create_pull_request
+    denied_operations:
+      - delete_repository
+      - force_push
+
+  - id: filesystem
+    purpose: "Local project file inspection"
+    status: "candidate"
+    risk_level: "high"
+    transport: "stdio"
+    install: "review_required"
+    approval:
+      required: true
+      approver: "{{OWNER_NAME}}"
+    credentials:
+      required_env: []
+      plaintext_allowed: false
+    access_scope:
+      allowed_paths:
+        - "."
+      denied_paths:
+        - "~/.ssh"
+        - ".env"
+        - "dist/internal-archive"
+    allowed_operations:
+      - read_project_files
+    denied_operations:
+      - delete_files
+      - write_outside_project

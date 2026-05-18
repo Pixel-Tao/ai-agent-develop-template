@@ -14,6 +14,7 @@ The repository currently includes 10 templates, a project zip generator, Deliver
 - Document skeletons for requirements, design, tasks, decisions, and state tracking
 - Initial source-material intake through `inputs/`
 - stack-aware skills.sh discovery and installation planning through `skills/skills-sh-recommendations.yaml`
+- MCP server candidate review, approval, and access control through `mcp/`
 - Command, verification, and evidence tracking through `harness/`
 - Common skills and template-specific skills
 - Project zip generation and template variable replacement
@@ -81,7 +82,7 @@ See [decision-guide.en.md](decision-guide.en.md) for detailed selection guidance
 3. Extract the generated zip into the real project location.
 4. Add planning docs, notes, draft requirements, sketches, and reference links under `inputs/`.
 5. Ask the agent to run `init` or `/init`.
-6. The agent reads `INIT.md`, `AGENTS.md`, `manifest.yaml`, `skills/skills-sh-recommendations.yaml`, and `harness/`, then runs the initial interview, stack detection, skills.sh-based skill setup, and state setup.
+6. The agent reads `INIT.md`, `AGENTS.md`, `manifest.yaml`, `skills/skills-sh-recommendations.yaml`, `mcp/`, and `harness/`, then runs the initial interview, stack detection, skills.sh-based skill setup, MCP review, and state setup.
 7. Record implementation, verification, review, and release evidence in `harness/evidence-log.md` and `docs/09_agent_state/`.
 
 ## Generated Project Structure
@@ -101,6 +102,7 @@ See [decision-guide.en.md](decision-guide.en.md) for detailed selection guidance
 | `skills/` | Task-specific skills for agents |
 | `skills/skills-sh-recommendations.yaml` | Stack detection rules, skills.sh search terms, and recommended sources |
 | `skills/selected-skills.md` | Reviewed Skill candidates and selection/rejection reasons |
+| `mcp/` | MCP policy, candidate servers, and selection log |
 | `harness/` | Commands, verification matrix, and evidence log |
 | `delivery/` | Delivery policy, manifest, checklists, and reports |
 | `.deliveryignore` | Exclusion rules for delivery packages |
@@ -197,6 +199,7 @@ The GitHub Actions workflow in `.github/workflows/validate.yml` runs the same va
 | `npm run test:generator:all` | Run smoke tests for all generated templates |
 | `npm run test:delivery` | Run delivery package tests for all templates |
 | `npm run test:skills` | Test stack-aware skills.sh recommendation files for all templates |
+| `npm run test:mcp` | Validate MCP policies and candidate servers for all templates |
 | `node scripts/replace-template-variables.mjs --root <path> --variables-file <file> --apply` | Replace variables in an already copied project |
 
 See [scripts/README.en.md](scripts/README.en.md) for details.
