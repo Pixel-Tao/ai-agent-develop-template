@@ -61,11 +61,11 @@ function printHelp() {
 
 Usage:
   node scripts/create-project.mjs
-  node scripts/create-project.mjs --template greenfield-basic --project-id my-project --project-name "My Project" --owner-name "Owner Name"
+  node scripts/create-project.mjs --template greenfield-basic --project-id Project.Name --project-name "My Project" --owner-name "Owner Name"
 
 Options:
   --template, -t <id>       Template ID under templates/.
-  --project-id <id>         Project id used for filenames and manifests. Defaults to lower-kebab-case project name.
+  --project-id <id>         Path-safe project id used for filenames and manifests. Defaults to lower-kebab-case project name.
   --project-name, -p <name> Display project name. Any filename-safe name is allowed.
   --owner-name, -o <name>   Owner name used for {{OWNER_NAME}}.
   --force                   Overwrite an existing root zip with the same project id.
@@ -206,10 +206,6 @@ function validateProjectId(projectId) {
   }
 
   validateProjectName(projectId);
-
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(projectId)) {
-    throw new Error("Project id must be lower-kebab-case with letters, numbers, and single hyphens.");
-  }
 }
 
 function today() {

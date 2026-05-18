@@ -41,10 +41,10 @@ node scripts/create-project.mjs --list
 node scripts/create-project.mjs
 ```
 
-값을 직접 전달해 생성합니다. `--project-id`는 파일명과 manifest id에 사용하고, `--project-name`은 사람이 읽는 표시명에 사용합니다.
+값을 직접 전달해 생성합니다. `--project-id`는 파일명과 manifest id에 사용하고, `--project-name`은 사람이 읽는 표시명에 사용합니다. `--project-id`를 직접 지정하면 `Project.Name`, `ProjectName`, `project_name`, `project-name`처럼 단일 디렉터리/zip 파일명으로 안전한 값을 사용할 수 있습니다.
 
 ```bash
-node scripts/create-project.mjs --template greenfield-basic --project-id my-project --project-name "My Project" --owner-name "project-owner"
+node scripts/create-project.mjs --template greenfield-basic --project-id Project.Name --project-name "My Project" --owner-name "project-owner"
 ```
 
 프로덕션 AI Agent 시스템 템플릿을 생성합니다.

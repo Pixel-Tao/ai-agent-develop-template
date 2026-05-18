@@ -20,10 +20,10 @@ node scripts/create-project.mjs
 node scripts/create-project.mjs --template greenfield-basic --project-name my-project --owner-name "project-owner"
 ```
 
-프로젝트 id와 표시명을 분리할 경우:
+프로젝트 id와 표시명을 분리할 경우 직접 지정한 project id는 `Project.Name`, `ProjectName`, `project_name`, `project-name`처럼 단일 디렉터리/zip 파일명으로 안전한 값을 사용할 수 있다.
 
 ```bash
-node scripts/create-project.mjs --template greenfield-basic --project-id tao-crm --project-name "TAO CRM" --owner-name TAO
+node scripts/create-project.mjs --template greenfield-basic --project-id Project.Name --project-name "TAO CRM" --owner-name TAO
 ```
 
 동작:

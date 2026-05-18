@@ -41,10 +41,10 @@ Create a project zip interactively:
 node scripts/create-project.mjs
 ```
 
-Create a project zip with explicit values. `--project-id` is used for filenames and manifest ids, while `--project-name` is the display name:
+Create a project zip with explicit values. `--project-id` is used for filenames and manifest ids, while `--project-name` is the display name. When provided manually, `--project-id` can be any single path-safe directory/archive filename such as `Project.Name`, `ProjectName`, `project_name`, or `project-name`.
 
 ```bash
-node scripts/create-project.mjs --template greenfield-basic --project-id my-project --project-name "My Project" --owner-name "project-owner"
+node scripts/create-project.mjs --template greenfield-basic --project-id Project.Name --project-name "My Project" --owner-name "project-owner"
 ```
 
 Create a production AI Agent system project:
